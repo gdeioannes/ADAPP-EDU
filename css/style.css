@@ -1,0 +1,84 @@
+/*
+ADDAP-EDU STYLE SHEET
+Autor:Gabriel De Ioannes Becker
+e-mail:gdeioannes@gmail.com
+
+This style sheet is made for the project ADAAP-EDU
+from the University of Talca, Chile.
+*/
+
+
+
+@font-face{
+    font-family:Lato;
+    src:url(Lato/Lato-light.ttf);
+}
+
+body{
+    background: #DDD;
+}
+
+a{
+ margin: 5px   
+}
+input{
+    border-radius: 10px;    
+    padding: 10px;
+    margin-top: 5px;
+    border-style:solid ;
+    border-width: 1px;
+    border-color: #DDD;
+}
+
+button{
+    margin-top: 5px;
+    border-radius: 10px;    
+    padding: 10px;
+    margin-top: 5px;
+    border-style:solid ;
+    border-width: 1px;
+    border-color: #DDD;
+}
+
+.container{
+    font-family: Lato;
+    background: white;
+    height: auto;
+    width: auto;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    margin: 50px;
+}
+
+.cover{
+    top: 0px;
+    left: 0px;
+    height: 400px;;
+    width: 200px;
+    position: fixed;
+    opacity: 0.5;
+    background: black;
+}
+
+.panel-container{
+    position: absolute; 
+    left: 50%;
+}
+
+.panel{
+    position: relative;
+    left: -50%;
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background: white;
+    border-radius: 10px;
+    animation-name: transition-down;
+    animation-duration: 2s;
+}
+
+@keyframes transition-down {
+    from {margin-top: -50px;}
+    to {margin-top: 0px;}
+}
