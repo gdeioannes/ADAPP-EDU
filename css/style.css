@@ -18,9 +18,47 @@ body{
     background: #DDD;
 }
 
+nav{
+	background: #2a243c;
+	height: 50px;
+	width:100%;
+	}
+
+li.boton{
+	float:right;
+	width:100%;
+	padding-right:50px;
+	
+	}
+
 a{
  margin: 5px   
 }
+
+h1{
+	font-family: 'Raleway', sans-serif;
+	font-size:40px;
+	font-weight:600;
+	text-align:center;
+	margin-top:5%;
+}
+
+.Titulo{
+	margin:0 auto;
+	text-align:center;
+	}
+.personaje{
+	width:100%;
+	height:auto;
+	margin-top:5%;
+	}
+	
+.nivel{
+	width:100%;
+	height:auto;
+	margin-top:5%;
+	}
+	
 input{
     border-radius: 10px;    
     padding: 10px;
