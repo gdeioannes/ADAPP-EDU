@@ -19,9 +19,11 @@ body{
 }
 
 nav{
-	background: #2a243c;
-	height: 50px;
-	width:100%;
+	background-image:url(../img/navfondo1.png);
+	height: 114px;
+	width: 750px;
+	margin: 0 auto;
+	
 	}
 
 li.boton{
@@ -32,7 +34,8 @@ li.boton{
 	}
 
 a{
- margin: 5px   
+    
+ color: #ddd;
 }
 
 h1{
@@ -41,6 +44,7 @@ h1{
 	font-weight:600;
 	text-align:center;
 	margin-top:5%;
+	@extend .flipIn
 }
 
 .Titulo{
@@ -66,16 +70,22 @@ input{
     border-style:solid ;
     border-width: 1px;
     border-color: #DDD;
+	width:70%;
 }
 
 button{
     margin-top: 5px;
     border-radius: 10px;    
     padding: 10px;
-    margin-top: 5px;
     border-style:solid ;
     border-width: 1px;
-    border-color: #DDD;
+    margin-bottom:20px;
+	color:#fff;
+	background-color: #ce537a;
+	font-weight:700;
+	padding-left:25px;
+	padding-right:25px;
+	box-shadow: 2px 2px 1px #9b4263;
 }
 
 .container{
@@ -87,6 +97,73 @@ button{
     padding: 10px;
     text-align: center;
     margin: 50px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.container2 {
+	background-image: url(../img/fondo1.jpg);
+	height: auto;
+    width: 750px;
+    border-radius: 10px;
+    
+    text-align: center;
+    margin: 0 auto;
+	}
+	
+.container3 {
+	background-image:url(../img/perfilfondo.jpg);
+	height: 1334px;
+    width: 750px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 auto;
+	}
+
+.miperfil{
+	margin-top:70px;
+	
+	}
+.avatar{
+	float:left;
+	margin-left:110px;
+	}
+	
+.perfil{
+	float:left;
+	margin-top:70px;
+	margin-left:50px;
+	font-weight:600;
+	}
+	
+	.libros1{
+		float:left;
+	margin-top:250px;
+	margin-left:110px;
+	}
+	
+
+.eduportada{
+	align-content:center;
+	}
+
+.cabezalogin{
+	align-content:center;
+	margin-left:-20px;
+	}
+
+.formulario{
+	background:#C6C6C6;
+	width:300px;
+	height: auto;
+	box-shadow: 10px 10px 5px #888888;
+	margin-top:30px;
+	margin-left:auto;
+	margin-right:auto;
+	align-content:center;
+	border-radius: 10px;
+	
+	
 }
 
 .cover{
@@ -119,4 +196,98 @@ button{
 @keyframes transition-down {
     from {margin-top: -50px;}
     to {margin-top: 0px;}
+}
+
+
+/*  ACORDION
+=====================*/
+#accordion{margin:100px auto;width:400px;}
+#accordion ul{list-style:none;margin:0;padding:0;}
+.accordion{display:none;}
+.accordion:target{display:block;}
+#accordion ul li a{text-decoration:none;display:block;padding:10px;}
+.accordion{padding:4px;}
+
+
+/*  COLORES
+====================*/
+#accordion ul{
+/*box-shadow*/
+-webkit-box-shadow:0 4px 10px #BDBDBD;
+   -moz-box-shadow:0 4px 10px #BDBDBD;
+        box-shadow:0 4px 10px #BDBDBD;
+/*border-radius*/
+-webkit-border-radius:5px;
+   -moz-border-radius:5px;
+        border-radius:5px;
+}
+#accordion ul li a{
+background:#fff;
+border-bottom:1px solid #E0E0E0;
+color:#999;
+}
+.accordion{
+background:#fdfdfd;
+color:#999;
+}
+.accordion:target{
+border-top:3px solid #FFCDCD;
+}
+
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 560px;
+	height: 560px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
 }
