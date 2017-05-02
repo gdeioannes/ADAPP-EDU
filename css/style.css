@@ -7,12 +7,8 @@ This style sheet is made for the project ADAAP-EDU
 from the University of Talca, Chile.
 */
 
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i');
 
-
-@font-face{
-    font-family:Lato;
-    src:url(Lato/Lato-light.ttf);
-}
 
 body{
     background: #DDD;
@@ -262,32 +258,51 @@ button{
 .course-list-container ul li{
     overflow: auto;
     background: #EEE;
-    padding: 2%;
     cursor: pointer;
     cursor: hand;
     color: #2a243c;
 }
 
-.course-list-container ul li #icon{
+.course-list-container ul li .icon{
     float: left;
     width: 20%;
     margin-left: 10%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .course-list-container ul li h2{
-    margin-left: 5%;
     width: 65%;
     float: right;
     font-size: 5vw;
     margin-bottom:2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
+
 .course-list-container ul li h3{
-    margin-left: 5%;
     width: 65%;
     float: right;
     font-size: 3vw;
 }
+
+.course-list-container ul li ul{
+    width: 100%;
+}
+
+.course-list-container ul li ul li{
+    font-family: Lato;
+    background: grey;
+    color: white;
+    width: 100%;
+    font-size: 3vw;
+    overflow: hidden;
+    font-weight: 300;
+    box-sizing: border-box; 
+    padding: 1%;
+}
+
 
 .course-list-container ul{
     

@@ -1,7 +1,8 @@
 $(document).ready(function(){
-      
+    var course=null;  
     var buttonFlag=true;
     var userID=null;
+    
     $("#create-user-container").hide();
     $("#courses-container").hide();
     $("#home-selector-btn").click(function(){
@@ -65,7 +66,7 @@ $(document).ready(function(){
                       var userState=data[i];
                       if(userName==userState.username){
                           userID=userState.id;
-                          userExistFlag=true
+                          userExistFlag=true;
                       }
                   }
                   if(!userExistFlag){
@@ -79,7 +80,7 @@ $(document).ready(function(){
 
             });
     }
-
+   
     function putCourseList(){        
         var appeduAPI="http://adappedu.lircaytech.com/api/v1/courses/get";
         $.ajax({
@@ -90,21 +91,47 @@ $(document).ready(function(){
                   var htmlInsert="<ul>";
                   for(var i=0;i<data.length;i++){
                      if(i%2!=0){
-                        htmlInsert+="<li style='background:#EEE'>"    
+                        htmlInsert+="<li style='background:#EEE'"    
                      }else{
-                        htmlInsert+="<li style='background:#DDD'>"    
+                        htmlInsert+="<li style='background:#DDD'"    
                      }
-                     htmlInsert+='<img id="icon" src="img/course_icon.png">';
+                     htmlInsert+="class='course' id='course-li-"+data[i].id+"' data-courseid='"+data[i].id+"'>"    
+                     htmlInsert+='<img class="icon" src="img/course_icon.png">';
                      htmlInsert+="<h2>"+data[i].name+"</h2>";
-                     htmlInsert+="<h3>"+data[i].description+"</h3>";
-                     htmlInsert+="</li>"    
+                     htmlInsert+="<h3>"+data[i].description+"</h3></li>";
                   }
-                  htmlInsert+="</ul>";
+                htmlInsert+="</ul>";  
                 $(".course-list-container").html(htmlInsert);
+                       $(".course").click(function(){
+                            getUnitFromCourseId($(this).data('courseid'),this);
+                       });
               },
-
             });
         $("#courses-container").show();
+       
+    }
+    
+
+    
+    function getUnitFromCourseId(courseID,courseObj){
+         $("#specific-unit-list").remove();
+         var appeduAPI= "http://adappedu.lircaytech.com/api/v1/courses/{courseid}/get/units";
+        appeduAPI=appeduAPI.replace("{courseid}",courseID);
+        $.ajax({
+              type: "GET",
+              dataType: "json",
+              url: appeduAPI,
+              success: function(data){  
+                  var htmlInsert="<ul id='specific-unit-list'>";
+                  for(var i=0;i<data.length;i++){
+                    htmlInsert+="<li>"+data[i].name+"</li>"
+                  }
+                   htmlInsert+="</ul>";
+                  $(courseObj).append(htmlInsert);
+                  $("#specific-unit-list").hide();
+                  $("#specific-unit-list").slideDown();
+              },
+            });
     }
     
 });
