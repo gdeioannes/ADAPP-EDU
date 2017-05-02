@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,38 +11,62 @@
 
 <body>
     <div class="container">
-        <div class="cabezalogin">
-        	<img src="img/cabezaedu.png" alt="">
+        <div id="login-create">
+            <div class="cabezalogin">
+                <div class="login-head">
+                    <img src="img/cabezaedu.png">
+                </div>
+            </div>
+            <div class="formulario">
+                <br>
+                <div id="main-message" class="message"></div>
+                <div id="login-user-container" class="form">
+                    <input type="text" id="login-name" placeholder="Nombre Usuario">
+                    <br>
+                    <input type="text" id="login-password" placeholder="Contraseña">
+                    <br>
+                    <button id="login-btn">Ingresar</button>
+                </div>
+                <div id="create-user-container" class="form">
+                    <input id="create-user-name" type="text" placeholder="Nombre Usuario">
+                    <br>
+                    <input id="create-user-email" type="email" placeholder="e-mail">
+                    <br>
+                    <input id="create-user-password" type="password" placeholder="Contraseña">
+                    <br>
+                    <button id="create-user">Crear Usuario</button>
+                </div>
+            </div>
+            <div id="home-selector-container">
+                <div class="nuevos-usuarios-blue-line" style="margin-bottom:-1%">
+                    <img src="img/new_user_line.png">
+                </div>
+                <div class="nuevos-usuarios-midle">
+                    <button id="home-selector-btn" class="text-button">Crear
+                        <br>Usuario</button>
+                    <img src="img/new_user.png">
+                </div>
+                <div class="nuevos-usuarios-blue-line" style="margin-top:-1%">
+                    <img src="img/new_user_line.png">
+                </div>
+            </div>
         </div>
-        <div class="formulario">
-        	<form>
-            	<br><input type="text" placeholder="Nombre Usuario">  
-            	<br><input type="text" placeholder="Contraseña">
-            	<br><button type="submit">Ingresar</button>
-        	</form>
-        </div>    
-            <div class="nuevos-usuarios">
-        		
-                <a id="btn-create-acount"><img src="img/nuevos.png" alt=""></a>
-        		<div class="panel-container" id="create-acount">
-        		<div class="cover"></div>
-        
-            	<div class="panel">
-            		<h2>Crear Cuenta</h2>
-            		<form>
-                		<br><input type="email" placeholder="e-mail" >  
-                		<br><input type="text" placeholder="matricula">
-                		<br><input type="password" placeholder="Contraseña">
-                		<br><input type="password" placeholder="Contraseña">
-                		<br><button type="submit">Enviar</button>
-            		</form>
-        
-            	</div>
-        	</div>
-		</div>
-      </div>
+        <div id="courses-container">
+            <nav>
+                <div class="nav-line"><img src="img/nav_circle.png"></div>
+            </nav>
+            <div id="course-list-container">
+                <ul>
+                    <li>
+                        <img id="icon" src="img/course_icon.png">
+                        <h2>Course Name</h2>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <script src="js/jquery-3.2.0.min.js"></script>
     <script src="js/ADAPP-EDU.js"></script>
 </body>
-</html>
 
+</html>
