@@ -15,10 +15,22 @@ body{
 }
 
 nav{
-    background-image: url(../img/nav_line.png);
-    background-repeat:repeat-x;
+    height: 12%;
 	margin-bottom: 5%;
-	}
+    overflow: auto;
+}
+
+nav .nav-circle{
+    margin: 0;
+    height: 20vw;
+    float: right;
+    margin-top: -20vw;
+}
+
+nav .nav-line{
+    height: 20vw;
+    width: 100%;
+}
 
 nav img{
     height: 100%;
@@ -64,26 +76,29 @@ h1{
 	
 input{
     border-radius: 10px;    
-    padding: 10px;
-    margin-top: 5px;
+    padding: 4%;
+    margin-top: 2%;
     border-style:solid ;
     border-width: 1px;
     border-color: #DDD;
 	width:70%;
+    font-size: 2.5vw;
 }
 
 button{
-    margin-top: 5px;
     border-radius: 10px;    
-    padding: 10px;
+    padding: 3%;
     border-style:none ;
     border-width: 1px;
-    margin-bottom:20px;
+    margin-bottom:3%;
+    margin-top: 3%;
 	color:#fff;
 	background-color: #ce537a;
 	font-weight:700;
-	padding-left:25px;
-	padding-right:25px;
+    font-size: 4vw;
+    width: 80%;
+    cursor: pointer; 
+    cursor: hand;
 }
 
 .container{
@@ -91,25 +106,8 @@ button{
     background: white;
     border-radius: 15px;
     margin: 3%;
+    overflow: hidden;
 }
-
-.container2 {
-	background-image: url(../img/fondo1.jpg);
-	height: auto;
-    width: 750px;
-    border-radius: 10px;
-    text-align: center;
-    margin: 0 auto;
-	}
-	
-.container3 {
-	background-image:url(../img/perfilfondo.jpg);
-	height: 1334px;
-    width: 750px;
-    border-radius: 10px;
-    text-align: center;
-    margin: 0 auto;
-	}
 
 .miperfil{
 	margin-top:70px;
@@ -189,8 +187,7 @@ button{
 /*LOGIN and CREATE USER*/
 
 .login-head{
-    height: 20%;
-    width: 20%;
+    width: 40%;
     margin: auto;
 }
 
@@ -232,6 +229,8 @@ button{
     height: 30px;
     background-size: cover;
 }
+
+
 
 .nuevos-usuarios-blue-line img{
     align-content: center;
@@ -303,102 +302,32 @@ button{
     padding: 1%;
 }
 
+/* Answer*/
 
-.course-list-container ul{
+.question{
+    height: 50%;
+    padding: 5%;
+    font-size: 6vw;
+    margin-bottom: 10%;
+}
+
+.answer{
+    text-align: center;
+    height: 10%;
     
 }
 
-
-
-/*  ACORDION
-=====================*/
-#accordion{margin:100px auto;width:400px;}
-#accordion ul{list-style:none;margin:0;padding:0;}
-.accordion{display:none;}
-.accordion:target{display:block;}
-#accordion ul li a{text-decoration:none;display:block;padding:10px;}
-.accordion{padding:4px;}
-
-
-/*  COLORES
-====================*/
-#accordion ul{
-/*box-shadow*/
--webkit-box-shadow:0 4px 10px #BDBDBD;
-   -moz-box-shadow:0 4px 10px #BDBDBD;
-        box-shadow:0 4px 10px #BDBDBD;
-/*border-radius*/
--webkit-border-radius:5px;
-   -moz-border-radius:5px;
-        border-radius:5px;
-}
-#accordion ul li a{
-background:#fff;
-border-bottom:1px solid #E0E0E0;
-color:#999;
-}
-.accordion{
-background:#fdfdfd;
-color:#999;
-}
-.accordion:target{
-border-top:3px solid #FFCDCD;
+.answer li{
+    padding: 2%;
+    margin-top: 1%;
+    background: #CCC;
+    color: white;
+    font-size: 4vw;
+    font-weight: 600;
+    cursor: pointer; 
+    cursor: hand;
 }
 
-/* Popup container - can be anything you want */
-.popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/* The actual popup */
-.popup .popuptext {
-    visibility: hidden;
-    width: 560px;
-	height: 560px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -80px;
-}
-
-/* Popup arrow */
-.popup .popuptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-}
-
-/* Toggle this class - hide and show the popup */
-.popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-}
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-    from {opacity: 0;} 
-    to {opacity: 1;}
-}
-
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
+.answer li:hover{
+    background: #AAA;
 }
