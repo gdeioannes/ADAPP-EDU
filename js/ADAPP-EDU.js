@@ -3,8 +3,17 @@ $(document).ready(function(){
     var buttonFlag=true;
     var userID=null;
     var saveCourseClicked;
+    
+    //$("#login-create").hide();
     $("#create-user-container").hide();
-    //$("#courses-container").hide();
+    $("#courses-container").hide();
+    $("#question-container").hide();
+    $("#result-container").hide();
+    
+    $(".nav-circle").click(function(){
+        putCourseList();
+    });
+    
     $("#home-selector-btn").click(function(){
         $("#create-user-container").toggle();
         $("#login-user-container").toggle();
@@ -17,6 +26,11 @@ $(document).ready(function(){
               $("#home-selector-btn").html("Crear<br>usuario");
             buttonFlag=true;
         }
+    });
+    
+    $('#login-form').submit(function () {
+        getUserProfilesAndCompare();
+        return false;
     });
     
       $("#create-user").click(function(){
@@ -47,11 +61,6 @@ $(document).ready(function(){
             });
         });
     
-    $("#login-btn").click(function(){
-        var userName=$("#login-name").val();
-        var password=$("#login-password").val();
-        getUserProfilesAndCompare(userName);
-    });
     
     function getUserProfilesAndCompare(userName){
         var appeduAPI="http://adappedu.lircaytech.com/api/v1/profile/get/all";
@@ -63,7 +72,7 @@ $(document).ready(function(){
                   var userExistFlag=false;
                   for(var i=0;i<data.length;i++){
                       var userState=data[i];
-                      if(userName==userState.username){
+                      if($("#login-name").val()==userState.username){
                           userID=userState.id;
                           userExistFlag=true;
                       }
@@ -72,6 +81,7 @@ $(document).ready(function(){
                       $("#main-message").html("El usuario no existe");
                   }else{
                       $("#login-create").hide();
+                      $("#user-id").val(userState.id)
                       putCourseList();
                   }
               },
@@ -79,86 +89,199 @@ $(document).ready(function(){
             });
     }
    
-    putCourseList();
     function putCourseList(){        
-        var appeduAPI="http://adappedu.lircaytech.com/api/v1/courses/get";
-        $.ajax({
-              type: "GET",
-              dataType: "json",
-              url: appeduAPI,
-              success: function(data){
-                  var htmlInsert="<ul>";
-                  for(var i=0;i<data.length;i++){
-                     if(i%2!=0){
-                        htmlInsert+="<li style='background:#EEE'"    
-                     }else{
-                        htmlInsert+="<li style='background:#CCC'"    
-                     }
-                     htmlInsert+="class='course' id='course-li-"+data[i].id+"' data-courseid='"+data[i].id+"'>"    
-                     htmlInsert+='<img class="icon" src="img/course_icon.png">';
-                     htmlInsert+="<h2>"+data[i].name+"</h2>";
-                     htmlInsert+="<h3>"+data[i].description+"</h3></li>";
-                  }
-                htmlInsert+="</ul>";  
-                $(".course-list-container").html(htmlInsert);
-                       $(".course").click(function(){
-                           saveCourseClicked=this; getUnitFromCourseId($(this).data('courseid'),this);
-                       });
-              },
-            });
         $("#courses-container").show();
-       
+        $("#question-container").hide();
+        $("#result-container").hide();
+        var appeduAPI="http://adappedu.lircaytech.com/api/v1/courses/get";
+        $(".content-container").html("");
+        $.ajax({
+          type: "GET",
+          dataType: "json",
+          url: appeduAPI,
+          success: function(data){
+              var htmlInsert=$('<ul></ul>');
+              for(var i=0;i<data.length;i++){
+                 var courseElement=$('<li  id="course" style="background:#CCC;" data-id='+data[i].id+'></li>').append($('<img class="icon" src="img/course_icon.png"><h2>'+data[i].name+'</h2><h3>'+data[i].description+'</h3>'));
+                 $(htmlInsert).append($(courseElement));
+                 
+                 getUnitFromCourseId(data[i].id,courseElement);
+                  
+                 $(courseElement).click(function(evt){
+                      $(this).children().children().slideToggle();
+                  });
+              }
+              $(".content-container").append(htmlInsert);
+          },
+        });
     }
     
-
     
-    function getUnitFromCourseId(courseID,courseObj){
-         $("#specific-unit-list").remove();
+    function getUnitFromCourseId(courseID,htmlNode){
+        
+        
          var appeduAPI= "http://adappedu.lircaytech.com/api/v1/courses/{courseid}/get/units";
         appeduAPI=appeduAPI.replace("{courseid}",courseID);
         $.ajax({
+          type: "GET",
+          dataType: "json",
+          url: appeduAPI,
+          success: function(data){  
+              var htmlInsert=$('<ul></ul>');
+              for(var i=0;i<data.length;i++){
+                var unitElement=$('<li  class="unit" style="background:#AAA;" data-id='+data[i].id+'></li>').html(data[i].name);
+                  $(unitElement).hide();
+                $(htmlInsert).append($(unitElement));
+                getTopicsFromUnitId(data[i].id,unitElement);
+              } 
+              $(htmlNode).append(htmlInsert);
+          },
+        });
+    }
+    
+    function getTopicsFromUnitId(unitID,htmlNode){
+         var appeduAPI= "http://adappedu.lircaytech.com/api/v1/courses/unit/{unitid}/get/topics";
+        appeduAPI=appeduAPI.replace("{unitid}",unitID);
+        $.ajax({
               type: "GET",
               dataType: "json",
               url: appeduAPI,
-              success: function(data){  
-                  var htmlInsert="<ul id='specific-unit-list'>";
+              success: function(data){ 
+                  var htmlInsert=$('<ul></ul>');
                   for(var i=0;i<data.length;i++){
-                    htmlInsert+="<li>"+data[i].name+"</li>"
-                    getTopicsFromUnitId(data[i].id,this);
+                        var topicElement=$('<li  id="topic" style="background:#777;" data-id='+data[i].id+'></li>').html(data[i].name);
+                        $(htmlInsert).append($(topicElement));
+                        getQuestionnarieFromTopic(data[i].id,topicElement);
                   }
-                   htmlInsert+="</ul>";
-                  $(courseObj).append(htmlInsert);
-                  $("#specific-unit-list").hide();
-                  $("#specific-unit-list").slideDown();
-                  
+                  $(htmlNode).append(htmlInsert);
               },
             });
     }
     
-        function getTopicsFromUnitId(unitID,courseObj){
-         $("#specific-unit-list").remove();
-         var appeduAPI= "http://adappedu.lircaytech.com/api/v1/courses/unit/{unitid}/get/topics";
-        appeduAPI=appeduAPI.replace("{unitid}",unitID);
-            alert(appeduAPI);
+    function getQuestionnarieFromTopic(topicID,htmlNode){
+         var appeduAPI= "http://adappedu.lircaytech.com/api/v1/courses/unit/topic/{topicid}/questionnarie/get/all";
+        appeduAPI=appeduAPI.replace("{topicid}",topicID);
         $.ajax({
               type: "GET",
               dataType: "json",
               url: appeduAPI,
               success: function(data){  
-                  alert("Hola");
-                  var htmlInsert="<ul id='specific-topic-list'>";
+                  var htmlInsert=$('<ul></ul>');
                   for(var i=0;i<data.length;i++){
-                    htmlInsert+="<li>"+data[i].name+"</li>"
+                      var questionnarieElement=$('<li   id="questionnarie" style="background:#444;" data-id='+data[i].id+' data-range='+data[i].ranges[0].id+' ></li>').html(data[i].name);
+                      $(htmlInsert).append($(questionnarieElement));
+                      $(questionnarieElement).click(function(){
+                          postEnrollQuestionnarie(this);
+                      });
                   }
-                   htmlInsert+="</ul>";
-                  $(courseObj).append(htmlInsert);
+                  $(htmlNode).append(htmlInsert);
+                  $(".unit").hide();
 
               },
-            error:function(data){
-                alert("data.message");
-            }
+            });
+    }
+    
+    function postEnrollQuestionnarie(questionnarieObj){
+        $("#courses-container").hide();
+        var appeduAPI= "http://adappedu.lircaytech.com/api/v1/questionnarie/enroll/{questionnarieid}/user/{userid}";
+        appeduAPI=appeduAPI.replace("{userid}",$("#user-id").val());
+        appeduAPI=appeduAPI.replace("{questionnarieid}",$(questionnarieObj).data("id"));
+        $.ajax({
+              type: "POST",
+              dataType: "json",
+              url: appeduAPI,
+              success: function(data){  
+                  getQuestions(questionnarieObj);
+              },
+              error:function(data){
+                  getQuestions(questionnarieObj);
+              }
             ,
             });
     }
     
+    function getQuestions(questionaireObj){
+                $("#question-container").show();
+                $("#result-container").hide();
+                var appeduAPI= "http://adappedu.lircaytech.com/api/v1/get/exercise/{questionnaireid}/range/{rangeid}/user/{userid}";
+        appeduAPI=appeduAPI.replace("{userid}",$("#user-id").val());
+        appeduAPI=appeduAPI.replace("{questionnaireid}",$(questionaireObj).data("id"));
+        appeduAPI=appeduAPI.replace("{rangeid}",$(questionaireObj).data("range"));
+        $.ajax({
+              type: "GET",
+              dataType: "json",
+              url: appeduAPI,
+              success: function(data){  
+                  $("#question-description").html(data.description);
+                  $("#answer-container-list").html("");
+                  for(var optionsNum=0;optionsNum<data.options.length;optionsNum++){
+                      var exerciseid=" data-exerciseid='"+data.id+"' ";
+                      var optionid=" data-optionid='"+data.options[optionsNum].id+"' ";
+                      var questionnaireid=" data-questionnaireid='"+$(questionaireObj).data("id")+"' ";
+                      var userid=" data-userid='"+$("#user-id").val()+"' ";
+                      var nk=" data-nk='0' ";
+                      
+                      var answerElement=$("<li"+exerciseid+optionid+questionnaireid+userid+nk+">"+data.options[optionsNum].option+"</li>");
+                      $(answerElement).click(function(){
+                          postAnswer(this,questionaireObj);
+                      });
+                      $("#answer-container-list").append(answerElement);
+                  }
+                  $("#answer-container-list").append($("<li>NO SE</li>"));
+              },
+              error:function(data){
+                  alert("Error "+data.id);
+              }
+            ,
+            });
+    }
+    
+    function postAnswer(answerObj,questionaireObj){
+        $("#result-container").show();
+        $("#question-container").hide();
+        $("#result-message p").html("...");   
+        var appeduAPI= "http://adappedu.lircaytech.com/api/v1/answer/exercise/{exerciseid}/option/{optionid}/questionnaire/{questionnaireid}/user/{userid}/nk/{nk}";
+        appeduAPI=appeduAPI.replace("{exerciseid}",$(answerObj).data("exerciseid"));
+        appeduAPI=appeduAPI.replace("{optionid}",$(answerObj).data("optionid"));
+        appeduAPI=appeduAPI.replace("{questionnaireid}",$(answerObj).data("questionnaireid"));
+        appeduAPI=appeduAPI.replace("{userid}",$(answerObj).data("userid"));
+        appeduAPI=appeduAPI.replace("{nk}",$(answerObj).data("nk"));
+        $.ajax({
+              type: "POST",
+              dataType: "json",
+              url: appeduAPI,
+              success: function(data){  
+                  debug(JSON.stringify(data));
+                  if(data.is_correct){
+                    $("#result-message p").html("Respuesta Correcta!");    
+                  }else{
+                    $("#result-message p").html("Respuesta Errada");   
+                  }
+                  $("#next-question").unbind();
+                  $("#next-question").click(function(){
+                      getQuestions(questionaireObj);
+                  });
+              },
+              error:function(data){
+                  
+              }
+            ,
+            });
+    }
+     
+    function debug(data){
+        console.log(data);
+    }
+    
+    setContainerSize();
+    $(window).resize(function(){
+        setContainerSize();
+    });
+    
+    function setContainerSize(){
+        
+    }
+    
+    
 });
+   

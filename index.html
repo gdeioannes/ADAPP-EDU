@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    <div class="container">
+    <input id="user-id" type="hidden">
+    <div class="container" id="main-Container">
         <div id="login-create">
                 <div class="login-head">
                     <img src="img/cabezaedu.png">
@@ -18,13 +19,15 @@
             <div class="formulario">
                 <br>
                 <div id="main-message" class="message"></div>
+                <form id="login-form">
                 <div id="login-user-container" class="form">
                     <input type="text" id="login-name" placeholder="Nombre Usuario">
                     <br>
                     <input type="text" id="login-password" placeholder="Contraseña">
                     <br>
-                    <button id="login-btn">Ingresar</button>
+                    <button id="login-btn" type="submit">Ingresar</button>
                 </div>
+                </form>    
                 <div id="create-user-container" class="form">
                     <input id="create-user-name" type="text" placeholder="Nombre Usuario">
                     <br>
@@ -36,9 +39,6 @@
                 </div>
             </div>
             <div id="home-selector-container">
-                <div class="nuevos-usuarios-blue-line" style="margin-bottom:-1%">
-                    <img src="img/new_user_line.png">
-                </div>
                 <div class="nuevos-usuarios-midle">
                     <button id="home-selector-btn" class="text-button">Crear
                         <br>Usuario</button>
@@ -54,7 +54,7 @@
                 <img class="nav-line" src="img/nav_line.png">
                 <img class="nav-circle" src="img/nav_circle.png">
             </nav>
-            <div class="course-list-container">
+            <div class="content-container">
                 <ul>
                     <li  style="background:grey;">
                         <img class="icon" src="img/course_icon.png">
@@ -69,22 +69,34 @@
             </div>
         </div>
         <div id="question-container">
- <nav>
+            <nav>
                 <img class="nav-line" src="img/nav_line.png">
                 <img class="nav-circle" src="img/nav_circle.png">
             </nav>
-            <div class="question">
+            <div class="question" id="question-description">
             <p>¿Cuál de los siguientes números corresponde a un tipo de dato float?</p>
             </div>
             <div class="answer">
-                <ul>
+                <ul id="answer-container-list" >
                     <li>0.8</li>
                     <li>3</li>
                     <li>33524</li>
                     <li>'f'</li>
-                    <li>No SE</li>
-                    <button>ENVIAR</button>
                 </ul>
+                <button>ENVIAR</button>
+            </div>
+        </div>
+        <div id="result-container">
+            <nav>
+                <img class="nav-line" src="img/nav_line.png">
+                <img class="nav-circle" src="img/nav_circle.png">
+            </nav>
+            <div id="result-message">
+                <img src="img/cabezaedu.png">
+                <p>Resultado Respuesta</p>
+            </div>
+            <div class="answer">
+                <button id="next-question">SIGUIENTE</button>
             </div>
         </div>
     </div>

@@ -11,20 +11,22 @@ from the University of Talca, Chile.
 
 
 body{
-    background: #DDD;
+    background: #FFF;
 }
 
 nav{
     height: 12%;
 	margin-bottom: 5%;
-    overflow: auto;
+    overflow: hidden;
+    text-align: right;
+    
 }
 
 nav .nav-circle{
-    margin: 0;
+    position: absolute;
+    top: 0px;
     height: 20vw;
-    float: right;
-    margin-top: -20vw;
+    margin-left: -20vw;
 }
 
 nav .nav-line{
@@ -32,18 +34,21 @@ nav .nav-line{
     width: 100%;
 }
 
-nav img{
-    height: 100%;
+nav .back-btn{
+    position: absolute;
+    float: right;
 }
 
-
+.nav-circle{
+    cursor: pointer;
+}
 
 li.boton{
 	float:right;
 	width:100%;
 	padding-right:50px;
 	
-	}
+}
 
 a{  
  color: #ddd;
@@ -104,8 +109,6 @@ button{
 .container{
     font-family: Lato;
     background: white;
-    border-radius: 15px;
-    margin: 3%;
     overflow: hidden;
 }
 
@@ -125,65 +128,6 @@ button{
 	font-weight:600;
 	}
 	
-	.libros1{
-		float:left;
-	margin-top:250px;
-	margin-left:110px;
-	}
-	
-
-.eduportada{
-	align-content:center;
-	}
-
-.formulario{
-    text-align: center;
-	background:#C6C6C6;
-	width:70%;
-	height: auto;
-	margin-top:30px;
-	margin: auto;
-	align-content:center;
-	border-radius: 10px;
-}
-
-.form{
-    padding-top: 2%;
-}
-
-.cover{
-    top: 0px;
-    left: 0px;
-    height: 400px;;
-    width: 200px;
-    position: fixed;
-    opacity: 0.5;
-    background: black;
-}
-
-.panel-container{
-    position: absolute; 
-    left: 50%;
-}
-
-.panel{
-    position: relative;
-    left: -50%;
-    padding: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
-    background: white;
-    border-radius: 10px;
-    animation-name: transition-down;
-    animation-duration: 2s;
-}
-
-@keyframes transition-down {
-    from {margin-top: -50px;}
-    to {margin-top: 0px;}
-}
-
-
 /*LOGIN and CREATE USER*/
 
 .login-head{
@@ -197,6 +141,16 @@ button{
     margin-top: 10%;
     margin-bottom: 10%;
     
+}
+
+.formulario{
+    text-align: center;
+	background:#C6C6C6;
+	width:70%;
+	margin-top:30px;
+	margin: auto;
+	align-content:center;
+	border-radius: 10px;
 }
 
 .nuevos-usuarios-midle{
@@ -220,17 +174,15 @@ button{
     margin-left: auto;
     width: 20%;
     font-size: 2.5vw;
-    margin-top: 1%;
+    margin-top: 6%;
 }
 
 .nuevos-usuarios-blue-line{
     width: 40%;
     margin: auto;
-    height: 30px;
+    height: 5vw;
     background-size: cover;
 }
-
-
 
 .nuevos-usuarios-blue-line img{
     align-content: center;
@@ -250,11 +202,7 @@ button{
 }
 
 /*COURSES */
-
-.course-list-container{
-}
-
-.course-list-container ul li{
+.content-container ul li{
     overflow: auto;
     background: #EEE;
     cursor: pointer;
@@ -262,7 +210,7 @@ button{
     color: #2a243c;
 }
 
-.course-list-container ul li .icon{
+.content-container ul li .icon{
     float: left;
     width: 20%;
     margin-left: 10%;
@@ -270,7 +218,7 @@ button{
     margin-bottom: 2%;
 }
 
-.course-list-container ul li h2{
+.content-container ul li h2{
     width: 65%;
     float: right;
     font-size: 5vw;
@@ -280,17 +228,17 @@ button{
 }
 
 
-.course-list-container ul li h3{
+.content-container ul li h3{
     width: 65%;
     float: right;
     font-size: 3vw;
 }
 
-.course-list-container ul li ul{
+.content-container ul li ul{
     width: 100%;
 }
 
-.course-list-container ul li ul li{
+.content-container ul li ul li{
     font-family: Lato;
     background: grey;
     color: white;
@@ -298,14 +246,17 @@ button{
     font-size: 3vw;
     overflow: hidden;
     font-weight: 300;
-    box-sizing: border-box; 
-    padding: 1%;
+    box-sizing: border-box;
+    height: 2%;
+    
 }
+
+
 
 /* Answer*/
 
 .question{
-    height: 50%;
+    height: 20vh;
     padding: 5%;
     font-size: 6vw;
     margin-bottom: 10%;
@@ -314,13 +265,13 @@ button{
 .answer{
     text-align: center;
     height: 10%;
-    
+    background: gray;
 }
 
 .answer li{
     padding: 2%;
-    margin-top: 1%;
-    background: #CCC;
+    margin-top: 0.5%;
+    background: #BBB;
     color: white;
     font-size: 4vw;
     font-weight: 600;
@@ -330,4 +281,30 @@ button{
 
 .answer li:hover{
     background: #AAA;
+}
+
+.answer-btn{
+    border-radius: 0px;
+    width: 100%;
+    margin: 0px;
+}
+
+/*RESULT*/
+
+#result-message{
+    font-family: Lato;
+    text-align: center;
+    height: auto;
+    
+}
+
+#result-message p{
+    font-size: 12vw;
+    margin: 10vw;
+  font-weight: 600;
+    color: #444;
+}
+
+#result-message img{
+    width: 50%;
 }
