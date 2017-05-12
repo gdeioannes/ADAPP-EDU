@@ -11,44 +11,10 @@ from the University of Talca, Chile.
 
 
 body{
+    font-family: Lato;
     background: #FFF;
 }
 
-nav{
-    height: 12%;
-	margin-bottom: 5%;
-    overflow: hidden;
-    text-align: right;
-    
-}
-
-nav .nav-circle{
-    position: absolute;
-    top: 0px;
-    height: 20vw;
-    margin-left: -20vw;
-}
-
-nav .nav-line{
-    height: 20vw;
-    width: 100%;
-}
-
-nav .back-btn{
-    position: absolute;
-    float: right;
-}
-
-.nav-circle{
-    cursor: pointer;
-}
-
-li.boton{
-	float:right;
-	width:100%;
-	padding-right:50px;
-	
-}
 
 a{  
  color: #ddd;
@@ -107,9 +73,9 @@ button{
 }
 
 .container{
-    font-family: Lato;
     background: white;
     overflow: hidden;
+    vertical-align: middle;
 }
 
 .miperfil{
@@ -147,10 +113,11 @@ button{
     text-align: center;
 	background:#C6C6C6;
 	width:70%;
-	margin-top:30px;
-	margin: auto;
+	margin-left: auto;
+    margin-right: auto;
 	align-content:center;
 	border-radius: 10px;
+    
 }
 
 .nuevos-usuarios-midle{
@@ -180,8 +147,7 @@ button{
 .nuevos-usuarios-blue-line{
     width: 40%;
     margin: auto;
-    height: 5vw;
-    background-size: cover;
+    height: 23vh;
 }
 
 .nuevos-usuarios-blue-line img{
@@ -202,6 +168,10 @@ button{
 }
 
 /*COURSES */
+
+.content-container{
+    background: grey;
+}
 .content-container ul li{
     overflow: auto;
     background: #EEE;
@@ -221,7 +191,7 @@ button{
 .content-container ul li h2{
     width: 65%;
     float: right;
-    font-size: 5vw;
+    font-size: 6vw;
     margin-bottom:2%;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -231,7 +201,8 @@ button{
 .content-container ul li h3{
     width: 65%;
     float: right;
-    font-size: 3vw;
+    font-size: 5vw;
+    color: #666;
 }
 
 .content-container ul li ul{
@@ -243,44 +214,47 @@ button{
     background: grey;
     color: white;
     width: 100%;
-    font-size: 3vw;
+    font-size: 4vw;
     overflow: hidden;
     font-weight: 300;
-    box-sizing: border-box;
     height: 2%;
     
 }
-
-
 
 /* Answer*/
 
 .question{
     height: 20vh;
-    padding: 5%;
-    font-size: 6vw;
+    padding: 10%;
+    font-size: 7vw;
     margin-bottom: 10%;
 }
 
+.question p{
+    vertical-align: middle;
+}
+
 .answer{
+    padding: 1%;
     text-align: center;
     height: 10%;
     background: gray;
 }
 
 .answer li{
-    padding: 2%;
-    margin-top: 0.5%;
-    background: #BBB;
+    padding: 4%;
+    margin: 2%;
+    background: #AAA;
     color: white;
-    font-size: 4vw;
+    font-size: 5vw;
     font-weight: 600;
     cursor: pointer; 
     cursor: hand;
+    border-radius: 10vw;
 }
 
 .answer li:hover{
-    background: #AAA;
+    background: #9A9A9A;
 }
 
 .answer-btn{
@@ -294,17 +268,65 @@ button{
 #result-message{
     font-family: Lato;
     text-align: center;
-    height: auto;
-    
+    height: auto; 
 }
 
 #result-message p{
+    vertical-align: middle;
+    padding: 8%;
     font-size: 12vw;
-    margin: 10vw;
-  font-weight: 600;
+    margin-right: 10vw;
+    margin-left: 10vw;
+    font-weight: 600;
     color: #444;
+    border-radius: 10px;
+    background: #DDD;
+    min-height: 17vh;
 }
 
-#result-message img{
+#result-message #head{
     width: 50%;
+    margin-bottom: 10%;
+}
+
+#result-message #pointer{
+    width: 10%;
+}
+
+.bottom{
+    width: 100vw;
+    position: absolute;
+    bottom: 0px;
+}
+
+
+/*NAV*/
+
+nav{
+    height: 12%;
+	margin-bottom: 5%;
+    overflow: hidden;
+    text-align: right;
+    
+}
+
+nav .nav-circle{
+    position: absolute;
+    top: 0px;
+    height: 20vw;
+    margin-left: -20vw;
+}
+
+nav .nav-line{
+    height: 20vw;
+    width: 100%;
+}
+
+nav .back-btn{
+    position: absolute;
+    float: right;
+}
+
+.nav-circle{
+    cursor: pointer;
 }

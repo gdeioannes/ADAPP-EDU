@@ -2,9 +2,9 @@ $(document).ready(function(){
     var course=null;  
     var buttonFlag=true;
     var userID=null;
-    var saveCourseClicked;
+    var saveCourseClicked=null;
     
-    //$("#login-create").hide();
+    //$("#login-container").hide();
     $("#create-user-container").hide();
     $("#courses-container").hide();
     $("#question-container").hide();
@@ -80,7 +80,7 @@ $(document).ready(function(){
                   if(!userExistFlag){
                       $("#main-message").html("El usuario no existe");
                   }else{
-                      $("#login-create").hide();
+                      $("#login-container").hide();
                       $("#user-id").val(userState.id)
                       putCourseList();
                   }
@@ -226,8 +226,11 @@ $(document).ready(function(){
                           postAnswer(this,questionaireObj);
                       });
                       $("#answer-container-list").append(answerElement);
+                      if(optionsNum==data.options.length){
+                          $("#answer-container-list").append($("<li>NO SE</li>"));
+                      }
                   }
-                  $("#answer-container-list").append($("<li>NO SE</li>"));
+                  
               },
               error:function(data){
                   alert("Error "+data.id);
@@ -271,15 +274,6 @@ $(document).ready(function(){
      
     function debug(data){
         console.log(data);
-    }
-    
-    setContainerSize();
-    $(window).resize(function(){
-        setContainerSize();
-    });
-    
-    function setContainerSize(){
-        
     }
     
     

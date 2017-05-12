@@ -12,7 +12,7 @@
 <body>
     <input id="user-id" type="hidden">
     <div class="container" id="main-Container">
-        <div id="login-create">
+        <div id="login-container">
                 <div class="login-head">
                     <img src="img/cabezaedu.png">
                 </div>
@@ -48,24 +48,27 @@
                     <img src="img/new_user_line.png">
                 </div>
             </div>
+            <!--<button onclick="maxWindow" >PC</button>-->
         </div>
         <div id="courses-container">
             <nav>
                 <img class="nav-line" src="img/nav_line.png">
                 <img class="nav-circle" src="img/nav_circle.png">
             </nav>
-            <div class="content-container">
-                <ul>
-                    <li  style="background:grey;">
-                        <img class="icon" src="img/course_icon.png">
-                        <h2>Course Name</h2>
-                        <h3>Descripción</h3>
-                        <ul class="units">
-                            <li>Unidad</li>
-                            <li>Unidad</li>
-                        </ul>
-                    </li>   
-                </ul> 
+            <div class="bottom">
+                <div class="content-container">
+                    <ul>
+                        <li  style="background:grey;">
+                            <img class="icon" src="img/course_icon.png">
+                            <h2>Course Name</h2>
+                            <h3>Descripción</h3>
+                            <ul class="units">
+                                <li>Unidad</li>
+                                <li>Unidad</li>
+                            </ul>
+                        </li>   
+                    </ul> 
+                </div>
             </div>
         </div>
         <div id="question-container">
@@ -76,14 +79,16 @@
             <div class="question" id="question-description">
             <p>¿Cuál de los siguientes números corresponde a un tipo de dato float?</p>
             </div>
-            <div class="answer">
-                <ul id="answer-container-list" >
-                    <li>0.8</li>
-                    <li>3</li>
-                    <li>33524</li>
-                    <li>'f'</li>
-                </ul>
-                <button>ENVIAR</button>
+            <div class="bottom">
+                <div class="answer">
+                    <ul id="answer-container-list" >
+                        <li>0.8</li>
+                        <li>3</li>
+                        <li>33524</li>
+                        <li>'f'</li>
+                    </ul>
+                    
+                </div>
             </div>
         </div>
         <div id="result-container">
@@ -92,12 +97,17 @@
                 <img class="nav-circle" src="img/nav_circle.png">
             </nav>
             <div id="result-message">
-                <img src="img/cabezaedu.png">
                 <p>Resultado Respuesta</p>
+                <div>
+                 <img id="pointer" src="img/pointer_head_result.png">
+                </div>
+                <img id="head" src="img/cabezaedu.png">
             </div>
-            <div class="answer">
-                <button id="next-question">SIGUIENTE</button>
-            </div>
+            <div class="bottom">
+                <div class="answer">
+                    <button id="next-question">SIGUIENTE</button>
+                </div>
+            </div>    
         </div>
     </div>
     <script src="js/jquery-3.2.0.min.js"></script>
