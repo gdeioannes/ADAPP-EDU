@@ -63,12 +63,19 @@ $(document).ready(function(){
         });
     
     
-    function setDebug(data){
+    function setDebug(data,data2){
          if(data=="debug" && data2=="debug"){
             debug=true;
             $("#main-message").html("Debug");
         }
-        
+    }
+    
+    function printDebug(data){
+        var msg="";
+        if(debug){
+            msg="<br>"+data;    
+        }    
+        return msg;
     }
     
     function getUserProfilesAndCompare(){         
@@ -78,7 +85,6 @@ $(document).ready(function(){
         appeduAPI=appeduAPI.replace("{username}",name);
         appeduAPI=appeduAPI.replace("{password}",password);
         setDebug(name,password);
-        
         $.ajax({
               type: "POST",
               dataType: "json",
@@ -90,7 +96,8 @@ $(document).ready(function(){
                       alert(data.id);
               },
               error:function(data){
-                      $("#main-message").html("Fallo");
+                      $("#main-message").html("Fallo"+printDebug(appeduAPI));
+                        
               }
       
             });
