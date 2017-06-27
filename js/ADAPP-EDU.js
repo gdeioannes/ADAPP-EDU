@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    var debug=false;
     var course=null;  
     var buttonFlag=true;
     var userID=null;
@@ -62,30 +63,36 @@ $(document).ready(function(){
         });
     
     
-    function getUserProfilesAndCompare(userName){
-        var appeduAPI="http://adappedu.lircaytech.com/api/v1/profile/get/all";
+    function setDebug(data){
+         if(data=="debug" && data2=="debug"){
+            debug=true;
+            $("#main-message").html("Debug");
+        }
+        
+    }
+    
+    function getUserProfilesAndCompare(){         
+        var appeduAPI="http://adappedu.lircaytech.com/api/v1/profile/login/{username}/{password}";
+        var name=$("#login-name").val();
+        var password=$("#login-password").val();
+        appeduAPI=appeduAPI.replace("{username}",name);
+        appeduAPI=appeduAPI.replace("{password}",password);
+        setDebug(name,password);
+        
         $.ajax({
-              type: "GET",
+              type: "POST",
               dataType: "json",
               url: appeduAPI,
               success: function(data){
-                  var userExistFlag=false;
-                  for(var i=0;i<data.length;i++){
-                      var userState=data[i];
-                      if($("#login-name").val()==userState.username){
-                          userID=userState.id;
-                          userExistFlag=true;
-                      }
-                  }
-                  if(!userExistFlag){
-                      $("#main-message").html("El usuario no existe");
-                  }else{
                       $("#login-container").hide();
-                      $("#user-id").val(userState.id)
+                      $("#user-id").val(data.id);
                       putCourseList();
-                  }
+                      alert(data.id);
               },
-
+              error:function(data){
+                      $("#main-message").html("Fallo");
+              }
+      
             });
     }
    
