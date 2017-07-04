@@ -35,7 +35,7 @@ $(document).ready(function(){
     });
     
       $("#create-user").click(function(){
-            var appeduAPI="http://adappedu.lircaytech.com/api/v1/profile/create/{username}/{email}/{password}";
+            var appeduAPI="https://adappedu.lircaytech.com/api/v1/profile/create/{username}/{email}/{password}";
             var name=$("#create-user-name").val();
             var email=$("#create-user-email").val();
             var password=$("#create-user-password").val();
@@ -53,7 +53,7 @@ $(document).ready(function(){
                     $("#login-user-container").toggle();
                     $("#main-message").html("Usuario Creado Exitosamente");
                   }else{
-                      alert(data.type);
+                      
                     $("#main-message").html("Error, el nombre o mail existe");
                   }
                 
@@ -79,7 +79,7 @@ $(document).ready(function(){
     }
     
     function getUserProfilesAndCompare(){         
-        var appeduAPI="http://adappedu.lircaytech.com/api/v1/profile/login/{username}/{password}";
+        var appeduAPI="https://adappedu.lircaytech.com/api/v1/profile/login/{username}/{password}";
         var name=$("#login-name").val();
         var password=$("#login-password").val();
         appeduAPI=appeduAPI.replace("{username}",name);
@@ -93,7 +93,6 @@ $(document).ready(function(){
                       $("#login-container").hide();
                       $("#user-id").val(data.id);
                       putCourseList();
-                      alert(data.id);
               },
               error:function(data){
                       $("#main-message").html("Fallo"+printDebug(appeduAPI));
@@ -107,7 +106,7 @@ $(document).ready(function(){
         $("#courses-container").show();
         $("#question-container").hide();
         $("#result-container").hide();
-        var appeduAPI="http://adappedu.lircaytech.com/api/v1/courses/get";
+        var appeduAPI="https://adappedu.lircaytech.com/api/v1/courses/get";
         $(".content-container").html("");
         $.ajax({
           type: "GET",
@@ -134,7 +133,7 @@ $(document).ready(function(){
     function getUnitFromCourseId(courseID,htmlNode){
         
         
-         var appeduAPI= "http://adappedu.lircaytech.com/api/v1/courses/{courseid}/get/units";
+         var appeduAPI= "https://adappedu.lircaytech.com/api/v1/courses/{courseid}/get/units";
         appeduAPI=appeduAPI.replace("{courseid}",courseID);
         $.ajax({
           type: "GET",
@@ -154,7 +153,7 @@ $(document).ready(function(){
     }
     
     function getTopicsFromUnitId(unitID,htmlNode){
-         var appeduAPI= "http://adappedu.lircaytech.com/api/v1/courses/unit/{unitid}/get/topics";
+         var appeduAPI= "https://adappedu.lircaytech.com/api/v1/courses/unit/{unitid}/get/topics";
         appeduAPI=appeduAPI.replace("{unitid}",unitID);
         $.ajax({
               type: "GET",
@@ -173,7 +172,7 @@ $(document).ready(function(){
     }
     
     function getQuestionnarieFromTopic(topicID,htmlNode){
-         var appeduAPI= "http://adappedu.lircaytech.com/api/v1/courses/unit/topic/{topicid}/questionnarie/get/all";
+         var appeduAPI= "https://adappedu.lircaytech.com/api/v1/courses/unit/topic/{topicid}/questionnarie/get/all";
         appeduAPI=appeduAPI.replace("{topicid}",topicID);
         $.ajax({
               type: "GET",
@@ -182,11 +181,14 @@ $(document).ready(function(){
               success: function(data){  
                   var htmlInsert=$('<ul></ul>');
                   for(var i=0;i<data.length;i++){
-                      var questionnarieElement=$('<li   id="questionnarie" style="background:#444;" data-id='+data[i].id+' data-range='+data[i].ranges[0].id+' ></li>').html(data[i].name);
-                      $(htmlInsert).append($(questionnarieElement));
-                      $(questionnarieElement).click(function(){
-                          postEnrollQuestionnarie(this);
-                      });
+                      if(data[i].ranges[0] !==undefined){
+                          console.log(data[i]);
+                          var questionnarieElement=$('<li   id="questionnarie" style="background:#444;" data-id='+data[i].id+' data-range='+data[i].ranges[0].id+' ></li>').html(data[i].name);
+                          $(htmlInsert).append($(questionnarieElement));
+                          $(questionnarieElement).click(function(){
+                              postEnrollQuestionnarie(this);
+                          });
+                      }
                   }
                   $(htmlNode).append(htmlInsert);
                   $(".unit").hide();
@@ -197,7 +199,7 @@ $(document).ready(function(){
     
     function postEnrollQuestionnarie(questionnarieObj){
         $("#courses-container").hide();
-        var appeduAPI= "http://adappedu.lircaytech.com/api/v1/questionnarie/enroll/{questionnarieid}/user/{userid}";
+        var appeduAPI= "https://adappedu.lircaytech.com/api/v1/questionnarie/enroll/{questionnarieid}/user/{userid}";
         appeduAPI=appeduAPI.replace("{userid}",$("#user-id").val());
         appeduAPI=appeduAPI.replace("{questionnarieid}",$(questionnarieObj).data("id"));
         $.ajax({
@@ -217,7 +219,7 @@ $(document).ready(function(){
     function getQuestions(questionaireObj){
                 $("#question-container").show();
                 $("#result-container").hide();
-                var appeduAPI= "http://adappedu.lircaytech.com/api/v1/get/exercise/{questionnaireid}/range/{rangeid}/user/{userid}";
+                var appeduAPI= "https://adappedu.lircaytech.com/api/v1/get/exercise/{questionnaireid}/range/{rangeid}/user/{userid}";
         appeduAPI=appeduAPI.replace("{userid}",$("#user-id").val());
         appeduAPI=appeduAPI.replace("{questionnaireid}",$(questionaireObj).data("id"));
         appeduAPI=appeduAPI.replace("{rangeid}",$(questionaireObj).data("range"));
@@ -247,7 +249,7 @@ $(document).ready(function(){
                   
               },
               error:function(data){
-                  alert("Error "+data.id);
+                  
               }
             ,
             });
@@ -257,7 +259,7 @@ $(document).ready(function(){
         $("#result-container").show();
         $("#question-container").hide();
         $("#result-message p").html("...");   
-        var appeduAPI= "http://adappedu.lircaytech.com/api/v1/answer/exercise/{exerciseid}/option/{optionid}/questionnaire/{questionnaireid}/user/{userid}/nk/{nk}";
+        var appeduAPI= "https://adappedu.lircaytech.com/api/v1/answer/exercise/{exerciseid}/option/{optionid}/questionnaire/{questionnaireid}/user/{userid}/nk/{nk}";
         appeduAPI=appeduAPI.replace("{exerciseid}",$(answerObj).data("exerciseid"));
         appeduAPI=appeduAPI.replace("{optionid}",$(answerObj).data("optionid"));
         appeduAPI=appeduAPI.replace("{questionnaireid}",$(answerObj).data("questionnaireid"));
@@ -268,7 +270,7 @@ $(document).ready(function(){
               dataType: "json",
               url: appeduAPI,
               success: function(data){  
-                  debug(JSON.stringify(data));
+                  
                   if(data.is_correct){
                     $("#result-message p").html("Respuesta Correcta!");    
                   }else{
