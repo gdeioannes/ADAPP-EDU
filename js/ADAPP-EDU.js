@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    var debug=false;
     var course=null;  
     var buttonFlag=true;
     var userID=null;
@@ -62,29 +61,12 @@ $(document).ready(function(){
             });
         });
     
-    
-    function setDebug(data,data2){
-         if(data=="debug" && data2=="debug"){
-            debug=true;
-            $("#main-message").html("Debug");
-        }
-    }
-    
-    function printDebug(data){
-        var msg="";
-        if(debug){
-            msg="<br>"+data;    
-        }    
-        return msg;
-    }
-    
     function getUserProfilesAndCompare(){         
         var appeduAPI="https://adappedu.lircaytech.com/api/v1/profile/login/{username}/{password}";
         var name=$("#login-name").val();
         var password=$("#login-password").val();
         appeduAPI=appeduAPI.replace("{username}",name);
         appeduAPI=appeduAPI.replace("{password}",password);
-        setDebug(name,password);
         $.ajax({
               type: "POST",
               dataType: "json",
@@ -142,7 +124,7 @@ $(document).ready(function(){
           success: function(data){  
               var htmlInsert=$('<ul></ul>');
               for(var i=0;i<data.length;i++){
-                var unitElement=$('<li  class="unit" style="background:#AAA;" data-id='+data[i].id+'></li>').html(data[i].name);
+                var unitElement=$('<li  class="unit" style="background:#AAA;" data-id='+data[i].id+'></li>').html("<h5>"+data[i].name+"</h5>");
                   $(unitElement).hide();
                 $(htmlInsert).append($(unitElement));
                 getTopicsFromUnitId(data[i].id,unitElement);
@@ -162,7 +144,7 @@ $(document).ready(function(){
               success: function(data){ 
                   var htmlInsert=$('<ul></ul>');
                   for(var i=0;i<data.length;i++){
-                        var topicElement=$('<li  id="topic" style="background:#777;" data-id='+data[i].id+'></li>').html(data[i].name);
+                        var topicElement=$('<li  id="topic" style="background:#777;" data-id='+data[i].id+'></li>').html("<h5>"+data[i].name+"</h5>");
                         $(htmlInsert).append($(topicElement));
                         getQuestionnarieFromTopic(data[i].id,topicElement);
                   }
@@ -183,7 +165,7 @@ $(document).ready(function(){
                   for(var i=0;i<data.length;i++){
                       if(data[i].ranges[0] !==undefined){
                           console.log(data[i]);
-                          var questionnarieElement=$('<li   id="questionnarie" style="background:#444;" data-id='+data[i].id+' data-range='+data[i].ranges[0].id+' ></li>').html(data[i].name);
+                          var questionnarieElement=$('<li   id="questionnarie" style="background:#444;" data-id='+data[i].id+' data-range='+data[i].ranges[0].id+' ></li>').html("<h5>"+data[i].name+"</h5>");
                           $(htmlInsert).append($(questionnarieElement));
                           $(questionnarieElement).click(function(){
                               postEnrollQuestionnarie(this);
@@ -219,7 +201,7 @@ $(document).ready(function(){
     function getQuestions(questionaireObj){
                 $("#question-container").show();
                 $("#result-container").hide();
-                var appeduAPI= "https://adappedu.lircaytech.com/api/v1/get/exercise/{questionnaireid}/range/{rangeid}/user/{userid}";
+                var appeduAPI= "https://adappedu.lircaytech.com/api/v1/get/exercise/{questionnaireid}/range/{rangeid}}/user/{userid}";
         appeduAPI=appeduAPI.replace("{userid}",$("#user-id").val());
         appeduAPI=appeduAPI.replace("{questionnaireid}",$(questionaireObj).data("id"));
         appeduAPI=appeduAPI.replace("{rangeid}",$(questionaireObj).data("range"));
@@ -288,10 +270,6 @@ $(document).ready(function(){
             });
     }
      
-    function debug(data){
-        console.log(data);
-    }
-    
     
 });
    
