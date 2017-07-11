@@ -348,9 +348,6 @@ button{
 }
 
 /*RESULT*/
-
-
-
 #result-message{
     font-family: Lato;
     text-align: center;
@@ -363,7 +360,7 @@ button{
 #result-message p{
     vertical-align: middle;
     padding: 8%;
-    font-size: 12vw;
+    font-size: 10vw;
     margin-right: 10vw;
     margin-left: 10vw;
     font-weight: 600;
@@ -527,7 +524,7 @@ nav .back-btn{
     /* Answer*/
 
     .question{
-        font-size: 2.5vw !important;
+        font-size: 3.5vh !important;
     }
 
     .question p{
@@ -552,7 +549,7 @@ nav .back-btn{
     /*NAV*/
 
     nav{
-        margin-bottom: 5%;
+        margin-bottom: 0px;
         overflow: hidden;
         text-align: right;
     }
@@ -590,7 +587,7 @@ nav .back-btn{
     #result-message p{
         vertical-align: middle;
         padding: 8%;
-        font-size: 4vw;
+        font-size: 3vw;
         margin-right: 10%;
         margin-left: 10%;
         border-radius: 10px;

@@ -1,4 +1,6 @@
+
 $(document).ready(function(){
+    
     var course=null;  
     var buttonFlag=true;
     var userID=null;
@@ -8,7 +10,8 @@ $(document).ready(function(){
     var addapEdu={
         APPname:"ADAPP-EDU",
         userId:null,
-        userName:null
+        userName:null,
+        version:"0.8"
     };
     
     var questionaryArray=[];
@@ -16,8 +19,8 @@ $(document).ready(function(){
     var noseCount=0;
     var actualDiff=1;
     //CONT BUENAS RANG BUENAS CONT MALAS RANG MALAS
-    var rangosDiff=[[2,4,4,8],[3,6,3,6],[5,8,2,4]];
-    
+    var rangosDiff=[[4,10,3,6],[3,5,2,5],[5,8,2,3]];
+    var result="KEEP";
     
     checkWebStorage();
     
@@ -299,39 +302,44 @@ $(document).ready(function(){
               success: function(data){  
                   printDebug(data);
                   if(data.is_correct){
-                    $("#result-message p").html("Respuesta Correcta!");
+                    $("#result-message p").html("Respuesta Correcta! <br> :)");
                     trackDiff(1);
                   }else{
-                    $("#result-message p").html("Respuesta Errada :(");  
+                    $("#result-message p").html("Respuesta Errada <br> :(");  
                     trackDiff(0);
                   }
                   $("#next-question").unbind();
-                  if(checkEndGame()==""){
+                  console.log("RESULT:"+result);
+                   if(result=="KEEP"){
                       $("#next-question").html("SIGUIENTE");
                       $("#next-question").click(function(){
                           getQuestions(questionaireObj);
                       });
-                   }else if(checkEndGame()=="WIN"){
-                       $("#result-message p").html("TERMINASTE POR HOY <br>¡BUEN TRABAJO!");
+                   }else if(result=="WIN"){
+                       $("#result-message p").html("Se acabo <br>¡Buen trabajo!");
                        $("#next-question").html("MENU");
                         $("#next-question").click(function(){ 
                           putCourseList();
                           resetValues();
                       });
-                   }else if(checkEndGame()=="LOSE"){
-                       $("#result-message p").html("INTENTA DE NUEVO MÁS TARDE");  
+                   }else if(result=="LOSE"){
+                       $("#result-message p").html("Estudia <br>y intenta de nuevo más tarde");  
                        $("#next-question").html("MENU");
                        $("#next-question").click(function(){ 
                            putCourseList();
                            resetValues();
                       });
-                   }
+                   }     
               },
               error:function(data){
                   
               }
             ,
             });
+    }
+    
+    function setNextButton (){
+        
     }
     
     function trackDiff(data){
@@ -368,13 +376,24 @@ $(document).ready(function(){
             }
         }
         
-        if(countRight==rangosDiff[actualDiff-1][0]){
+        //COUNT RIGTH ANSWERS
+        if(countRight>=rangosDiff[actualDiff-1][0]){
+            if(actualDiff+1!=rangosDiff.length+1){
             controlDiff(1);
+        }else{
+            result="WIN"
+        }
             console.log("Subir Dificultad!! "+actualDiff);
         }
         
-        if(countWrong==rangosDiff[actualDiff-1][2]){
-            controlDiff(-1);
+        //COUNT WRONG ANWERS
+        console.log("rango:"+rangosDiff[actualDiff-1][2]);
+        if(countWrong>=rangosDiff[actualDiff-1][2]){
+            if(actualDiff-1!=0){
+                controlDiff(-1);
+            }else{
+                result="LOSE"
+            }
             console.log("Bajar Dificultad!! "+actualDiff);
         }
         
@@ -383,21 +402,10 @@ $(document).ready(function(){
     
     function controlDiff(data){
         actualDiff+=data;
-        checkEndGame();
-    }
-    
-    function checkEndGame(){
-        var result="";
-        if(actualDiff>rangosDiff.length){
-            result="WIN";
-        }else if(actualDiff<=0){
-            result="LOSE";
-        }
-        return result;
     }
     
     $("#back-home-btn").click(function(){
-       var myConfirm = confirm("Quienes Salir de ADAAP-EDU :(");
+       var myConfirm = confirm("Quienes Salir de ADAAP-EDU <br> :(");
         if(myConfirm){
             showHome();
         }else{
@@ -438,8 +446,20 @@ $(document).ready(function(){
             localStorage.setItem("ADAPPEDU",JSON.stringify(addapEdu));
             showHome();
         }else{
-            printDebug("JSON LOGIN "+localStorage.getItem("ADAPPEDU"));
-            addapEdu=JSON.parse(localStorage.getItem("ADAPPEDU"));
+            var jsonData=JSON.parse(localStorage.getItem("ADAPPEDU"));
+            //CLEAR BROWSER CACHE
+            
+            if(addapEdu.version!=jsonData.version){
+                jsonData.version=addapEdu.version;
+                addapEdu=jsonData;
+                saveData();
+                window.location.reload(true);
+                console.log("Diferent Version");
+            }else{
+                addapEdu=jsonData;
+                saveData();
+            }
+            console.log("JSON LOGIN "+localStorage.getItem("ADAPPEDU"));
             if(addapEdu.userId!=null){
                 appLogUser(addapEdu.userId,addapEdu.userName)
             }
@@ -473,6 +493,7 @@ $(document).ready(function(){
         noseCount=0;
         actualDiff=1;
         questionaryArray=[];
+        result="KEEP"
     }
 });
    
