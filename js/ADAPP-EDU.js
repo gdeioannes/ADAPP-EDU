@@ -100,8 +100,6 @@ $(document).ready(function(){
                       $("#main-message").html(data.message); 
                    }
               },
-              
-      
             });
     }
    
@@ -256,7 +254,7 @@ $(document).ready(function(){
                       });
                       $("#answer-container-list").append(answerElement);
                       if(optionsNum==data.options.length-1 && noseCount!=noseMax){
-                          var noseButton=$("<li>NO SE</li>").click(function(){
+                          var noseButton=$("<li>"+(noseMax-noseCount)+" NO SE</li>").click(function(){
                           respuestaNose(questionaireObj);
                             });
                           $("#answer-container-list").append(noseButton);
@@ -277,7 +275,7 @@ $(document).ready(function(){
         noseCount++;
         $("#result-container").show();
         $("#question-container").hide();
-        $("#result-message p").html("Te quedan "+(noseMax-noseCount)+" NO SE");  
+        $("#result-message p").html("Te quedan "+(noseMax-noseCount)+"<br>NO SE");  
         $("#next-question").unbind();
                   $("#next-question").click(function(){
                       getQuestions(questionaireObj);
@@ -438,7 +436,8 @@ $(document).ready(function(){
         $("#user-id").val(id);
         $(".nav-name-container").html("Visitante : "+name);
         $("#welcome-name").html("Hola "+name);
-        
+        console.log("LOG:"+id);
+        getSessionData();
         putCourseList();
     }
 
@@ -463,8 +462,6 @@ $(document).ready(function(){
             console.log("JSON LOGIN "+localStorage.getItem("ADAPPEDU"));
             if(addapEdu.userId!=null){
                 appLogUser(addapEdu.userId,addapEdu.userName);
-                savedUserID=addapEdu.userId;
-                getSessionData();
             }
         }
      }
@@ -501,7 +498,7 @@ $(document).ready(function(){
     
     function saveSessionData(){
         console.log("SAVE SESSION DATA");
-        window.localStorage.setItem("saveduserID",savedUserID);
+        window.localStorage.setItem("savedUserID",$("#user-id").val());
         window.localStorage.setItem("questionaryArray",JSON.stringify(questionaryArray));
         window.localStorage.setItem("noseCount",noseCount);
         window.localStorage.setItem("actualDiff",actualDiff);
@@ -509,14 +506,27 @@ $(document).ready(function(){
     }
     
     function getSessionData(){
-        console.log("getSessionData");
-        console.log("Saved User ID:"+window.localStorage.getItem("saveduserID"));
-        if(window.localStorage.getItem("saveduserID")==$("#user-id").val()){
-            console.log("Same User");
+        console.log("GET SESSION DATA");
+        
+        //CHECK VALUE IS NOT NEW
+        if(window.localStorage.getItem("savedUserID")==""){
+            console.log("Not Same");
+            window.localStorage.setItem("savedUserID",$("#user-id").val());
+        }
+        
+        console.log("USER:"+$("#user-id").val());
+        console.log("USER SAVED:"+window.localStorage.getItem("savedUserID"));
+        
+        if(window.localStorage.getItem("savedUserID")==$("#user-id").val()){
+             console.log("Same User");
              questionaryArray=JSON.parse(window.localStorage.getItem("questionaryArray"));
              noseCount=window.localStorage.getItem("noseCount");
              actualDiff=window.localStorage.getItem("actualDiff");
              result=window.localStorage.getItem("result");
+        }else{
+            console.log("RESET SESSION DATA");
+             window.localStorage.setItem("savedUserID",$("#user-id").val());
+            resetValues();
         }
     }
 });
