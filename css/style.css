@@ -319,11 +319,11 @@ button{
 }
 
 .answer li{
-    padding: 4%;
+    padding: 3%;
     margin: 2%;
     background: #AAA;
     color: white;
-    font-size: 4vh;
+    font-size: 3.5vh;
     font-weight: 600;
     cursor: pointer; 
     cursor: hand;
@@ -432,6 +432,28 @@ nav .back-btn{
     font-size: 4vw;
 }
 
+/*DEBUG*/
+#debug-container{
+    z-index: 100;
+    position: absolute;
+    background: white;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    height: 2vh;
+}
+
+#print-data-debug{
+    margin-top: 2vh;
+    opacity: 0.8;
+    z-index: 100;
+    box-sizing: border-box;
+    padding: 2%;
+    background: white;
+    position: absolute;
+    text-overflow:clip;
+}
+
 @media all and (orientation:landscape) { 
     html{
     background: aquamarine;
@@ -505,7 +527,7 @@ nav .back-btn{
     /* Answer*/
 
     .question{
-        font-size: 2.5vw;
+        font-size: 2.5vw !important;
     }
 
     .question p{
@@ -585,6 +607,23 @@ nav .back-btn{
     
     }
     
+    /*DEBUG*/
+    
+    #debug-container{
+    z-index: 100;
+    position: absolute;
+    background: white;
+    width: 100;
+    box-sizing: border-box;
+    text-align: center;
+    height: 2vh;
+    widows: 2vw;
+    text-overflow: ellipsis;
+}
+    
+    #print-data-debug{
+        width:  100%;
+    }
+    
 }
 
-}
