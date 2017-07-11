@@ -11,7 +11,7 @@ $(document).ready(function(){
         APPname:"ADAPP-EDU",
         userId:null,
         userName:null,
-        version:"0.8"
+        version:"0.9"
     };
     var savedUserID=null;
     var questionaryArray=[];
