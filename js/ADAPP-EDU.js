@@ -4,13 +4,12 @@ $(document).ready(function(){
     var userID=null;
     var saveCourseClicked=null;
     
-    //$("#login-container").hide();
-    $("#create-user-container").hide();
-    $("#courses-container").hide();
-    $("#question-container").hide();
-    $("#result-container").hide();
+    showHome();
+    $("#back-course-menu-btn").click(function(){
+        putCourseList();
+    });
     
-    $(".nav-circle").click(function(){
+    $("#back-course-menu-btn2").click(function(){
         putCourseList();
     });
     
@@ -72,14 +71,16 @@ $(document).ready(function(){
               dataType: "json",
               url: appeduAPI,
               success: function(data){
+                   if(data.type=="success"){
                       $("#login-container").hide();
                       $("#user-id").val(data.id);
+                      $(".nav-name-container").html("Bienvenido : "+$("#login-name").val()); 
                       putCourseList();
+                   }else{
+                      $("#main-message").html(data.message); 
+                   }
               },
-              error:function(data){
-                      $("#main-message").html("Fallo"+printDebug(appeduAPI));
-                        
-              }
+              
       
             });
     }
@@ -269,7 +270,33 @@ $(document).ready(function(){
             ,
             });
     }
-     
     
+    $("#back-home-btn").click(function(){
+       var myConfirm = confirm("Quienes Salir de ADAAP-EDU :(");
+        if(myConfirm){
+            showHome();
+        }else{
+            
+        }
+    });
+        
+    
+    resizeContainer();
+    $(window).resize(function(){
+        resizeContainer()
+    });
+    
+    function resizeContainer(){
+        $(".container").height(window.innerHeight);
+    }
+    
+    function showHome(){
+        $("#login-container").show();
+        $("#create-user-container").hide();
+        $("#courses-container").hide();
+        $("#question-container").hide();
+        $("#result-container").hide();
+    }
+      
 });
    

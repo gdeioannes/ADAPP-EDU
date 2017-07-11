@@ -97,6 +97,14 @@ button{
 	margin-left:50px;
 	font-weight:600;
 	}
+
+.nuevos-usuarios-blue-line{
+    
+}
+
+.nuevos-usuarios-blue-line img{
+    height: 100vh !important;
+}
 	
 /*LOGIN and CREATE USER*/
 
@@ -176,12 +184,23 @@ button{
 .content-container{
     background: grey;
 }
+
+@keyframes example {
+    from {margin-bottom: -10vh;}
+    to {margin-bottom: 0vh;}
+}
+
+
+
 .content-container ul li{
+    overflow: hidden;
     overflow: auto;
     background: #EEE;
     cursor: pointer;
     cursor: hand;
     color: #2a243c;
+    animation-name: example;
+    animation-duration: 1s;
 }
 
 .content-container ul li .icon{
@@ -190,6 +209,7 @@ button{
     margin-left: 10%;
     margin-top: 2%;
     margin-bottom: 2%;
+
 }
 
 .content-container ul li h2{
@@ -211,6 +231,7 @@ button{
 
 .content-container ul li ul{
     width: 100%;
+     overflow: hidden;
 }
 
 .content-container ul li ul li{
@@ -228,12 +249,6 @@ button{
 .content-container ul li ul li h5{
     font-family: Lato;
     box-sizing: border-box;
-    
-    
-    
-    
-    
-    
     padding: 10px;
 }
 
@@ -257,17 +272,38 @@ button{
     min-height: 17vh;
 }
 
+#content-message #pointer{
+    height: 6vh;
+    width: 6vh;
+}
+
+#content-message img{
+      height: 25vh;
+
+}
+
 /* Answer*/
 
+@keyframes question-animation {
+    from {margin-top: -100vh;}
+    to {margin-top: 0vh;}
+}
+
+
 .question{
-    height: 20vh;
+    height: 20vh !important;
     padding: 10%;
-    font-size: 7vw;
+    font-size: 5vh !important;
     margin-bottom: 10%;
+    text-align: center;
+    animation-name: question-animation;
+    animation-duration: 2s;
 }
 
 .question p{
     vertical-align: middle;
+    align-content: center;
+    text-align: center;
 }
 
 .answer{
@@ -277,16 +313,23 @@ button{
     background: gray;
 }
 
+@keyframes anwers-animation{
+    from{margin-bottom:-50vh; }
+    to{margin-bottom:: 0vh;}
+}
+
 .answer li{
     padding: 4%;
     margin: 2%;
     background: #AAA;
     color: white;
-    font-size: 5vw;
+    font-size: 4vh;
     font-weight: 600;
     cursor: pointer; 
     cursor: hand;
     border-radius: 10vw;
+    animation: anwers-animation;
+    animation-duration: 2s;
 }
 
 .answer li:hover{
@@ -299,12 +342,22 @@ button{
     margin: 0px;
 }
 
+.answer{
+    animation-name: anwers-animation;
+    animation-duration: 2s;
+}
+
 /*RESULT*/
+
+
 
 #result-message{
     font-family: Lato;
     text-align: center;
     height: auto; 
+    animation-name: question-animation;
+    animation-duration: 2s;
+    z-index: -1;
 }
 
 #result-message p{
@@ -321,7 +374,7 @@ button{
 }
 
 #result-message #head{
-    width: 50%;
+    width: 28vh;
     margin-bottom: 10%;
 }
 
@@ -329,11 +382,16 @@ button{
     width: 10%;
 }
 
+.next-question-container{
+    
+}
+
 .bottom{
+    width: 100%;
+    position: absolute;
     overflow: hidden;
     bottom: 0px;
 }
-
 
 /*NAV*/
 
@@ -342,6 +400,7 @@ nav{
 	margin-bottom: 5%;
     overflow: hidden;
     text-align: right;
+    z-index: 100;
 }
 
 nav .nav-circle{
@@ -363,6 +422,14 @@ nav .back-btn{
 
 .nav-circle{
     cursor: pointer;
+}
+
+.nav-name-container{
+    position: absolute;
+    box-sizing: border-box;
+    padding: 3vw;
+    color: white;
+    font-size: 4vw;
 }
 
 @media all and (orientation:landscape) { 
@@ -434,7 +501,6 @@ nav .back-btn{
         margin-left: 2vw;
         font-weight: 600;
     }
-
     
     /* Answer*/
 
@@ -459,6 +525,7 @@ nav .back-btn{
         width: 100%;
         margin: 0px;
     }
+    
     
     /*NAV*/
 
@@ -489,6 +556,13 @@ nav .back-btn{
         cursor: pointer;
     }
     
+    .nav-name-container{
+        padding: 1.5vh;
+        color: white;
+        font-size: 2vh;
+    }
+
+    
     /*RESULT*/
 
     #result-message p{
@@ -505,10 +579,12 @@ nav .back-btn{
     #result-message #pointer{
         width: 10%;
     }
-
+    
     .bottom{
-        overflow: hidden;
-        bottom: 0px;
+        width: 40%;
+    
     }
+    
+}
 
 }
