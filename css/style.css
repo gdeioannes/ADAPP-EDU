@@ -293,7 +293,7 @@ button{
 .question{
     height: 20vh !important;
     padding: 10%;
-    font-size: 5vh !important;
+    font-size: 4.5vh !important;
     margin-bottom: 10%;
     text-align: center;
     animation-name: question-animation;

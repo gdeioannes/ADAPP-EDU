@@ -13,7 +13,7 @@ $(document).ready(function(){
         userName:null,
         version:"0.8"
     };
-    
+    var savedUserID=null;
     var questionaryArray=[];
     var noseMax=5;
     var noseCount=0;
@@ -186,7 +186,7 @@ $(document).ready(function(){
                   
                   var htmlInsert=$('<ul></ul>');
                   for(var i=0;i<data.length;i++){
-                      if(data[i].ranges[0] !==undefined){
+                      if(data[i].ranges[0] !==undefined && data[i].is_active){
                           printDebug("QUESTIONARIO");
                           printDebug(data[i]);
                           var questionnarieElement=$('<li   id="questionnarie" style="background:#444;" data-id='+data[i].id+' data-range='+[data[i].ranges[0].id,data[i].ranges[1].id,data[i].ranges[2].id]+' ></li>').html("<h5>"+data[i].name+"</h5>");
@@ -346,6 +346,7 @@ $(document).ready(function(){
         questionaryArray.unshift([data,actualDiff]);
         console.log(questionaryArray);
         difficultieLogic();
+        saveSessionData();
     }
     
     console.log(actualDiff);
@@ -405,7 +406,7 @@ $(document).ready(function(){
     }
     
     $("#back-home-btn").click(function(){
-       var myConfirm = confirm("Quienes Salir de ADAAP-EDU <br> :(");
+       var myConfirm = confirm("¿ Quieres Salir de ADAAP-EDU :( ?");
         if(myConfirm){
             showHome();
         }else{
@@ -461,7 +462,9 @@ $(document).ready(function(){
             }
             console.log("JSON LOGIN "+localStorage.getItem("ADAPPEDU"));
             if(addapEdu.userId!=null){
-                appLogUser(addapEdu.userId,addapEdu.userName)
+                appLogUser(addapEdu.userId,addapEdu.userName);
+                savedUserID=addapEdu.userId;
+                getSessionData();
             }
         }
      }
@@ -490,10 +493,31 @@ $(document).ready(function(){
     });
     
     function resetValues(){
-        noseCount=0;
-        actualDiff=1;
-        questionaryArray=[];
-        result="KEEP"
+         questionaryArray=[];
+         noseCount=0;
+         actualDiff=1;
+         result="KEEP";
+    }
+    
+    function saveSessionData(){
+        console.log("SAVE SESSION DATA");
+        window.localStorage.setItem("saveduserID",savedUserID);
+        window.localStorage.setItem("questionaryArray",JSON.stringify(questionaryArray));
+        window.localStorage.setItem("noseCount",noseCount);
+        window.localStorage.setItem("actualDiff",actualDiff);
+        window.localStorage.setItem("result",result);
+    }
+    
+    function getSessionData(){
+        console.log("getSessionData");
+        console.log("Saved User ID:"+window.localStorage.getItem("saveduserID"));
+        if(window.localStorage.getItem("saveduserID")==$("#user-id").val()){
+            console.log("Same User");
+             questionaryArray=JSON.parse(window.localStorage.getItem("questionaryArray"));
+             noseCount=window.localStorage.getItem("noseCount");
+             actualDiff=window.localStorage.getItem("actualDiff");
+             result=window.localStorage.getItem("result");
+        }
     }
 });
    
