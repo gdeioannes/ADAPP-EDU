@@ -11,7 +11,7 @@ $(document).ready(function(){
         APPname:"ADAPP-EDU",
         userId:null,
         userName:null,
-        version:"1.0"
+        version:"1.01"
     };
     var savedUserID=null;
     var questionaryArray=[];
@@ -229,7 +229,7 @@ $(document).ready(function(){
         appeduAPI=appeduAPI.replace("{questionnaireid}",$(questionaireObj).data("id"));
         
          var rangesIDArray=$(questionaireObj).data("range").split(",");
-        console.log("ID RANGE:"+rangesIDArray[actualDiff-1]);
+        printDebug("ID RANGE:"+rangesIDArray[actualDiff-1]);
         
         appeduAPI=appeduAPI.replace("{rangeid}",rangesIDArray[actualDiff-1]);
        
@@ -307,7 +307,7 @@ $(document).ready(function(){
                     trackDiff(0);
                   }
                   $("#next-question").unbind();
-                  console.log("RESULT:"+result);
+                  
                    if(result=="KEEP"){
                       $("#next-question").html("SIGUIENTE");
                       $("#next-question").click(function(){
@@ -342,17 +342,21 @@ $(document).ready(function(){
     
     function trackDiff(data){
         questionaryArray.unshift([data,actualDiff]);
-        console.log(questionaryArray);
         difficultieLogic();
         saveSessionData();
     }
-    
-    console.log(actualDiff);
-    console.log(rangosDiff);
+
     
     function difficultieLogic(){
+        console.log("Compare");
         var countRight=0;
         var countWrong=0;
+        if((actualDiff-1)>rangosDiff.length){
+           actualDiff=rangosDiff.length;
+           result="KEEP";
+        }
+        console.log("Compare 2");
+        console.log(parseInt(actualDiff-1)+">"+parseInt(rangosDiff.length));
         for(var i=0;i<questionaryArray.length;i++){
             if(i>rangosDiff[actualDiff-1][1]){
                 break
@@ -379,24 +383,21 @@ $(document).ready(function(){
         if(countRight>=rangosDiff[actualDiff-1][0]){
             if(actualDiff+1!=rangosDiff.length+1){
             controlDiff(1);
-        }else{
-            result="WIN"
-        }
-            console.log("Subir Dificultad!! "+actualDiff);
+            }else{
+                result="WIN"
+            }
         }
         
         //COUNT WRONG ANWERS
-        console.log("rango:"+rangosDiff[actualDiff-1][2]);
-        if(countWrong>=rangosDiff[actualDiff-1][2]){
-            if(actualDiff-1!=0){
-                controlDiff(-1);
-            }else{
-                result="LOSE"
+            console.log("AD:"+(actualDiff)+" "+rangosDiff.length);
+            if(countWrong>=rangosDiff[actualDiff-1][2]){
+                if(actualDiff-1!=0){
+                    controlDiff(-1);
+                }else{
+                    result="LOSE"
+                }
             }
-            console.log("Bajar Dificultad!! "+actualDiff);
-        }
         
-        console.log("diff "+actualDiff+" CR "+countRight+" CW"+countWrong);
     }
     
     function controlDiff(data){
@@ -436,7 +437,6 @@ $(document).ready(function(){
         $("#user-id").val(id);
         $(".nav-name-container").html("Visitante : "+name);
         $("#welcome-name").html("Hola "+name);
-        console.log("LOG:"+id);
         getSessionData();
         putCourseList();
     }
@@ -454,12 +454,10 @@ $(document).ready(function(){
                 addapEdu=jsonData;
                 saveData();
                 window.location.reload(true);
-                console.log("Diferent Version");
             }else{
                 addapEdu=jsonData;
                 saveData();
             }
-            console.log("JSON LOGIN "+localStorage.getItem("ADAPPEDU"));
             if(addapEdu.userId!=null){
                 appLogUser(addapEdu.userId,addapEdu.userName);
             }
@@ -497,7 +495,6 @@ $(document).ready(function(){
     }
     
     function saveSessionData(){
-        console.log("SAVE SESSION DATA");
         window.localStorage.setItem("savedUserID",$("#user-id").val());
         window.localStorage.setItem("questionaryArray",JSON.stringify(questionaryArray));
         window.localStorage.setItem("noseCount",noseCount);
@@ -506,25 +503,22 @@ $(document).ready(function(){
     }
     
     function getSessionData(){
-        console.log("GET SESSION DATA");
+        printDebug("GET SESSION DATA");
         
         //CHECK VALUE IS NOT NEW
         if(window.localStorage.getItem("savedUserID")==""){
-            console.log("Not Same");
+            printDebug("Not Same");
             window.localStorage.setItem("savedUserID",$("#user-id").val());
         }
         
-        console.log("USER:"+$("#user-id").val());
-        console.log("USER SAVED:"+window.localStorage.getItem("savedUserID"));
-        
         if(window.localStorage.getItem("savedUserID")==$("#user-id").val()){
-             console.log("Same User");
+             printDebug("Same User");
              questionaryArray=JSON.parse(window.localStorage.getItem("questionaryArray"));
              noseCount=window.localStorage.getItem("noseCount");
              actualDiff=window.localStorage.getItem("actualDiff");
              result=window.localStorage.getItem("result");
         }else{
-            console.log("RESET SESSION DATA");
+            printDebug("RESET SESSION DATA");
              window.localStorage.setItem("savedUserID",$("#user-id").val());
             resetValues();
         }
