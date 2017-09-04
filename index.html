@@ -10,28 +10,28 @@
 </head>
 
 <body>
-   
-        
+
+
     <div id="print-data-debug"></div>
     <div id="debug-container">TOGGLE DEBUG <span id="clear-debug">->CLEAR</span></div>
     <input id="user-id" type="hidden">
     <div class="container" id="main-Container">
         <div id="login-container">
-                <div class="login-head">
-                    <img src="img/cabezaedu.png">
-                </div>
+            <div class="login-head">
+                <img src="img/cabezaedu.png">
+            </div>
             <div class="formulario">
                 <br>
                 <div id="main-message" class="message"></div>
                 <form id="login-form">
-                <div id="login-user-container" class="form">
-                    <input type="text" id="login-name" placeholder="Nombre Usuario">
-                    <br>
-                    <input type="password" id="login-password" placeholder="Contraseña">
-                    <br>
-                    <button id="login-btn" type="submit">Ingresar</button>
-                </div>
-                </form>    
+                    <div id="login-user-container" class="form">
+                        <input type="text" id="login-name" placeholder="Nombre Usuario">
+                        <br>
+                        <input type="password" id="login-password" placeholder="Contraseña">
+                        <br>
+                        <button id="login-btn" type="submit">Ingresar</button>
+                    </div>
+                </form>
                 <div id="create-user-container" class="form">
                     <input id="create-user-name" type="text" placeholder="Nombre Usuario">
                     <br>
@@ -54,23 +54,24 @@
             </div>
             <!--<button onclick="maxWindow" >PC</button>-->
         </div>
-        <div id="courses-container" >
+        <div id="courses-container">
             <nav>
                 <p class="nav-name-container">Bienvenido : Test</p>
                 <img class="nav-line" src="img/nav_line.png">
-                <img class="nav-circle" src="img/nav_circle_app_exit.png" id="back-home-btn" >
+                <img class="nav-circle" src="img/nav_circle_app_exit.png" id="back-home-btn">
             </nav>
             <div id="content-message">
-                <p><span id="welcome-name"></span><br>Seleciona un cuestionario</p>
+                <p><span id="welcome-name"></span>
+                    <br>Seleciona un cuestionario</p>
                 <div>
-                 <img id="pointer" src="img/pointer_head_result.png">
+                    <img id="pointer" src="img/pointer_head_result.png">
                 </div>
                 <img id="head" src="img/cabezaedu.png">
             </div>
             <div class="bottom">
                 <div class="content-container">
                     <ul>
-                        <li  style="background:grey;">
+                        <li style="background:grey;">
                             <img class="icon" src="img/course_icon.png">
                             <h2>Course Name</h2>
                             <h3>Descripción</h3>
@@ -78,9 +79,20 @@
                                 <li>Unidad</li>
                                 <li>Unidad</li>
                             </ul>
-                        </li>   
-                    </ul> 
+                        </li>
+                    </ul>
                 </div>
+            </div>
+        </div>
+        <div id="loader-container">
+            <nav>
+                <p class="nav-name-container">Bienvenido : Test</p>
+                <img class="nav-line" src="img/nav_line.png">
+                <img class="nav-circle" src="img/nav_circle.png" id="back-course-menu-btn3">
+            </nav>
+            <p id="texto"> Cargando ....</p>
+            <div class="loader">
+                <span>{</span><span>}</span>
             </div>
         </div>
         <div id="question-container">
@@ -90,17 +102,17 @@
                 <img class="nav-circle" src="img/nav_circle.png" id="back-course-menu-btn">
             </nav>
             <div class="question" id="question-description">
-            <p>...Cargando Preguntas....</p>
+                <p>...Cargando Preguntas....</p>
             </div>
             <div class="bottom">
                 <div class="answer">
-                    <ul id="answer-container-list" >
+                    <ul id="answer-container-list">
                         <li></li>
                         <li></li>
                         <li></li>
                         <li></li>
                     </ul>
-                    
+
                 </div>
             </div>
         </div>
@@ -113,7 +125,7 @@
             <div id="result-message">
                 <p>Resultado Respuesta</p>
                 <div>
-                 <img id="pointer" src="img/pointer_head_result.png">
+                    <img id="pointer" src="img/pointer_head_result.png">
                 </div>
                 <img id="head" src="img/cabezaedu.png">
             </div>
@@ -121,7 +133,7 @@
                 <div class="answer">
                     <button id="next-question">SIGUIENTE</button>
                 </div>
-            </div>    
+            </div>
         </div>
     </div>
     <script src="js/jquery-3.2.0.min.js"></script>

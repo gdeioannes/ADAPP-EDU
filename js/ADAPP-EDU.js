@@ -6,7 +6,7 @@ $(document).ready(function(){
     var userID=null;
     var saveCourseClicked=null;
     var debug=false;
-    
+    var loadingTime = 3;
     var addapEdu={
         APPname:"ADAPP-EDU",
         userId:null,
@@ -21,14 +21,22 @@ $(document).ready(function(){
     //CONT BUENAS RANG BUENAS CONT MALAS RANG MALAS
     var rangosDiff=[[4,10,3,6],[3,5,2,5],[5,8,2,3]];
     var result="KEEP";
+    var heightWindow = $( window ).width();
+		
+	if(heightWindow>640)
+	{
+		$("#texto").hide();
+	}
     
     checkWebStorage();
     
     $("#back-course-menu-btn").click(function(){
         putCourseList();
     });
-    
     $("#back-course-menu-btn2").click(function(){
+        putCourseList();
+    });
+    $("#back-course-menu-btn3").click(function(){
         putCourseList();
     });
     
@@ -107,6 +115,7 @@ $(document).ready(function(){
         $("#courses-container").show();
         $("#question-container").hide();
         $("#result-container").hide();
+        $("#loader-container").hide();
         var appeduAPI="https://adappedu.lircaytech.com/api/v1/courses/get";
         $(".content-container").html("");
         $.ajax({
@@ -181,7 +190,7 @@ $(document).ready(function(){
               dataType: "json",
               url: appeduAPI,
               success: function(data){  
-                  
+                  printDebug("datos de funcion getQuestionnarieFromTopic");
                   var htmlInsert=$('<ul></ul>');
                   for(var i=0;i<data.length;i++){
                       if(data[i].ranges[0] !==undefined && data[i].is_active){
@@ -210,7 +219,9 @@ $(document).ready(function(){
               type: "POST",
               dataType: "json",
               url: appeduAPI,
-              success: function(data){  
+              	              success: function(data){ 
+				  //esta es la funcion que pone las preguntas y respuestas
+				  printDebug("datos de funcion postEnrollQuestionnarie"); 
                   printDebug(data);
                   getQuestions(questionnarieObj);
               },
@@ -222,13 +233,14 @@ $(document).ready(function(){
     }
     
     function getQuestions(questionaireObj){
-                $("#question-container").show();
-                $("#result-container").hide();
+                $("#loader-container").show();  
                 var appeduAPI= "https://adappedu.lircaytech.com/api/v1/get/exercise/{questionnaireid}/range/{rangeid}}/user/{userid}";
         appeduAPI=appeduAPI.replace("{userid}",$("#user-id").val());
         appeduAPI=appeduAPI.replace("{questionnaireid}",$(questionaireObj).data("id"));
         
          var rangesIDArray=$(questionaireObj).data("range").split(",");
+        printDebug("ACTUAL DIFF:"+actualDiff);
+        printDebug("RANGE ARRAY:"+rangesIDArray);
         printDebug("ID RANGE:"+rangesIDArray[actualDiff-1]);
         
         appeduAPI=appeduAPI.replace("{rangeid}",rangesIDArray[actualDiff-1]);
@@ -238,6 +250,8 @@ $(document).ready(function(){
               dataType: "json",
               url: appeduAPI,
               success: function(data){
+                  $("#loader-container").hide(); 
+                  $("#question-container").show();
                   printDebug(data);
                   $("#question-description").html(data.description);
                   $("#answer-container-list").html("");
@@ -278,6 +292,8 @@ $(document).ready(function(){
         $("#result-message p").html("Te quedan "+(noseMax-noseCount)+"<br>NO SE");  
         $("#next-question").unbind();
                   $("#next-question").click(function(){
+                      printDebug("NEXT QUESTION");
+                      $("#result-container").hide();
                       getQuestions(questionaireObj);
         });
         trackDiff(2);
@@ -311,6 +327,8 @@ $(document).ready(function(){
                    if(result=="KEEP"){
                       $("#next-question").html("SIGUIENTE");
                       $("#next-question").click(function(){
+                          $("#result-container").hide();
+						  //getLoader(questionaireObj);
                           getQuestions(questionaireObj);
                       });
                    }else if(result=="WIN"){
@@ -341,6 +359,7 @@ $(document).ready(function(){
     }
     
     function trackDiff(data){
+        printDebug("QUESTION ARRAY:"+questionaryArray);
         questionaryArray.unshift([data,actualDiff]);
         difficultieLogic();
         saveSessionData();
@@ -416,12 +435,24 @@ $(document).ready(function(){
     
     resizeContainer();
     $(window).resize(function(){
-        resizeContainer()
+        resizeContainer();
     });
     
     function resizeContainer(){
-        $(".container").height(window.innerHeight);
-    }
+        $(".container").height(window.innerHeight);		        $(".container").height(window.innerHeight);
+		
+		heightWindow = $( window ).width();
+		if(heightWindow>640)
+		{
+			$("#texto").hide();
+		}
+		
+		else
+		{
+			$("#texto").show();
+		}
+		
+    }		    
     
     function showHome(){
         $("#login-container").show();
@@ -429,6 +460,7 @@ $(document).ready(function(){
         $("#courses-container").hide();
         $("#question-container").hide();
         $("#result-container").hide();
+        $("#loader-container").hide();
     }
     
 
@@ -516,6 +548,13 @@ $(document).ready(function(){
              questionaryArray=JSON.parse(window.localStorage.getItem("questionaryArray"));
              noseCount=window.localStorage.getItem("noseCount");
              actualDiff=window.localStorage.getItem("actualDiff");
+             if(actualDiff==null){
+                 printDebug("SET DIFF AND ARRAY actualDiff WAS NULL");
+                 actualDiff=1;
+                 questionaryArray=[];
+                 noseCount=0;
+             }
+             printDebug("ACTUALDIFF SESSION GET DATA:"+actualDiff);
              result=window.localStorage.getItem("result");
         }else{
             printDebug("RESET SESSION DATA");
