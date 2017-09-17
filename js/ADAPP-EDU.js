@@ -250,6 +250,7 @@ $(document).ready(function(){
               dataType: "json",
               url: appeduAPI,
               success: function(data){
+                  wait(2000);
                   $("#loader-container").hide(); 
                   $("#question-container").show();
                   printDebug(data);
