@@ -21,12 +21,15 @@ $(document).ready(function(){
     //CONT BUENAS RANG BUENAS CONT MALAS RANG MALAS
     var rangosDiff=[[4,10,3,6],[3,5,2,5],[5,8,2,3]];
     var result="KEEP";
-    var heightWindow = $( window ).width();
-		
-	if(heightWindow>640)
-	{
-		$("#texto").hide();
-	}
+    var isUsingDesktop;
+    
+    //If para mostrar el div "la página no trabaja con ésta dimensión"
+    if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) 
+    {
+        isUsingDesktop = true;
+        checkBrowserDimensions();
+    }
+   
     
     checkWebStorage();
     
@@ -258,7 +261,8 @@ $(document).ready(function(){
               type: "GET",
               dataType: "json",
               url: appeduAPI,
-              success: function(data){
+              success: function(data)
+              {
                   wait(2000);
                   $("#loader-container").hide(); 
                   $("#question-container").show();
@@ -441,27 +445,52 @@ $(document).ready(function(){
             
         }
     });
+
+    function checkBrowserDimensions()
+    {
+        widthWindow = $( window ).innerWidth();
+        heightWindow = $( window ).innerHeight();
+        
+
+        console.log("width: "+ widthWindow);
+        console.log("height: "+ heightWindow);
+        console.log("Resultado: " + widthWindow/heightWindow > (16/9));
+        if(widthWindow/heightWindow > ((16/9)+0.3))
+        {
+            $("#stop-Container").show();
+            $("#main-Container").hide();
+        }
+
+        else
+        {
+            $("#stop-Container").hide();
+            $("#main-Container").show();
+        }
+       
+        if(heightWindow>640)
+        {
+            $("#loadingText").hide();
+        }
+		
+		else
+        {
+            $("#loadingText").hide();
+        }
+    }
         
     
-    resizeContainer();
+    //resizeContainer();
     $(window).resize(function(){
         resizeContainer();
     });
     
-    function resizeContainer(){
-        $(".container").height(window.innerHeight);		        $(".container").height(window.innerHeight);
-		
-		heightWindow = $( window ).width();
-		if(heightWindow>640)
-		{
-			$("#texto").hide();
-		}
-		
-		else
-		{
-			$("#texto").show();
-		}
-		
+    function resizeContainer()
+    {
+        $(".container").height(window.innerHeight);		       
+        if(isUsingDesktop)
+        {
+            checkBrowserDimensions();
+        }  
     }		    
     
     function showHome(){

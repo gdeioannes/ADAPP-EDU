@@ -105,6 +105,22 @@ button{
 .nuevos-usuarios-blue-line img{
     height: 100vh !important;
 }
+
+/*StopContainer*/
+/* #stop-Container
+{
+    display: none;
+    width: 100%;
+    height: auto;
+    text-align: center;
+   
+}
+
+#stop-Container p
+{
+    margin-top: 50vh;
+} */
+
 	
 /*LOGIN and CREATE USER*/
 
@@ -179,6 +195,8 @@ button{
     cursor: hand;
 }
 
+
+
 /*COURSES */
 
 .content-container{
@@ -201,6 +219,7 @@ button{
     color: #2a243c;
     animation-name: example;
     animation-duration: 1s;
+   
 }
 
 .content-container ul li .icon{
@@ -393,7 +412,7 @@ button{
 /*NAV*/
 
 nav{
-    height: 12vw;
+    height: 7vw;
 	margin-bottom: 5%;
     overflow: hidden;
     text-align: right;
@@ -424,7 +443,7 @@ nav .back-btn{
 .nav-name-container{
     position: absolute;
     box-sizing: border-box;
-    padding: 3vw;
+    padding: 2vw;
     color: white;
     font-size: 4vw;
 }
