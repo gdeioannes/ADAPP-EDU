@@ -106,20 +106,11 @@ button{
     height: 100vh !important;
 }
 
-/*StopContainer*/
-/* #stop-Container
+/* StopContainer*/
+#stop-Container
 {
     display: none;
-    width: 100%;
-    height: auto;
-    text-align: center;
-   
 }
-
-#stop-Container p
-{
-    margin-top: 50vh;
-} */
 
 	
 /*LOGIN and CREATE USER*/
