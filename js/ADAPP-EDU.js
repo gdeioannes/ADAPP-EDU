@@ -29,6 +29,12 @@ $(document).ready(function(){
         isUsingDesktop = true;
         checkBrowserDimensions();
     }
+
+    else
+    {
+         $("#loadingText").show();
+         $(".loader").hide();
+    }
    
     
     checkWebStorage();
@@ -459,22 +465,35 @@ $(document).ready(function(){
         {
             $("#stop-Container").show();
             $("#main-Container").hide();
+            if(widthWindow>640)
+            {
+                $("#loadingText").hide();
+                $(".loader").show();
+            }
+
+            else
+            {
+                $("#loadingText").show();
+                $(".loader").hide();
+            }
         }
 
         else
         {
             $("#stop-Container").hide();
             $("#main-Container").show();
-        }
-       
-        if(heightWindow>640)
-        {
-            $("#loadingText").hide();
-        }
-		
-		else
-        {
-            $("#loadingText").hide();
+
+            if(widthWindow>640)
+            {
+                $("#loadingText").hide();
+                $(".loader").show();
+            }
+
+            else
+            {
+                $("#loadingText").show();
+                $(".loader").hide();
+            }
         }
     }
         
@@ -490,7 +509,7 @@ $(document).ready(function(){
         if(isUsingDesktop)
         {
             checkBrowserDimensions();
-        }  
+        }   
     }		    
     
     function showHome(){
