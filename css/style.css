@@ -75,7 +75,8 @@ button{
     cursor: hand;
 }
 
-.container{
+.container
+{
     background: white;
     overflow: hidden;
     vertical-align: middle;
@@ -534,23 +535,26 @@ nav .back-btn{
     /* Loader by hans */
 	
 	.loader {
-      color: blue;
-      font-family: Consolas, Menlo, Monaco, monospace;
-      font-weight: bold;
-      font-size: 30vh;
-      opacity: 0.8;
-            margin: auto;
-            text-align: center;
+        color: blue;
+        font-family: Consolas, Menlo, Monaco, monospace;
+        font-weight: bold;
+        font-size: 30vh;
+        opacity: 0.8;
+        margin: auto;
+        text-align: center;
     }
+
     .loader span {
-        display: inline-block;
+      display: inline-block;
       -webkit-animation: pulse 0.4s alternate infinite ease-in-out;
       animation: pulse 0.4s alternate infinite ease-in-out;
     }
+    
     .loader span:nth-child(odd) {
         -webkit-animation-delay: 0.4s;
         animation-delay: 0.4s;
     }
+
     @-webkit-keyframes pulse {
         to {
             -webkit-transform: scale(0.8);
@@ -558,6 +562,7 @@ nav .back-btn{
             opacity: 0.5;
         }
     }
+
     @keyframes pulse {
         to {
             -webkit-transform: scale(0.8);
