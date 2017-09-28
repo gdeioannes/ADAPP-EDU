@@ -24,6 +24,7 @@ $(document).ready(function(){
     var isUsingDesktop;
     
     
+    
     if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) 
     {
         isUsingDesktop = true;
@@ -34,8 +35,7 @@ $(document).ready(function(){
     {
         isUsingDesktop = false;
         $(".container").height(window.innerHeight);		
-        $("#loadingText").show();
-        $(".loader").hide();
+        $(".loader").show();
     }
    
     
