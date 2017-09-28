@@ -32,8 +32,9 @@ $(document).ready(function(){
 
     else
     {
-         $("#loadingText").show();
-         $(".loader").hide();
+        $(".container").height(window.innerHeight);		
+        $("#loadingText").show();
+        $(".loader").hide();
     }
    
     
