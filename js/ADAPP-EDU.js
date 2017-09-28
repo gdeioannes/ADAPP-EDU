@@ -23,7 +23,7 @@ $(document).ready(function(){
     var result="KEEP";
     var isUsingDesktop;
     
-    //If para mostrar el div "la página no trabaja con ésta dimensión"
+    
     if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) 
     {
         isUsingDesktop = true;
@@ -32,6 +32,7 @@ $(document).ready(function(){
 
     else
     {
+        isUsingDesktop = false;
         $(".container").height(window.innerHeight);		
         $("#loadingText").show();
         $(".loader").hide();
@@ -458,7 +459,7 @@ $(document).ready(function(){
         widthWindow = $( window ).innerWidth();
         heightWindow = $( window ).innerHeight();
         
-
+        $("#loadingText").hide();
         console.log("width: "+ widthWindow);
         console.log("height: "+ heightWindow);
         console.log("Resultado: " + widthWindow/heightWindow > (16/9));
@@ -466,7 +467,7 @@ $(document).ready(function(){
         {
             $("#stop-Container").show();
             $("#main-Container").hide();
-            if(widthWindow>640)
+            /* if(widthWindow>640)
             {
                 $("#loadingText").hide();
                 $(".loader").show();
@@ -476,7 +477,7 @@ $(document).ready(function(){
             {
                 $("#loadingText").show();
                 $(".loader").hide();
-            }
+            } */
         }
 
         else
@@ -484,7 +485,7 @@ $(document).ready(function(){
             $("#stop-Container").hide();
             $("#main-Container").show();
 
-            if(widthWindow>640)
+            /* if(widthWindow>640)
             {
                 $("#loadingText").hide();
                 $(".loader").show();
@@ -494,7 +495,7 @@ $(document).ready(function(){
             {
                 $("#loadingText").show();
                 $(".loader").hide();
-            }
+            } */
         }
     }
         
