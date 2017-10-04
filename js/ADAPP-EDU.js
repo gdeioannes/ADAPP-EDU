@@ -34,8 +34,7 @@ $(document).ready(function(){
     else
     {
         isUsingDesktop = false;
-        $(".container").height(window.innerHeight);
-        resizeContainer();
+        $(".container").height(window.innerHeight);		
         $(".loader").show();
     }
    
@@ -507,17 +506,17 @@ $(document).ready(function(){
     });
     
     function resizeContainer()
-    {	       
+    {
+        $(".container").height(window.innerHeight);		       
         if(isUsingDesktop)
         {
-            $(".container").height(window.innerHeight);
-            
+           
             checkBrowserDimensions();
-        }   
-
-        else if($("#login-container").css('visibility') === 'hidden' && !isUsingDesktop)
+        }  
+        
+        else
         {
-            $(".container").height(window.innerHeight);
+            $(".container").width('100%');
         }
     }		    
     
