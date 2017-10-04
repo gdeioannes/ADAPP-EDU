@@ -34,7 +34,8 @@ $(document).ready(function(){
     else
     {
         isUsingDesktop = false;
-        $(".container").height(window.innerHeight);		
+        $(".container").height(window.innerHeight);
+        resizeContainer();
         $(".loader").show();
     }
    
@@ -507,11 +508,18 @@ $(document).ready(function(){
     
     function resizeContainer()
     {
-        $(".container").height(window.innerHeight);		       
+        
+        	       
         if(isUsingDesktop)
         {
+            $(".container").height(window.innerHeight);
             checkBrowserDimensions();
         }   
+
+        else if(!$("#login-container").is_active && !isUsingDesktop)
+        {
+            $(".container").height(window.innerHeight);
+        }
     }		    
     
     function showHome(){
