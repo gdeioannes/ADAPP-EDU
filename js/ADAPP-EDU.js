@@ -124,7 +124,12 @@ $(document).ready(function(){
             });
     }
    
-    function putCourseList(){        
+    function putCourseList(){      
+        if(!isUsingDesktop)
+        {
+            $(".container").height(window.innerHeight);
+        }  
+        
         $("#courses-container").show();
         $("#question-container").hide();
         $("#result-container").hide();
@@ -527,7 +532,6 @@ $(document).ready(function(){
                 $('input').css('font-size','2.5vw');
                 $('button').css('font-size','2.5vw');
                 $(".container").height(screen.height);	
-
             }
             
         }
