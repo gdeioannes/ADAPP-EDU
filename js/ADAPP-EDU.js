@@ -34,7 +34,7 @@ $(document).ready(function(){
     else
     {
         isUsingDesktop = false;
-        $(".container").height(window.innerHeight);
+        //$(".container").height(window.innerHeight);
         resizeContainer();
         $(".loader").show();
     }
@@ -510,13 +510,13 @@ $(document).ready(function(){
     {	       
         if(isUsingDesktop)
         {
-            $(".container").height(window.innerHeight);
+            //$(".container").height(window.innerHeight);
             checkBrowserDimensions();
         }   
 
         else if($("#login-container").css('visibility') === 'hidden' && !isUsingDesktop)
         {
-            $(".container").height(window.innerHeight);
+            //$(".container").height(window.innerHeight);
         }
     }		    
     
