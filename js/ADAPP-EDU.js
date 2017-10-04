@@ -520,7 +520,10 @@ $(document).ready(function(){
             if($("#login-container").is(':visible') )
             {
                 $(".container").width('100%');
-                $(".container").height(window.height);
+                $('.nuevos-usuarios-midle button').css('font-size','2.5vw');
+                $('.nuevos-usuarios-midle button').css('margin-top','6%');
+                $('input').css('font-size','2.5vw');
+                $('button').css('font-size','2.5vw');
             }
             
         }
