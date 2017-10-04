@@ -25,8 +25,10 @@ $(document).ready(function(){
     
     
     
+    
     if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) 
     {
+        
         isUsingDesktop = true;
         resizeContainer();
     }
@@ -524,6 +526,8 @@ $(document).ready(function(){
                 $('.nuevos-usuarios-midle button').css('margin-top','6%');
                 $('input').css('font-size','2.5vw');
                 $('button').css('font-size','2.5vw');
+                $(".container").height(screen.height);	
+
             }
             
         }
