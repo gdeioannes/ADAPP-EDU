@@ -507,16 +507,14 @@ $(document).ready(function(){
     });
     
     function resizeContainer()
-    {
-        
-        	       
+    {	       
         if(isUsingDesktop)
         {
             $(".container").height(window.innerHeight);
             checkBrowserDimensions();
         }   
 
-        else if(!$("#login-container").is_active && !isUsingDesktop)
+        else if($("#login-container").css('visibility') === 'hidden' && !isUsingDesktop)
         {
             $(".container").height(window.innerHeight);
         }
