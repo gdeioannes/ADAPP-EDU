@@ -473,7 +473,6 @@ nav .back-btn{
     opacity: 0.8;
     margin: auto;
     text-align: center;
-    
 }
 
 .loader span {
@@ -502,6 +501,7 @@ nav .back-btn{
         opacity: 0.5;
     }
 }
+ 
 
 @media all and (orientation:landscape) { 
     html{
@@ -518,7 +518,10 @@ nav .back-btn{
     .container{
         margin-left: auto;
         margin-right: auto;
-        width: 40%;
+        /*width: 40%;*/
+        /* This is a single-line comment */
+
+        /* This is a single-line comment */
     }
     
     .nuevos-usuarios-midle button{
