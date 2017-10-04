@@ -512,11 +512,17 @@ $(document).ready(function(){
         {
            
             checkBrowserDimensions();
+           
         }  
         
         else
         {
-            $(".container").width('100%');
+            if($("#login-container").is(':visible') )
+            {
+                $(".container").width('100%');
+                $(".container").height(window.height);
+            }
+            
         }
     }		    
     
