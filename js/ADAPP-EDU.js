@@ -521,7 +521,7 @@ $(document).ready(function(){
 
     function adaptAnswerContainer(widthWindow, heightWindow)
     {
-        let marginValue = (1.774 * 16) / (widthWindow/(heightWindow));
+        let marginValue = (1.774 * 30) / (widthWindow/(heightWindow));
         console.log("Valor: " + marginValue);
         console.log("Aspect ratio: "+widthWindow/heightWindow );
         $("#answer-container-list").css('margin-top', marginValue+'px');
@@ -530,8 +530,8 @@ $(document).ready(function(){
 
     function adaptAnswerContainerXS(widthWindow, heightWindow)
     {
-        let valor = (heightWindow*15) / 462;
-        let marginValue = (heightWindow * ( 8+valor)) / 386;
+        //let valor = (heightWindow*16) / 462;
+        let marginValue = heightWindow*40 / 685;
         console.log("Valor: " + marginValue);
         console.log("Alto: "+ heightWindow);
         $("#answer-container-list").css('margin-top', marginValue+'px');

@@ -331,7 +331,7 @@ button{
 }*/
 
 .answer li{
-    padding: 2%;
+    padding: 1.5%;
     margin: 2.5%;
     background: #AAA;
     color: white;
@@ -362,6 +362,7 @@ button{
 #bottom-answer
 {
     height: 50%;
+    
 }
 
 #answer-container-list
