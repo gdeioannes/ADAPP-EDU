@@ -32,10 +32,12 @@ h1{
 	@extend .flipIn
 }
 
-.Titulo{
+.Titulo
+{
 	margin:0 auto;
 	text-align:center;
-	}
+}
+
 .personaje{
 	width:100%;
 	height:auto;
@@ -320,18 +322,17 @@ button{
 .answer{
     padding: 1%;
     text-align: center;
-    height: 10%;
     background: gray;
 }
 
-@keyframes anwers-animation{
+/*@keyframes anwers-animation{
     from{margin-bottom:-50vh; }
-    to{margin-bottom:: 0vh;}
-}
+    to{margin-bottom: 0vh;}
+}*/
 
 .answer li{
-    padding: 3%;
-    margin: 2%;
+    padding: 2%;
+    margin: 2.5%;
     background: #AAA;
     color: white;
     font-size: 3.5vh;
@@ -356,6 +357,16 @@ button{
 .answer{
     animation-name: anwers-animation;
     animation-duration: 2s;
+}
+
+#bottom-answer
+{
+    height: 50%;
+}
+
+#answer-container-list
+{
+    height: 100vh;
 }
 
 /*RESULT*/
@@ -575,6 +586,8 @@ nav .back-btn{
     
     
     /* Answer*/
+    
+    
 
     .question{
         font-size: 3.5vh !important;
@@ -654,8 +667,9 @@ nav .back-btn{
     
     .bottom{
         width: 40%;
-    
     }
+
+    
     
     /*DEBUG*/
     

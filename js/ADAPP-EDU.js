@@ -28,7 +28,6 @@ $(document).ready(function(){
     
     if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) 
     {
-        
         isUsingDesktop = true;
         resizeContainer();
     }
@@ -459,53 +458,7 @@ $(document).ready(function(){
         }else{
             
         }
-    });
-
-    function checkBrowserDimensions()
-    {
-        widthWindow = $( window ).innerWidth();
-        heightWindow = $( window ).innerHeight();
-        
-        $("#loadingText").hide();
-        console.log("width: "+ widthWindow);
-        console.log("height: "+ heightWindow);
-        console.log("Resultado: " + widthWindow/heightWindow > (16/9));
-        if(widthWindow/heightWindow > ((16/9)+0.3))
-        {
-            $("#stop-Container").show();
-            $("#main-Container").hide();
-            /* if(widthWindow>640)
-            {
-                $("#loadingText").hide();
-                $(".loader").show();
-            }
-
-            else
-            {
-                $("#loadingText").show();
-                $(".loader").hide();
-            } */
-        }
-
-        else
-        {
-            $("#stop-Container").hide();
-            $("#main-Container").show();
-
-            /* if(widthWindow>640)
-            {
-                $("#loadingText").hide();
-                $(".loader").show();
-            }
-
-            else
-            {
-                $("#loadingText").show();
-                $(".loader").hide();
-            } */
-        }
-    }
-        
+    }); 
     
     //resizeContainer();
     $(window).resize(function(){
@@ -514,16 +467,28 @@ $(document).ready(function(){
     
     function resizeContainer()
     {
-        $(".container").height(window.innerHeight);		       
+        widthWindow = $( window ).innerWidth();
+        heightWindow = $( window ).innerHeight();	
+        $(".container").height(window.innerHeight);	
+               
         if(isUsingDesktop)
         {
-           
-            checkBrowserDimensions();
-           
+            checkBrowserDimensions(widthWindow, heightWindow);
+            if(widthWindow>=heightWindow)
+            {
+                adaptAnswerContainer(widthWindow,heightWindow);
+            }
+
+            else
+            {
+                adaptAnswerContainerXS(widthWindow,heightWindow);
+            }
+            
         }  
         
         else
         {
+            adaptAnswerContainerXS(widthWindow,heightWindow);
             if($("#login-container").is(':visible') )
             {
                 $(".container").width('100%');
@@ -535,7 +500,46 @@ $(document).ready(function(){
             }
             
         }
-    }		    
+    }	
+    
+    function checkBrowserDimensions( widthWindow, heightWindow)
+    {
+        $("#loadingText").hide();
+        
+        if(widthWindow/heightWindow > ((16/9)+0.3))
+        {
+            $("#stop-Container").show();
+            $("#main-Container").hide();
+        }
+
+        else
+        {
+            $("#stop-Container").hide();
+            $("#main-Container").show();
+        }
+    }
+
+    function adaptAnswerContainer(widthWindow, heightWindow)
+    {
+        let marginValue = (1.774 * 16) / (widthWindow/(heightWindow));
+        console.log("Valor: " + marginValue);
+        console.log("Aspect ratio: "+widthWindow/heightWindow );
+        $("#answer-container-list").css('margin-top', marginValue+'px');
+        $("#answer-container-list").css('margin-bottom', marginValue+'px');            
+    }
+
+    function adaptAnswerContainerXS(widthWindow, heightWindow)
+    {
+        let valor = (heightWindow*15) / 462;
+        let marginValue = (heightWindow * ( 8+valor)) / 386;
+        console.log("Valor: " + marginValue);
+        console.log("Alto: "+ heightWindow);
+        $("#answer-container-list").css('margin-top', marginValue+'px');
+        $("#answer-container-list").css('margin-bottom', marginValue+'px');            
+    }
+
+
+
     
     function showHome(){
         $("#login-container").show();
