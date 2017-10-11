@@ -34,6 +34,7 @@ $(document).ready(function(){
 
     else
     {
+        $(".answer").css('padding-top','4vh');
         resizeContainer();
         isUsingDesktop = false;
         $(".container").height(window.innerHeight);		
@@ -564,8 +565,9 @@ $(document).ready(function(){
     {
         
         let alturaBottomAnswer =$("#answer-container-list").height() /2;
-        let padding = alturaBottomAnswer/8;
+       
         $("#answer-container-list li").css('padding',padding+ 'px' + ' ' + '1%');
+      
         
         
        
