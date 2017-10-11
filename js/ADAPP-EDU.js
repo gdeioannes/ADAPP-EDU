@@ -509,7 +509,7 @@ $(document).ready(function(){
     {
         $("#loadingText").hide();
         
-        if(widthWindow/heightWindow >= ((16/9)))
+        if(widthWindow/heightWindow >= (16/9)+0.5)
         {
             $("#stop-Container").show();
             $("#main-Container").hide();
@@ -545,27 +545,13 @@ $(document).ready(function(){
             console.log("no está entre 1 y 1.6");
             $("#answer-container-list li").css('padding',padding/2+ 'px' + ' ' + '1%');
         }
-        
-       
-        //calacular padding por medio de formula con ayuda de la relación de apecto
-        
-
-        //console.log("Altura bottom: " + alturaBottomAnswer);
-
-        /*
-        let marginValue = (1.774 * 30) / (widthWindow/(heightWindow));
-        console.log("Valor: " + marginValue);
-        console.log("Aspect ratio: "+widthWindow/heightWindow );
-        $("#answer-container-list").css('margin-top', marginValue+'px');
-        $("#answer-container-list").css('margin-bottom', marginValue+'px');   
-        */        
     }
 
     function adaptAnswerContainerPhone(widthWindow, heightWindow,relacionDeAspecto)
     {
         
         let alturaBottomAnswer =$("#answer-container-list").height() /2;
-       
+        let padding = alturaBottomAnswer/14;
         $("#answer-container-list li").css('padding',padding+ 'px' + ' ' + '1%');
       
         
