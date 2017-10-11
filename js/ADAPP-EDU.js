@@ -564,7 +564,7 @@ $(document).ready(function(){
     {
         
         let alturaBottomAnswer =$("#answer-container-list").height() /2;
-        let padding = alturaBottomAnswer/11;
+        let padding = alturaBottomAnswer/8;
         $("#answer-container-list li").css('padding',padding/2+ 'px' + ' ' + '1%');
         
         
