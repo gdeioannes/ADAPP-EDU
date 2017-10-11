@@ -34,6 +34,7 @@ $(document).ready(function(){
 
     else
     {
+        resizeContainer();
         isUsingDesktop = false;
         $(".container").height(window.innerHeight);		
         $(".loader").show();
@@ -489,7 +490,7 @@ $(document).ready(function(){
         
         else
         {
-            adaptAnswerContainerXS(widthWindow,heightWindow);
+            adaptAnswerContainer(widthWindow,heightWindow, relacionDeAspecto);
             if($("#login-container").is(':visible') )
             {
                 $(".container").width('100%');
