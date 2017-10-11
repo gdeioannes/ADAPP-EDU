@@ -531,12 +531,8 @@ $(document).ready(function(){
         
 
         console.log("Relación de aspecto: " + widthWindow/heightWindow);
-        
-        
-       
         if(relacionDeAspecto >1 && relacionDeAspecto < 1.4)
         {
-            console.log("está entre 1 y 1.6");
             $("#answer-container-list li").css('padding',13+ 'px' + ' ' + '1%');
         }
 
@@ -549,26 +545,9 @@ $(document).ready(function(){
 
     function adaptAnswerContainerPhone(widthWindow, heightWindow,relacionDeAspecto)
     {
-        
         let alturaBottomAnswer =$("#answer-container-list").height() /2;
         let padding = alturaBottomAnswer/14;
-        $("#answer-container-list li").css('padding',padding+ 'px' + ' ' + '1%');
-      
-        
-        
-       
-        //calacular padding por medio de formula con ayuda de la relación de apecto
-        
-
-        //console.log("Altura bottom: " + alturaBottomAnswer);
-
-        /*
-        let marginValue = (1.774 * 30) / (widthWindow/(heightWindow));
-        console.log("Valor: " + marginValue);
-        console.log("Aspect ratio: "+widthWindow/heightWindow );
-        $("#answer-container-list").css('margin-top', marginValue+'px');
-        $("#answer-container-list").css('margin-bottom', marginValue+'px');   
-        */        
+        $("#answer-container-list li").css('padding',padding+ 'px' + ' ' + '1%');      
     }
 
     
