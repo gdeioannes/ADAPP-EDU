@@ -121,7 +121,7 @@ $(document).ready(function(){
                    }else{
                       $("#main-message").html(data.message); 
                    }
-              },
+            },
             });
     }
    
