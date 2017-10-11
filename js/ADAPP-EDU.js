@@ -490,7 +490,7 @@ $(document).ready(function(){
         
         else
         {
-            adaptAnswerContainer(widthWindow,heightWindow, relacionDeAspecto);
+            adaptAnswerContainerPhone(widthWindow,heightWindow, relacionDeAspecto);
             if($("#login-container").is(':visible') )
             {
                 $(".container").width('100%');
@@ -560,17 +560,30 @@ $(document).ready(function(){
         */        
     }
 
-    /*
-    function adaptAnswerContainerXS(widthWindow, heightWindow)
+    function adaptAnswerContainerPhone(widthWindow, heightWindow,relacionDeAspecto)
     {
-        //let valor = (heightWindow*16) / 462;
-        let marginValue = heightWindow*40 / 685;
+        
+        let alturaBottomAnswer =$("#answer-container-list").height() /2;
+        let padding = alturaBottomAnswer/11;
+        $("#answer-container-list li").css('padding',padding/2+ 'px' + ' ' + '1%');
+        
+        
+       
+        //calacular padding por medio de formula con ayuda de la relación de apecto
+        
+
+        //console.log("Altura bottom: " + alturaBottomAnswer);
+
+        /*
+        let marginValue = (1.774 * 30) / (widthWindow/(heightWindow));
         console.log("Valor: " + marginValue);
-        console.log("Alto: "+ heightWindow);
+        console.log("Aspect ratio: "+widthWindow/heightWindow );
         $("#answer-container-list").css('margin-top', marginValue+'px');
-        $("#answer-container-list").css('margin-bottom', marginValue+'px');            
+        $("#answer-container-list").css('margin-bottom', marginValue+'px');   
+        */        
     }
-    */
+
+    
 
 
 
