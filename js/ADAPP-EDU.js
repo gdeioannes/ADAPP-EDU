@@ -34,7 +34,7 @@ $(document).ready(function(){
 
     else
     {
-        $(".answer").css('padding-top','4vh');
+     
         resizeContainer();
         isUsingDesktop = false;
         $(".container").height(window.innerHeight);		
