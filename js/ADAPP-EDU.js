@@ -481,7 +481,7 @@ $(document).ready(function(){
 
             else
             {
-                adaptAnswerContainerXS(widthWindow,heightWindow);
+                //adaptAnswerContainerXS(widthWindow,heightWindow);
             }
             
         }  
@@ -521,13 +521,24 @@ $(document).ready(function(){
 
     function adaptAnswerContainer(widthWindow, heightWindow)
     {
+        
+        let alturaBottomAnswer =$("#answer-container-list").height() /2;
+        let padding = alturaBottomAnswer/15;
+
+        $("#answer-container-list li").css('padding',padding/2+ 'px' + ' ' + '0px');
+
+        console.log("Altura bottom: " + alturaBottomAnswer);
+
+        /*
         let marginValue = (1.774 * 30) / (widthWindow/(heightWindow));
         console.log("Valor: " + marginValue);
         console.log("Aspect ratio: "+widthWindow/heightWindow );
         $("#answer-container-list").css('margin-top', marginValue+'px');
-        $("#answer-container-list").css('margin-bottom', marginValue+'px');            
+        $("#answer-container-list").css('margin-bottom', marginValue+'px');   
+        */        
     }
 
+    /*
     function adaptAnswerContainerXS(widthWindow, heightWindow)
     {
         //let valor = (heightWindow*16) / 462;
@@ -537,6 +548,7 @@ $(document).ready(function(){
         $("#answer-container-list").css('margin-top', marginValue+'px');
         $("#answer-container-list").css('margin-bottom', marginValue+'px');            
     }
+    */
 
 
 
