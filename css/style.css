@@ -517,7 +517,7 @@ nav .back-btn{
 @media all and (orientation:portrait) { 
     .answer
     {
-        padding-top: 4vh;
+        padding-top: 2vh;
     }
 }
 
