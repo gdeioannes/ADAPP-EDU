@@ -320,9 +320,10 @@ button{
 }
 
 .answer{
-    padding: 1%;
+    padding: 1.5%;
     text-align: center;
     background: gray;
+    
 }
 
 /*@keyframes anwers-animation{
@@ -331,7 +332,7 @@ button{
 }*/
 
 .answer li{
-    padding: 1.5%;
+    padding: 2.5%;
     margin: 2.5%;
     background: #AAA;
     color: white;

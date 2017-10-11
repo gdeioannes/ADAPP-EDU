@@ -469,6 +469,7 @@ $(document).ready(function(){
     {
         widthWindow = $( window ).innerWidth();
         heightWindow = $( window ).innerHeight();	
+        var relacionDeAspecto=widthWindow/heightWindow;
         $(".container").height(window.innerHeight);	
                
         if(isUsingDesktop)
@@ -476,12 +477,12 @@ $(document).ready(function(){
             checkBrowserDimensions(widthWindow, heightWindow);
             if(widthWindow>=heightWindow)
             {
-                adaptAnswerContainer(widthWindow,heightWindow);
+                adaptAnswerContainer(widthWindow,heightWindow,relacionDeAspecto);
             }
 
             else
             {
-                //adaptAnswerContainerXS(widthWindow,heightWindow);
+                adaptAnswerContainer(widthWindow,heightWindow,relacionDeAspecto);
             }
             
         }  
@@ -506,7 +507,7 @@ $(document).ready(function(){
     {
         $("#loadingText").hide();
         
-        if(widthWindow/heightWindow > ((16/9)+0.3))
+        if(widthWindow/heightWindow >= ((16/9)))
         {
             $("#stop-Container").show();
             $("#main-Container").hide();
@@ -519,15 +520,35 @@ $(document).ready(function(){
         }
     }
 
-    function adaptAnswerContainer(widthWindow, heightWindow)
+    function adaptAnswerContainer(widthWindow, heightWindow,relacionDeAspecto)
     {
         
         let alturaBottomAnswer =$("#answer-container-list").height() /2;
-        let padding = alturaBottomAnswer/15;
+        let padding = alturaBottomAnswer/14;
 
-        $("#answer-container-list li").css('padding',padding/2+ 'px' + ' ' + '0px');
+        
 
-        console.log("Altura bottom: " + alturaBottomAnswer);
+        console.log("Relación de aspecto: " + widthWindow/heightWindow);
+        
+        
+       
+        if(relacionDeAspecto >1 && relacionDeAspecto < 1.4)
+        {
+            console.log("está entre 1 y 1.6");
+            $("#answer-container-list li").css('padding',13+ 'px' + ' ' + '1%');
+        }
+
+        else
+        {
+            console.log("no está entre 1 y 1.6");
+            $("#answer-container-list li").css('padding',padding/2+ 'px' + ' ' + '1%');
+        }
+        
+       
+        //calacular padding por medio de formula con ayuda de la relación de apecto
+        
+
+        //console.log("Altura bottom: " + alturaBottomAnswer);
 
         /*
         let marginValue = (1.774 * 30) / (widthWindow/(heightWindow));
