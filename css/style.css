@@ -514,6 +514,12 @@ nav .back-btn{
         opacity: 0.5;
     }
 }
+@media all and (orientation:portrait) { 
+    .answer
+    {
+        padding-top: 4vh;
+    }
+}
 
 @media all and (orientation:landscape) { 
     html{
