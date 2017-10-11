@@ -509,7 +509,7 @@ $(document).ready(function(){
     {
         $("#loadingText").hide();
         
-        if(widthWindow/heightWindow >= (16/9)+0.5)
+        if(widthWindow/heightWindow >= (16/9)+0.2)
         {
             $("#stop-Container").show();
             $("#main-Container").hide();
@@ -526,7 +526,7 @@ $(document).ready(function(){
     {
         
         let alturaBottomAnswer =$("#answer-container-list").height() /2;
-        let padding = alturaBottomAnswer/14;
+        let padding = alturaBottomAnswer/15;
 
         
 
