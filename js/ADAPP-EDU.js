@@ -35,10 +35,12 @@ $(document).ready(function(){
     else
     {
         isUsingDesktop = false;
-        resizeContainer();
+        
         $(".container").height(window.innerHeight);		
         $(".loader").show();
+        resizeContainer();
     }
+   
    
     
     checkWebStorage();
@@ -279,11 +281,14 @@ $(document).ready(function(){
               success: function(data)
               {
                   wait(2000);
+                  
                   $("#loader-container").hide(); 
                   $("#question-container").show();
+                  
                   printDebug(data);
                   $("#question-description").html(data.description);
                   $("#answer-container-list").html("");
+                  
                   for(var optionsNum=0;optionsNum<data.options.length;optionsNum++){
                       var exerciseid=" data-exerciseid='"+data.id+"' ";
                       var optionid=" data-optionid='"+data.options[optionsNum].id+"' ";
@@ -477,12 +482,12 @@ $(document).ready(function(){
         {
             checkBrowserDimensions(widthWindow, heightWindow);
             
-            adaptAnswerContainer(widthWindow,heightWindow,relacionDeAspecto);
+            //adaptAnswerContainer(widthWindow,heightWindow,relacionDeAspecto);
         }  
         
         else
         {
-           
+            //adaptAnswerContainer(widthWindow,heightWindow,relacionDeAspecto);
             if($("#login-container").is(':visible') )
             {
                 $(".container").width('100%');
@@ -513,6 +518,7 @@ $(document).ready(function(){
         }
     }
 
+    /*
     function adaptAnswerContainer(widthWindow, heightWindow,relacionDeAspecto)
     {
         let bottomAnswer = $("#bottom-answer");
@@ -520,8 +526,8 @@ $(document).ready(function(){
         console.log("Alto de la página a la mitad: " + heightWindow/2);
         console.log("Apect Ratio: " + relacionDeAspecto);
         console.log("botom answer hright: " + bottomAnswer.height());
-
-        let padding = bottomAnswer.height()/5;
+        let padding = heightWindow/10;
+        //let padding = bottomAnswer.height()/5;
         paddingInterior = padding/4;
         $("#answer-container-list li").css('padding-top', paddingInterior+'px');
         $("#answer-container-list li").css('padding-bottom', paddingInterior+'px');
@@ -529,16 +535,8 @@ $(document).ready(function(){
         margin = paddingInterior/4;
         $("#answer-container-list li").css('margin-top', margin+'px');
         $("#answer-container-list li").css('margin-bottom', margin+'px');
-        
-       
     }
-
-
-
-    
-
-
-
+    */
     
     function showHome(){
         $("#login-container").show();
