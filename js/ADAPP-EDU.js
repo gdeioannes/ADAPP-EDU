@@ -39,8 +39,8 @@ $(document).ready(function(){
         $("#answer-container-list li").css('padding-top', 'calc(100vh/10)');
         $("#answer-container-list li").css('padding-bottom', 'calc(100vh/10)');
         $("#answer-container-list li").css('font-size', '3vh');
-        $("#answer-container-list li").css('margin-top', 'calc(100vh/120)');
-        $("#answer-container-list li").css('margin-bottom', 'calc(100vh/120)');
+        $("#answer-container-list li").css('margin-top', 'calc(100vh/30)');
+        $("#answer-container-list li").css('margin-bottom', 'calc(100vh/30)');
         $(".answer").css('padding','1%');
 
         isUsingDesktop = false;
