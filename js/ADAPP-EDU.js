@@ -36,11 +36,11 @@ $(document).ready(function(){
     {
 
         //ESTILOS CELULAR
-        $("#answer-container-list li").css('padding-top', '100');
-        $("#answer-container-list li").css('padding-bottom', 'calc(100vh/60)');
+        $("#answer-container-list li").css('padding-top', 'calc(100vh/80)');
+        $("#answer-container-list li").css('padding-bottom', 'calc(100vh/80)');
         $("#answer-container-list li").css('font-size', '3.5vh');
-        $("#answer-container-list li").css('margin-top', 'calc(100vh/120)');
-        $("#answer-container-list li").css('margin-bottom', 'calc(100vh/120)');
+        $("#answer-container-list li").css('margin-top', 'calc(100vh/140)');
+        $("#answer-container-list li").css('margin-bottom', 'calc(100vh/140)');
 
         isUsingDesktop = false;
         //$(".container").height(window.innerHeight);		
