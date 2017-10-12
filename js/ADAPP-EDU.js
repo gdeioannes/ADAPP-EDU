@@ -37,9 +37,10 @@ $(document).ready(function(){
 
         //ESTILOS CELULAR
         var answerLi = $("#answer-container-list li");
-        answerLi.css('padding-top', 'calc(100vh/60)');
-        answerLi.css('padding-bottom', 'calc(100vh/60)');
-        answerLi.css('font-size', '3.5vh');
+        $("#answer-container-list li").css('padding-top', 'calc(100vh/60)');
+        $("#answer-container-list li").css('padding-bottom', 'calc(100vh/60)');
+        $("#answer-container-list li").css('font-size', '3.5vh');
+        
         isUsingDesktop = false;
         //$(".container").height(window.innerHeight);		
         //$(".loader").show();
