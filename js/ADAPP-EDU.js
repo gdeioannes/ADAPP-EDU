@@ -565,7 +565,8 @@ $(document).ready(function(){
             var jsonData=JSON.parse(localStorage.getItem("ADAPPEDU"));
             //CLEAR BROWSER CACHE
             
-            if(addapEdu.version!=jsonData.version){
+            if(addapEdu.version!=jsonData.version)
+            {
                 jsonData.version=addapEdu.version;
                 addapEdu=jsonData;
                 saveData();

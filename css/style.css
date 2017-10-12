@@ -302,7 +302,6 @@ button{
     to {margin-top: 0vh;}
 }
 
-
 .question{
     height: 20vh !important;
     padding: 10%;
@@ -326,21 +325,24 @@ button{
     
 }
 
-/*@keyframes anwers-animation{
-    from{margin-bottom:-50vh; }
-    to{margin-bottom: 0vh;}
+/*
+@keyframes anwers-animation
+{
+    from{margin-bottom:-200vh;}
+    to{margin-bottom: 0vh;} 
 }*/
 
-.answer li{
+.answer li
+{
     /*padding: 2.5%;
     margin: 2.5%;*/
-    padding-top: calc(100vh/45);
+    padding-top: calc(100vh/38);
     padding-bottom: calc(100vh/45);
     margin-top: calc(100vh/140);
     margin-bottom: calc(100vh/140);
     background: #AAA;
     color: white;
-    font-size: 3.5vh;
+    font-size: 4vh;
     font-weight: 600;
     cursor: pointer; 
     cursor: hand;
@@ -593,14 +595,19 @@ nav .back-btn{
     
     
     /* Answer*/
+    .answer
+    {
+        padding-top: calc(100vh/60);
+    }
+
     .answer li
     {
         /*padding: 2.5%;
         margin: 2.5%;*/
-        padding-top: calc(100vh/38);
-        padding-bottom: calc(100vh/38);
-        margin-top: calc(100vh/100);
-        margin-bottom: calc(100vh/100);   
+        padding-top: calc(100vh/39);
+        padding-bottom: calc(100vh/39);
+        margin-top: calc(100vh/140);
+        margin-bottom: calc(100vh/140);   
     } 
 
     .question{
