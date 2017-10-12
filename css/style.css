@@ -320,7 +320,7 @@ button{
 }
 
 .answer{
-    padding: 1.5%;
+    padding: 1%;
     text-align: center;
     background: gray;
     
@@ -334,10 +334,10 @@ button{
 .answer li{
     /*padding: 2.5%;
     margin: 2.5%;*/
-    padding-top: calc(100vh/40);
-    padding-bottom: calc(100vh/40);
-    margin-top: calc(100vh/120);
-    margin-bottom: calc(100vh/120);
+    padding-top: calc(100vh/45);
+    padding-bottom: calc(100vh/45);
+    margin-top: calc(100vh/140);
+    margin-bottom: calc(100vh/140);
     background: #AAA;
     color: white;
     font-size: 3.5vh;
