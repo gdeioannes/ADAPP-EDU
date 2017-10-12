@@ -41,7 +41,7 @@ $(document).ready(function(){
         $("#answer-container-list li").css('font-size', '3vh');
         $("#answer-container-list li").css('margin-top', 'calc(100vh/160)');
         $("#answer-container-list li").css('margin-bottom', 'calc(100vh/160)');
-        $(".answer").css('padding-top','1%');
+        $(".answer").css('padding-top','0%');
 
         isUsingDesktop = false;
         //$(".container").height(window.innerHeight);		
