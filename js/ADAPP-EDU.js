@@ -34,9 +34,8 @@ $(document).ready(function(){
 
     else
     {
-     
-        resizeContainer();
         isUsingDesktop = false;
+        resizeContainer();
         $(".container").height(window.innerHeight);		
         $(".loader").show();
     }
@@ -477,21 +476,13 @@ $(document).ready(function(){
         if(isUsingDesktop)
         {
             checkBrowserDimensions(widthWindow, heightWindow);
-            if(widthWindow>=heightWindow)
-            {
-                adaptAnswerContainer(widthWindow,heightWindow,relacionDeAspecto);
-            }
-
-            else
-            {
-                adaptAnswerContainer(widthWindow,heightWindow,relacionDeAspecto);
-            }
             
+            adaptAnswerContainer(widthWindow,heightWindow,relacionDeAspecto);
         }  
         
         else
         {
-            adaptAnswerContainerPhone(widthWindow,heightWindow, relacionDeAspecto);
+           
             if($("#login-container").is(':visible') )
             {
                 $(".container").width('100%');
@@ -525,30 +516,10 @@ $(document).ready(function(){
     function adaptAnswerContainer(widthWindow, heightWindow,relacionDeAspecto)
     {
         
-        let alturaBottomAnswer =$("#answer-container-list").height() /2;
-        let padding = alturaBottomAnswer/15;
-
-        
-
-        console.log("Relación de aspecto: " + widthWindow/heightWindow);
-        if(relacionDeAspecto >1 && relacionDeAspecto < 1.4)
-        {
-            $("#answer-container-list li").css('padding',13+ 'px' + ' ' + '1%');
-        }
-
-        else
-        {
-            console.log("no está entre 1 y 1.6");
-            $("#answer-container-list li").css('padding',padding/2+ 'px' + ' ' + '1%');
-        }
+       
     }
 
-    function adaptAnswerContainerPhone(widthWindow, heightWindow,relacionDeAspecto)
-    {
-        let alturaBottomAnswer =$("#answer-container-list").height() /2;
-        let padding = alturaBottomAnswer/14;
-        $("#answer-container-list li").css('padding',padding+ 'px' + ' ' + '1%');      
-    }
+
 
     
 
