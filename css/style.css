@@ -335,13 +335,13 @@ button{
 {
     /*padding: 2.5%;
     margin: 2.5%;*/
-    padding-top: calc(100vh/38);
-    padding-bottom: calc(100vh/38);
+    padding-top: calc(100vh/45);
+    padding-bottom: calc(100vh/45);
     margin-top: calc(100vh/120);
     margin-bottom: calc(100vh/120);
     background: #AAA;
     color: white;
-    font-size: 4vh;
+    font-size: 3.5vh;
     font-weight: 600;
     cursor: pointer; 
     cursor: hand;
