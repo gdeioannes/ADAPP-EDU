@@ -520,9 +520,11 @@ $(document).ready(function(){
 
         var stopMessage = $("#stop-message");
         var stopMessageP = $("#stop-message p");
+        var stopMessagePSpan = $("#stop-message p span");
         stopMessage.css("margin-right", "10vw");
         stopMessage.css("margin-left", "10vw");
-        stopMessageP.css("font-size","4vw");
+        stopMessageP.css("font-size","2.5vw");
+        stopMessagePSpan.css("font-size","1.5vw");
     }
     
     function checkBrowserDimensions( widthWindow, heightWindow)
