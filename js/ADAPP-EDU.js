@@ -519,8 +519,10 @@ $(document).ready(function(){
     {
 
         var stopMessage = $("#stop-message");
+        var stopMessageP = $("#stop-message p");
         stopMessage.css("margin-right", "10vw");
         stopMessage.css("margin-left", "10vw");
+        stopMessageP.css("font-size","4vw");
     }
     
     function checkBrowserDimensions( widthWindow, heightWindow)
