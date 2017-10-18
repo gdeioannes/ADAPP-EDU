@@ -524,7 +524,7 @@ $(document).ready(function(){
         stopMessage.css("margin-right", "12vw");
         stopMessage.css("margin-left", "12vw");
         stopMessageP.css("font-size","2.5vw");
-        stopMessagePSpan.css("font-size","1.5vw");
+        stopMessagePSpan.css("font-size","1.8vw");
     }
     
     function checkBrowserDimensions( widthWindow, heightWindow)
