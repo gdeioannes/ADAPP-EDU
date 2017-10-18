@@ -525,7 +525,7 @@ $(document).ready(function(){
         stopMessage.css("margin-left", "12vw");
         stopMessageP.css("font-size","2.5vw");
         stopMessagePSpan.css("font-size","1.8vw");
-        stopMessagePSpan.html = "Cambia la orientación de tu celular a vertical";
+        
     }
     
     function checkBrowserDimensions( widthWindow, heightWindow)
