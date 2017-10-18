@@ -36,12 +36,14 @@ $(document).ready(function(){
     {
 
         //ESTILOS CELULAR
+        /*
         $("element").css('padding-top', 'calc(100vh/38)');
         $("element").css('padding-bottom', 'calc(100vh/38)');
         $("element").css('font-size', '3vh');
         $("element").css('margin-top', 'calc(100vh/120)');
         $("element").css('margin-bottom', 'calc(100vh/120)');
         $(".answer").css('padding','1%');
+        */
 
         isUsingDesktop = false;
         //$(".container").height(window.innerHeight);		
@@ -83,7 +85,7 @@ $(document).ready(function(){
     });
     
       $("#create-user").click(function(){
-            var appeduAPI="https://adappedu.lircaytech.com/api/v1/profile/create/{username}/{email}/{password}";
+            var appeduAPI="https://adappedu.lircaytech.com/api/v1/profile/create/{username}/{email}/{password}/{name}/{lastname}/{gender}/{birthdate}";
             var name=$("#create-user-name").val();
             var email=$("#create-user-email").val();
             var password=$("#create-user-password").val();

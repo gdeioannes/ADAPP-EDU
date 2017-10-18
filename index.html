@@ -10,15 +10,42 @@
 </head>
 
 <body>
-
-
     <div id="print-data-debug"></div>
     <div id="debug-container">TOGGLE DEBUG <span id="clear-debug">->CLEAR</span></div>
     <input id="user-id" type="hidden">
-    <div id="stop-Container">
-        <p>Las dimensiones de la página no permiten ver el contenido de forma correcta, la relación de aspecto
-            es 16:9 .
-        </p>
+    <div class="container" id="stop-Container">
+            <div id="stop-margin-top"></div>
+            <div id="stop-content">
+                <div id="stop-message">
+                    <p>
+                        <br>No soportamos ésta proporción de pantalla </br>
+                        <span> Redimensionala para poder usar la aplicación </span>
+                    </p>
+                    
+                    <div>
+                        <img id="pointer" src="img/pointer_head_result.png">
+                    </div>
+                    <img id="head" src="img/cabezaedu.png">
+                </div>
+            </div>
+
+            <div id="stop-margin-bottom"></div>
+            <!-- <p><span id="welcome-name"></span>
+                <br>No soportamos ésta proporción de pantalla</p>
+                <span> Redimencionala para poder usar la aplicación </span>
+            <div>
+                <img id="pointer" src="img/pointer_head_result.png">
+            </div>-->
+            
+
+            <!-- <div id="stop-head">
+                <img src="img/cabezaedu.png">
+            </div>
+            <p id="stop-message">
+                Las dimensiones de la página no permiten ver el contenido de forma correcta, la relación de aspecto
+                es 16:9 .
+            </p> -->
+        </div>
     </div>
     <div class="container" id="main-Container">
         <div id="login-container">
@@ -67,7 +94,7 @@
             </nav>
             <div id="content-message">
                 <p><span id="welcome-name"></span>
-                    <br>Seleciona un cuestionario</p>
+                    <br>Selecciona un cuestionario</p>
                 <div>
                     <img id="pointer" src="img/pointer_head_result.png">
                 </div>
