@@ -499,6 +499,9 @@ $(document).ready(function(){
         {
             //adaptAnswerContainer(widthWindow,heightWindow,relacionDeAspecto);
             checkBrowserDimensions(widthWindow, heightWindow);
+            
+            cssPhoneApply();
+
             if($("#login-container").is(':visible') )
             {
                 $(".container").width('100%');
@@ -511,6 +514,14 @@ $(document).ready(function(){
             
         }
     }	
+
+    function cssPhoneApply()
+    {
+
+        var stopMessage = $("#stop-message");
+        stopMessage.css("margin-right", "10vw");
+        stopMessage.css("margin-left", "10vw");
+    }
     
     function checkBrowserDimensions( widthWindow, heightWindow)
     {
