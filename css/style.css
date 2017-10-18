@@ -520,6 +520,14 @@ nav .back-btn{
     }
 }
 
+@media all and (orientation:portrait) { 
+    #stop-message
+    {
+        margin-right: 10vw;
+        margin-left: 10vw;
+    }
+}
+
 
 @media all and (orientation:landscape) { 
     html{
