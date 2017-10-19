@@ -498,10 +498,7 @@ $(document).ready(function(){
         else
         {
             //adaptAnswerContainer(widthWindow,heightWindow,relacionDeAspecto);
-            checkBrowserDimensions(widthWindow, heightWindow);
-            
-            cssPhoneApply();
-
+            checkBrowserDimensions(widthWindow, heightWindow);   
             if($("#login-container").is(':visible') )
             {
                 $(".container").width('100%');
@@ -511,6 +508,10 @@ $(document).ready(function(){
                 $('button').css('font-size','2.5vw');
                 $(".container").height(screen.height);	
             }
+
+            
+                cssPhoneApply();
+    
             
         }
     }	
