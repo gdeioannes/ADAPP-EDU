@@ -499,6 +499,8 @@ $(document).ready(function(){
         {
             //adaptAnswerContainer(widthWindow,heightWindow,relacionDeAspecto);
             checkBrowserDimensions(widthWindow, heightWindow);   
+            
+            cssPhoneApply();
             if($("#login-container").is(':visible') )
             {
                 $(".container").width('100%');
@@ -509,8 +511,7 @@ $(document).ready(function(){
                 $(".container").height(screen.height);	
             }
 
-            $(".container").height(window.innerHeight);	
-            cssPhoneApply();
+           
     
             
         }
