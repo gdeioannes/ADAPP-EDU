@@ -535,7 +535,7 @@ $(document).ready(function(){
     {
         $("#loadingText").hide();
         
-        if(widthWindow/heightWindow > (16/9)+0.6)
+        if(widthWindow/heightWindow > (16/9)+5)
         {
             $("#stop-Container").show();
             $("#main-Container").hide();
