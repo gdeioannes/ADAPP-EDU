@@ -509,8 +509,8 @@ $(document).ready(function(){
                 $(".container").height(screen.height);	
             }
 
-            
-                cssPhoneApply();
+            $(".container").height(window.innerHeight);	
+            cssPhoneApply();
     
             
         }
@@ -534,7 +534,7 @@ $(document).ready(function(){
     {
         $("#loadingText").hide();
         
-        if(widthWindow/heightWindow > (16/9))
+        if(widthWindow/heightWindow > (16/9)+0.3)
         {
             $("#stop-Container").show();
             $("#main-Container").hide();
