@@ -498,7 +498,7 @@ $(document).ready(function(){
         else
         {
             //adaptAnswerContainer(widthWindow,heightWindow,relacionDeAspecto);
-            checkBrowserDimensions(widthWindow, heightWindow);   
+            //checkBrowserDimensions(widthWindow, heightWindow);   
             
             cssPhoneApply();
             if($("#login-container").is(':visible') )
@@ -509,11 +509,7 @@ $(document).ready(function(){
                 $('input').css('font-size','2.5vw');
                 $('button').css('font-size','2.5vw');
                 $(".container").height(screen.height);	
-            }
-
-           
-    
-            
+            }  
         }
     }	
 
@@ -535,7 +531,7 @@ $(document).ready(function(){
     {
         $("#loadingText").hide();
         
-        if(widthWindow/heightWindow > (16/9)+5)
+        if(widthWindow/heightWindow > (16/9))
         {
             $("#stop-Container").show();
             $("#main-Container").hide();
