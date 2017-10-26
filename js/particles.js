@@ -11,7 +11,7 @@ function Main() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     context = canvas.getContext('2d');
-    //context.globalCompositeOperation = "lighter";
+    context.globalCompositeOperation = "lighter";
    
 
     createProton();
@@ -34,7 +34,7 @@ function createProton(image) {
 
     renderer = new Proton.Renderer('canvas', proton, canvas);
     renderer.onProtonUpdate = function() {
-        context.fillStyle = "rgba(255, 255, 255, 0.1)";
+        context.fillStyle = "rgba(255, 255, 255, 0.4)";
         context.fillRect(0, 0, canvas.width, canvas.height);
     };
     renderer.start();
@@ -50,7 +50,7 @@ function createProton(image) {
 
 function createFirstEmitter(particle) {
     var subemitter = new Proton.Emitter();
-    subemitter.rate = new Proton.Rate(new Proton.Span(250, 300), 1);
+    subemitter.rate = new Proton.Rate(new Proton.Span(150, 180), 1);
     subemitter.addInitialize(new Proton.Mass(1));
     subemitter.addInitialize(new Proton.Radius(1, 2));
     subemitter.addInitialize(new Proton.Life(1, 3));
