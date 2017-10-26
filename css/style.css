@@ -269,7 +269,7 @@ button{
     font-family: Lato;
     text-align: center;
     height: auto; 
-    margin: 5%;
+    margin: 8%;
 }
 
 #content-message p{
@@ -377,19 +377,23 @@ button{
 }
 
 /*RESULT*/
+
+
 #result-message{
+    position: relative;
     font-family: Lato;
     text-align: center;
     height: auto; 
     animation-name: question-animation;
     animation-duration: 2s;
-    z-index: -1;
+    margin-top: 3vh;
+    /* z-index: -1; */
 }
 
 #result-message p{
     vertical-align: middle;
-    padding: 8%;
-    font-size: 10vw;
+    padding: 3%;
+    font-size: 5vh;
     margin-right: 10vw;
     margin-left: 10vw;
     font-weight: 600;
@@ -397,6 +401,7 @@ button{
     border-radius: 10px;
     background: #DDD;
     min-height: 17vh;
+   
 }
 
 #result-message #head{
@@ -421,10 +426,16 @@ button{
 
 /*NAV*/
 
+#result-nav
+{
+    z-index: 1;
+    position: relative;
+}
+
 nav{
     height: 7vw;
 	margin-bottom: 5%;
-    overflow: hidden;
+    /* overflow: hidden; */
     text-align: right;
     z-index: 100;
 }
@@ -520,6 +531,27 @@ nav .back-btn{
     }
 }
 
+
+/* PARTICLES */
+#particles-container
+{
+    position:absolute;
+    width: 40%;
+    height: 100%;
+}
+
+@media all and (orientation:portrait) {
+    #particles-container
+    {
+        width: 100%;
+    }
+
+    #result-message p{
+        
+        margin-top: 10vh;
+        /* z-index: -1; */
+    }
+}
 
 
 
@@ -710,6 +742,8 @@ nav .back-btn{
     
     /*NAV*/
 
+   
+
     nav{
         margin-bottom: 0px;
         overflow: hidden;
@@ -719,8 +753,9 @@ nav .back-btn{
     nav .nav-circle{
         position: absolute;
         top: 0px;
-        height: 10vw;
-        margin-left: -10vw
+        height: 7vw;
+        margin-left: -7vw;
+        z-index: 1;
     }
 
     nav .nav-line{

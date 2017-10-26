@@ -146,6 +146,7 @@ $(document).ready(function(){
         $("#question-container").hide();
         $("#result-container").hide();
         $("#loader-container").hide();
+        $("#particles-container").hide();
         var appeduAPI="https://adappedu.lircaytech.com/api/v1/courses/get";
         $(".content-container").html("");
         $.ajax({
@@ -358,34 +359,52 @@ $(document).ready(function(){
               dataType: "json",
               url: appeduAPI,
               success: function(data){  
+
+                
+                  //container = document.getElementById("main-Container");
+                  //$("#main-Container").css("background","transparent");
+
+
                   printDebug(data);
                   if(data.is_correct){
+                    console.log("Mostrando cara feliz");
+                    $("#result-message #head").attr('src', 'img/cabezaedu.png');
+                    $("#particles-container").show();
                     $("#result-message p").html("Respuesta Correcta! <br> :)");
                     trackDiff(1);
                   }else{
+                    console.log("Mostrando cara triste");
+                    $("#result-message #head").attr('src', 'img/cabeza_edu_triste.png');
                     $("#result-message p").html("Respuesta Errada <br> :(");  
                     trackDiff(0);
+                    
                   }
                   $("#next-question").unbind();
                   
                    if(result=="KEEP"){
                       $("#next-question").html("SIGUIENTE");
-                      $("#next-question").click(function(){
+                      $("#next-question").click(function()
+                      {
+                          $("#particles-container").hide();
                           $("#result-container").hide();
 						  //getLoader(questionaireObj);
                           getQuestions(questionaireObj);
                       });
                    }else if(result=="WIN"){
-                       $("#result-message p").html("Se acabo <br>¡Buen trabajo!");
+                    $("#result-message #head").attr('src', 'img/cabezaedu.png');
+                       $("#result-message p").html("Se acabó <br>¡Buen trabajo!");
                        $("#next-question").html("MENU");
                         $("#next-question").click(function(){ 
+                          $("#particles-container").hide();
                           putCourseList();
                           resetValues();
                       });
                    }else if(result=="LOSE"){
-                       $("#result-message p").html("Estudia <br>y intenta de nuevo más tarde");  
+                       $("#result-message #head").attr('src', 'img/cabeza_edu_triste.png');
+                       $("#result-message p").html("Estudia <br>e intenta de nuevo más tarde");  
                        $("#next-question").html("MENU");
                        $("#next-question").click(function(){ 
+                        
                            putCourseList();
                            resetValues();
                       });
@@ -485,6 +504,8 @@ $(document).ready(function(){
     {
         widthWindow = $( window ).innerWidth();
         heightWindow = $( window ).innerHeight();	
+        canvas.width = widthWindow;
+        canvas.height = heightWindow;
         var relacionDeAspecto=widthWindow/heightWindow;
         $(".container").height(window.innerHeight);	
                
