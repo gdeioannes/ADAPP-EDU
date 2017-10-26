@@ -359,21 +359,17 @@ $(document).ready(function(){
               dataType: "json",
               url: appeduAPI,
               success: function(data){  
-
-                
                   //container = document.getElementById("main-Container");
                   //$("#main-Container").css("background","transparent");
-
-
                   printDebug(data);
                   if(data.is_correct){
-                    console.log("Mostrando cara feliz");
+                 
                     $("#result-message #head").attr('src', 'img/cabezaedu.png');
                     $("#particles-container").show();
                     $("#result-message p").html("Respuesta Correcta! <br> :)");
                     trackDiff(1);
                   }else{
-                    console.log("Mostrando cara triste");
+                
                     $("#result-message #head").attr('src', 'img/cabeza_edu_triste.png');
                     $("#result-message p").html("Respuesta Errada <br> :(");  
                     trackDiff(0);
@@ -391,7 +387,7 @@ $(document).ready(function(){
                           getQuestions(questionaireObj);
                       });
                    }else if(result=="WIN"){
-                    $("#result-message #head").attr('src', 'img/cabezaedu.png');
+                    $("#result-message #head").attr('src', 'img/cabezaedu.png'); 
                        $("#result-message p").html("Se acabó <br>¡Buen trabajo!");
                        $("#next-question").html("MENU");
                         $("#next-question").click(function(){ 
@@ -550,9 +546,10 @@ $(document).ready(function(){
     
     function checkBrowserDimensions( widthWindow, heightWindow)
     {
+        console.log("Aspect ratio: "+ widthWindow/heightWindow);
         //$("#loadingText").hide();
         
-        if(widthWindow/heightWindow > (16/9))
+        if(widthWindow/heightWindow > (16/9)+0.3)
         {
             $("#stop-Container").show();
             $("#main-Container").hide();
