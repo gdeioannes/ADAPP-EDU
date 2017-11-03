@@ -365,11 +365,13 @@ $(document).ready(function(){
                   if(data.is_correct){
                  
                     $("#result-message #head").attr('src', 'img/cabezaedu.png');
-                    $("#particles-container").show();
+                    $("#canvasTrofeos").show();
+                    mostrarTrofeos();
                     $("#result-message p").html("Respuesta Correcta! <br> :)");
                     trackDiff(1);
                   }else{
-                
+                    $("#canvasEstrellas").show();
+                    mostrarEstrellas();
                     $("#result-message #head").attr('src', 'img/cabeza_edu_triste.png');
                     $("#result-message p").html("Respuesta Errada <br> :(");  
                     trackDiff(0);
@@ -381,7 +383,8 @@ $(document).ready(function(){
                       $("#next-question").html("SIGUIENTE");
                       $("#next-question").click(function()
                       {
-                          $("#particles-container").hide();
+                          $("#canvasTrofeos").hide();
+                          $("#canvasEstrellas").hide();
                           $("#result-container").hide();
 						  //getLoader(questionaireObj);
                           getQuestions(questionaireObj);
@@ -390,16 +393,19 @@ $(document).ready(function(){
                     $("#result-message #head").attr('src', 'img/cabezaedu.png'); 
                        $("#result-message p").html("Se acabó <br>¡Buen trabajo!");
                        $("#next-question").html("MENU");
-                        $("#next-question").click(function(){ 
-                          $("#particles-container").hide();
+                        $("#next-question").click(function()
+                        { 
+                        //   $("#particles-container").hide();
                           putCourseList();
                           resetValues();
                       });
                    }else if(result=="LOSE"){
+                       
                        $("#result-message #head").attr('src', 'img/cabeza_edu_triste.png');
                        $("#result-message p").html("Estudia <br>e intenta de nuevo más tarde");  
                        $("#next-question").html("MENU");
-                       $("#next-question").click(function(){ 
+                       $("#next-question").click(function()
+                       { 
                         
                            putCourseList();
                            resetValues();
@@ -500,11 +506,18 @@ $(document).ready(function(){
     {
         widthWindow = $( window ).innerWidth();
         heightWindow = $( window ).innerHeight();	
-        canvas.width = widthWindow;
-        canvas.height = heightWindow;
         var relacionDeAspecto=widthWindow/heightWindow;
         $(".container").height(window.innerHeight);	
                
+        //Sistema de particulas 
+        mainContainer = $("#main-Container");
+        canvas=document.getElementById("canvasTrofeos");
+        width=mainContainer.width();
+        height=mainContainer.height();
+        canvas.width = width;
+        canvas.height = height;
+        
+
         if(isUsingDesktop)
         {
             checkBrowserDimensions(widthWindow, heightWindow);

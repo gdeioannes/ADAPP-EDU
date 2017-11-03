@@ -295,6 +295,8 @@ button{
 
 }
 
+
+
 /* Answer*/
 
 @keyframes question-animation {
@@ -533,15 +535,29 @@ nav .back-btn{
 
 
 /* PARTICLES */
-#particles-container
+#canvasEstrellas
 {
     position:absolute;
     width: 40%;
     height: 100%;
+    display: none;
+}
+
+#canvasTrofeos
+{
+    position:absolute;
+    width: 40%;
+    height: 100%;
+    display: none;
 }
 
 @media all and (orientation:portrait) {
-    #particles-container
+    #canvasEstrellas
+    {
+        width: 100%;
+    }
+
+    #canvasTrofeos
     {
         width: 100%;
     }
@@ -665,6 +681,13 @@ nav .back-btn{
    
     
     /* COURSES */
+
+    #content-message img{
+        width: 25vh;
+        height: auto;
+    
+    }
+
     .content-container ul li h2{
         font-size: 2vw;
     }
