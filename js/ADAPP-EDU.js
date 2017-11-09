@@ -393,13 +393,13 @@ $(document).ready(function(){
                     trackDiff(0);
                     
                   }
-                  
                   $("#next-question").unbind();
                   
                    if(result=="KEEP"){
                       $("#next-question").html("SIGUIENTE");
                       $("#next-question").click(function()
                       {
+                          console.log("siguiente");
                           $("#canvasTrofeos").hide();
                           $("#canvasEstrellas").hide();
                           $("#result-container").hide();
@@ -413,7 +413,7 @@ $(document).ready(function(){
                         $("#next-question").click(function()
                         { 
                             $("#canvasTrofeos").show();
-                            mostrarTrofeos();
+                             mostrarTrofeos();
                         //   $("#particles-container").hide();
                           putCourseList();
                           resetValues();
@@ -630,7 +630,7 @@ $(document).ready(function(){
         $("#login-container").hide();
         $("#user-id").val(id);
         $(".nav-name-container").html("Visitante : "+name);
-        $("#welcome-name").html("Hola "+maxSizeText(10,name,"..."));
+        $("#welcome-name").html("Hola "+name);
         getSessionData();
         putCourseList();
     }

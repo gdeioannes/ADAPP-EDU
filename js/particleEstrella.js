@@ -19,7 +19,8 @@ particle=
 		return obj;
 	},
 
-	update: function(){
+	update: function()
+	{
 		this.position.addTo(this.velocity);
     }, 
     

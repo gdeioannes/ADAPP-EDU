@@ -16,7 +16,7 @@ function mostrarEstrellas()
 	var img = new Image();
 	img.src = imagenSrc;
 	variacionWidth = width/7.5;
-	var repetir = true;
+	
 	
 	
 	//Explosion superior
@@ -42,7 +42,7 @@ function mostrarEstrellas()
 
 	function update()
 	{
-		console.log("print");
+		
 		context.clearRect(0,0,width,height);
 		
 		for (var i = 0; i < numparticles; i++) 
@@ -54,10 +54,9 @@ function mostrarEstrellas()
 			context.fill();
 		}
 
-		if(repetir)
-		{
+		
 			requestAnimationFrame(update);
-		}
+		
 		
 	}
 }
