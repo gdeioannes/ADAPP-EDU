@@ -56,26 +56,38 @@ $(document).ready(function(){
     checkWebStorage();
     
     $("#back-course-menu-btn").click(function(){
+        $("#canvasEstrellas").hide();
+        $("#canvasTrofeos").hide();
         putCourseList();
     });
     $("#back-course-menu-btn2").click(function(){
+        $("#canvasEstrellas").hide();
+        $("#canvasTrofeos").hide();
         putCourseList();
     });
     $("#back-course-menu-btn3").click(function(){
+        $("#canvasEstrellas").hide();
+        $("#canvasTrofeos").hide();
         putCourseList();
     });
     
-    $("#home-selector-btn").click(function(){
+    $("#home-selector-btn").click(function()
+    {
+        console.log("Apretaste el boton");
         $("#create-user-container").toggle();
         $("#login-user-container").toggle();
         
        
-        if(buttonFlag){
-        $("#home-selector-btn").html("<br>Login");
+        if(buttonFlag)
+        {
+            $("#home-selector-btn").html("<br>Login");
             buttonFlag=false;
-        }else{
+        }
+        
+        else
+        {
           $("#home-selector-btn").html("Crear<br>usuario");
-        buttonFlag=true;
+            buttonFlag=true;
         }
     });
     
@@ -102,9 +114,12 @@ $(document).ready(function(){
                     $("#create-user-container").toggle();
                     $("#login-user-container").toggle();
                     $("#main-message").html("Usuario Creado Exitosamente");
+                    $("#home-selector-btn").html("Crear<br>usuario");
+                    buttonFlag=true;
                   }else{
                       
                     $("#main-message").html("Error, el nombre o mail existe");
+                    
                   }
                 
               },
@@ -491,6 +506,8 @@ $(document).ready(function(){
     $("#back-home-btn").click(function(){
        var myConfirm = confirm("¿ Quieres Salir de ADAAP-EDU :( ?");
         if(myConfirm){
+            
+           
             showHome();
         }else{
             
