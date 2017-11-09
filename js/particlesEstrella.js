@@ -16,33 +16,35 @@ function mostrarEstrellas()
 	var img = new Image();
 	img.src = imagenSrc;
 	variacionWidth = width/7.5;
+	var repetir = true;
+	
 	
 	//Explosion superior
-	for(i=0;i<numparticles/3;i++)
+	for(i=0;i<20;i++)
 	{
 		particles.push(particle.create(width/2 - variacionWidth,height/4,velocidad,Math.random()*Math.PI*2,Math.floor(Math.random() * 101)+50));
 	}
 
 	// Explosion izquierda inferior
-	for(i=0;i<numparticles/3;i++)
+	for(i=20;i<40;i++)
 	{
 		particles.push(particle.create(width/4 - variacionWidth,height/1.5,velocidad,Math.random()*Math.PI*2,Math.floor(Math.random() * 101)+50));
 	}
 
 	// Explosion derecha inferior
-	for(i=0;i<numparticles/3;i++)
+	for(i=40;i<numparticles;i++)
 	{
 		particles.push(particle.create(width - (variacionWidth*3),height/1.5,velocidad,Math.random()*Math.PI*2,Math.floor(Math.random() * 101)+50));
 		
 	}
 
-	
 	update();
 
 	function update()
 	{
+		console.log("print");
 		context.clearRect(0,0,width,height);
-
+		
 		for (var i = 0; i < numparticles; i++) 
 		{
 			particles[i].update();
@@ -52,6 +54,10 @@ function mostrarEstrellas()
 			context.fill();
 		}
 
-		requestAnimationFrame(update);
+		if(repetir)
+		{
+			requestAnimationFrame(update);
+		}
+		
 	}
 }

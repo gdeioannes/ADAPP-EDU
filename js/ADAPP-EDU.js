@@ -380,18 +380,20 @@ $(document).ready(function(){
                   if(data.is_correct){
                  
                     $("#result-message #head").attr('src', 'img/cabezaedu.png');
-                    $("#canvasTrofeos").show();
-                    mostrarTrofeos();
+                    // $("#canvasTrofeos").show();
+                    // mostrarTrofeos();
+                    $("#canvasEstrellas").show();
+                    mostrarEstrellas();
                     $("#result-message p").html("Respuesta Correcta! <br> :)");
                     trackDiff(1);
                   }else{
-                    $("#canvasEstrellas").show();
-                    mostrarEstrellas();
+                    
                     $("#result-message #head").attr('src', 'img/cabeza_edu_triste.png');
                     $("#result-message p").html("Respuesta Errada <br> :(");  
                     trackDiff(0);
                     
                   }
+                  
                   $("#next-question").unbind();
                   
                    if(result=="KEEP"){
@@ -410,6 +412,8 @@ $(document).ready(function(){
                        $("#next-question").html("MENU");
                         $("#next-question").click(function()
                         { 
+                            $("#canvasTrofeos").show();
+                            mostrarTrofeos();
                         //   $("#particles-container").hide();
                           putCourseList();
                           resetValues();

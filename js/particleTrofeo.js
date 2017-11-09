@@ -4,7 +4,6 @@ particleTrofeo=
     position : null,
     tamanio: null,
 
-	/// dummy constructor
 	create : function(x,y,speed,tamanio)
 	{
 		

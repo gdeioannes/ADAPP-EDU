@@ -4,7 +4,6 @@ particle=
     position : null,
     radius: null,
 
-	/// dummy constructor
 
 	create : function(x,y,speed,angle,radius)
 	{
@@ -16,8 +15,7 @@ particle=
 		obj.velocity.setAngle(angle);
         obj.position=vector.create(x,y);
         obj.radius = radius;
-		// console.log("object")
-		// console.log(obj);
+	
 		return obj;
 	},
 
