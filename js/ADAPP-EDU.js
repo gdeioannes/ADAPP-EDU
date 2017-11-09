@@ -626,7 +626,7 @@ $(document).ready(function(){
         $("#login-container").hide();
         $("#user-id").val(id);
         $(".nav-name-container").html("Visitante : "+name);
-        $("#welcome-name").html("Hola "+name);
+        $("#welcome-name").html("Hola "+maxSizeText(10,name,"..."));
         getSessionData();
         putCourseList();
     }
