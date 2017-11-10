@@ -1,3 +1,5 @@
+var particles=[];
+
 function mostrarEstrellas()
 {
 	mainContainer = $("#main-Container");
@@ -9,15 +11,12 @@ function mostrarEstrellas()
 	canvas.height = height;
     console.log("Width: "+ width);
     console.log("height: "+ height);
-	particles=[];
 	numparticles=60;
 	velocidad= 3;
 	imagenSrc='img/estrella.png';
 	var img = new Image();
 	img.src = imagenSrc;
 	variacionWidth = width/7.5;
-	
-	
 	
 	//Explosion superior
 	for(i=0;i<20;i++)
@@ -40,9 +39,13 @@ function mostrarEstrellas()
 
 	update();
 
+	// setTimeout(func,3000);
 	function update()
 	{
-		
+		width=mainContainer.width();
+		height=mainContainer.height();
+		canvas.width = width;
+		canvas.height = height;
 		context.clearRect(0,0,width,height);
 		
 		for (var i = 0; i < numparticles; i++) 
@@ -54,9 +57,7 @@ function mostrarEstrellas()
 			context.fill();
 		}
 
-		
-			requestAnimationFrame(update);
-		
-		
+		requestAnimationFrame(update);
 	}
+	
 }

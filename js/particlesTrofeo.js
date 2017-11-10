@@ -1,7 +1,7 @@
 function mostrarTrofeos()
 {
     mainContainer = $("#main-Container");
-    canvas=document.getElementById("canvasTrofeos");
+    // canvas=document.getElementById("canvasTrofeos");
 	context=canvas.getContext("2d");
 	width=mainContainer.width();
     height=mainContainer.height();
@@ -27,6 +27,7 @@ function mostrarTrofeos()
 
 	function update()
 	{
+		
 		context.clearRect(0,0,width,height);
 
 		for (var i = 0; i < numparticles; i++) 

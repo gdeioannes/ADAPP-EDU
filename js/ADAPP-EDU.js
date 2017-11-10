@@ -400,6 +400,7 @@ $(document).ready(function(){
                       $("#next-question").click(function()
                       {
                           console.log("siguiente");
+                          particles = [];
                           $("#canvasTrofeos").hide();
                           $("#canvasEstrellas").hide();
                           $("#result-container").hide();
@@ -414,6 +415,7 @@ $(document).ready(function(){
                         { 
                             $("#canvasTrofeos").show();
                              mostrarTrofeos();
+
                         //   $("#particles-container").hide();
                           putCourseList();
                           resetValues();
@@ -626,11 +628,13 @@ $(document).ready(function(){
     }
     
 
-    function appLogUser(id,name){
+    function appLogUser(id,name)
+    {
+        $("#welcome-name").html("Hola " + maxSizeText(10,name,"..."));
         $("#login-container").hide();
         $("#user-id").val(id);
         $(".nav-name-container").html("Visitante : "+name);
-        $("#welcome-name").html("Hola "+name);
+        // $("#welcome-name").html("Hola "+name);
         getSessionData();
         putCourseList();
     }
