@@ -16,6 +16,7 @@ html{
 body{
     background: aquamarine;
     font-family: Lato;
+    overflow-y: hidden;
 }
 
 
@@ -301,7 +302,7 @@ button{
 
 @keyframes question-animation {
     from {margin-top: -100vh;}
-    to {margin-top: 0vh;}
+    to {margin-top: 2vh;}
 }
 
 .question{
@@ -326,12 +327,12 @@ button{
     background: gray;
 }
 
-/*
-@keyframes anwers-animation
-{
-    from{margin-bottom:-200vh;}
-    to{margin-bottom: 0vh;} 
-}*/
+
+@keyframes anwers-animation{
+    from{margin-bottom:-50vh; }
+    to{margin-bottom: 0vh;}
+}
+
 
 .answer li
 {
@@ -348,8 +349,8 @@ button{
     cursor: pointer; 
     cursor: hand;
     border-radius: 10vw;
-    animation: anwers-animation;
-    animation-duration: 2s;
+    /* animation: anwers-animation;
+    animation-duration: 2s; */
 }
 
 .answer li:hover{
@@ -362,16 +363,18 @@ button{
     margin: 0px;
 }
 
-.answer{
+/* .answer{
     animation-name: anwers-animation;
     animation-duration: 2s;
-}
+} */
 
 #bottom-answer
 {
     height: 50%;
-    
+    animation-name: anwers-animation;
+    animation-duration: 2s;
 }
+
 
 #answer-container-list
 {
@@ -388,7 +391,7 @@ button{
     height: auto; 
     animation-name: question-animation;
     animation-duration: 2s;
-    margin-top: 3vh;
+    margin-top: 2vh;
     /* z-index: -1; */
 }
 
