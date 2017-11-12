@@ -538,15 +538,7 @@ nav .back-btn{
 
 
 /* PARTICLES */
-#canvasEstrellas
-{
-    position:absolute;
-    width: 40%;
-    height: 100%;
-    display: none;
-}
-
-#canvasTrofeos
+#canvas
 {
     position:absolute;
     width: 40%;
@@ -555,12 +547,7 @@ nav .back-btn{
 }
 
 @media all and (orientation:portrait) {
-    #canvasEstrellas
-    {
-        width: 100%;
-    }
-
-    #canvasTrofeos
+    #canvas
     {
         width: 100%;
     }

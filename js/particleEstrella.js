@@ -1,4 +1,4 @@
-particle=
+particleEstrella=
 {
 	velocity :null,
     position : null,

@@ -56,24 +56,23 @@ $(document).ready(function(){
     checkWebStorage();
     
     $("#back-course-menu-btn").click(function(){
-        $("#canvasEstrellas").hide();
-        $("#canvasTrofeos").hide();
+        particles = [];
+        $("#canvas").hide();
         putCourseList();
     });
     $("#back-course-menu-btn2").click(function(){
-        $("#canvasEstrellas").hide();
-        $("#canvasTrofeos").hide();
+        particles = [];
+        $("#canvas").hide();
         putCourseList();
     });
     $("#back-course-menu-btn3").click(function(){
-        $("#canvasEstrellas").hide();
-        $("#canvasTrofeos").hide();
+        particles = [];
+        $("#canvas").hide();
         putCourseList();
     });
     
     $("#home-selector-btn").click(function()
     {
-        console.log("Apretaste el boton");
         $("#create-user-container").toggle();
         $("#login-user-container").toggle();
         
@@ -378,17 +377,18 @@ $(document).ready(function(){
                   //$("#main-Container").css("background","transparent");
                   printDebug(data);
                   if(data.is_correct){
-                 
+                    console.log("Aparecer estrellas");
                     $("#result-message #head").attr('src', 'img/cabezaedu.png');
                     // $("#canvasTrofeos").show();
                     // mostrarTrofeos();
-                    $("#canvasEstrellas").show();
-                    mostrarEstrellas();
+                    $("#canvas").show();
+                    mostrarParticulas(60,3,true);
                     $("#result-message p").html("Respuesta Correcta! <br> :)");
                     trackDiff(1);
                   }else{
-                    
+                    console.log("Aparecer trofeos");
                     $("#result-message #head").attr('src', 'img/cabeza_edu_triste.png');
+                    
                     $("#result-message p").html("Respuesta Errada <br> :(");  
                     trackDiff(0);
                     
@@ -401,24 +401,25 @@ $(document).ready(function(){
                       {
                           console.log("siguiente");
                           particles = [];
-                          $("#canvasTrofeos").hide();
-                          $("#canvasEstrellas").hide();
+                          $("#canvas").hide();
                           $("#result-container").hide();
 						  //getLoader(questionaireObj);
                           getQuestions(questionaireObj);
                       });
-                   }else if(result=="WIN"){
-                    $("#result-message #head").attr('src', 'img/cabezaedu.png'); 
-                       $("#result-message p").html("Se acabó <br>¡Buen trabajo!");
-                       $("#next-question").html("MENU");
+                   }
+                   
+                   else if(result=="WIN"){
+
+                        $("#canvas").show();
+                        mostrarParticulas(500,5,false);
+                        $("#result-message #head").attr('src', 'img/cabezaedu.png'); 
+                        $("#result-message p").html("Se acabó <br>¡Buen trabajo!");
+                        $("#next-question").html("MENU");
                         $("#next-question").click(function()
                         { 
-                            $("#canvasTrofeos").show();
-                             mostrarTrofeos();
-
-                        //   $("#particles-container").hide();
-                          putCourseList();
-                          resetValues();
+                            $("#canvas").hide();
+                            putCourseList();
+                            resetValues();
                       });
                    }else if(result=="LOSE"){
                        
@@ -427,7 +428,7 @@ $(document).ready(function(){
                        $("#next-question").html("MENU");
                        $("#next-question").click(function()
                        { 
-                        
+                           $("#canvas").hide();
                            putCourseList();
                            resetValues();
                       });
@@ -534,7 +535,7 @@ $(document).ready(function(){
                
         //Sistema de particulas 
         mainContainer = $("#main-Container");
-        canvas=document.getElementById("canvasTrofeos");
+        canvas=document.getElementById("canvas");
         width=mainContainer.width();
         height=mainContainer.height();
         canvas.width = width;
@@ -597,26 +598,6 @@ $(document).ready(function(){
             $("#main-Container").show();
         }
     }
-
-    /*
-    function adaptAnswerContainer(widthWindow, heightWindow,relacionDeAspecto)
-    {
-        let bottomAnswer = $("#bottom-answer");
-      
-        console.log("Alto de la página a la mitad: " + heightWindow/2);
-        console.log("Apect Ratio: " + relacionDeAspecto);
-        console.log("botom answer hright: " + bottomAnswer.height());
-        let padding = heightWindow/10;
-        //let padding = bottomAnswer.height()/5;
-        paddingInterior = padding/4;
-        $("#answer-container-list li").css('padding-top', paddingInterior+'px');
-        $("#answer-container-list li").css('padding-bottom', paddingInterior+'px');
-
-        margin = paddingInterior/4;
-        $("#answer-container-list li").css('margin-top', margin+'px');
-        $("#answer-container-list li").css('margin-bottom', margin+'px');
-    }
-    */
     
     function showHome(){
         $("#login-container").show();
@@ -634,7 +615,6 @@ $(document).ready(function(){
         $("#login-container").hide();
         $("#user-id").val(id);
         $(".nav-name-container").html("Visitante : "+name);
-        // $("#welcome-name").html("Hola "+name);
         getSessionData();
         putCourseList();
     }
