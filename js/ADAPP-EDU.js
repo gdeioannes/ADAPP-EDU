@@ -544,7 +544,7 @@ $(document).ready(function(){
 
         if(isUsingDesktop)
         {
-            checkBrowserDimensions(widthWindow, heightWindow);
+            checkBrowserDimensions(widthWindow, heightWindow, 2.08 );
             
             //adaptAnswerContainer(widthWindow,heightWindow,relacionDeAspecto);
         }  
@@ -552,7 +552,7 @@ $(document).ready(function(){
         else
         {
             //adaptAnswerContainer(widthWindow,heightWindow,relacionDeAspecto);
-            checkBrowserDimensions(widthWindow, heightWindow);   
+            checkBrowserDimensions(widthWindow, heightWindow, 16/9);   
             
             cssPhoneApply();
             if($("#login-container").is(':visible') )
@@ -581,12 +581,12 @@ $(document).ready(function(){
         stopMessagePSpan.html("Cambia la orientación del celular a vertical");
     }
     
-    function checkBrowserDimensions( widthWindow, heightWindow)
+    function checkBrowserDimensions( widthWindow, heightWindow, limiteRelacionAspecto)
     {
         console.log("Aspect ratio: "+ widthWindow/heightWindow);
         //$("#loadingText").hide();
         
-        if(widthWindow/heightWindow > (16/9)+0.3)
+        if(widthWindow/heightWindow > limiteRelacionAspecto)
         {
             $("#stop-Container").show();
             $("#main-Container").hide();
