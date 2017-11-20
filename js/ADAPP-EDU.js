@@ -517,8 +517,7 @@ $(document).ready(function(){
         //In change of difficultie delete the wrong answer so the adaptative difficultie don't jump because of the count wrong history
         for(var i=0;i<questionaryArray.length;i++){
             if(questionaryArray[i][0]==0){
-               questionaryArray.splice(i,1);
-                i--;
+                 questionaryArray[i][0]=-1;
                }
         }
     }
