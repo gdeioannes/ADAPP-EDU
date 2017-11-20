@@ -7,7 +7,7 @@ particleEstrella=
 
 	create : function(x,y,speed,angle,radius)
 	{
-		console.log(x,y,speed,angle)
+		//console.log(x,y,speed,angle)
 		var obj=Object.create(this);
 		obj.velocity=vector.create(0,0);
 		

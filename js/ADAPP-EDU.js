@@ -377,7 +377,7 @@ $(document).ready(function(){
                   //$("#main-Container").css("background","transparent");
                   printDebug(data);
                   if(data.is_correct){
-                    console.log("Aparecer estrellas");
+                    
                     $("#result-message #head").attr('src', 'img/cabezaedu.png');
                     // $("#canvasTrofeos").show();
                     // mostrarTrofeos();
@@ -386,7 +386,7 @@ $(document).ready(function(){
                     $("#result-message p").html("Respuesta Correcta! <br> :)");
                     trackDiff(1);
                   }else{
-                    console.log("Aparecer trofeos");
+                    
                     $("#result-message #head").attr('src', 'img/cabeza_edu_triste.png');
                     
                     $("#result-message p").html("Respuesta Errada <br> :(");  
@@ -399,7 +399,6 @@ $(document).ready(function(){
                       $("#next-question").html("SIGUIENTE");
                       $("#next-question").click(function()
                       {
-                          console.log("siguiente");
                           particles = [];
                           $("#canvas").hide();
                           $("#result-container").hide();
@@ -446,6 +445,7 @@ $(document).ready(function(){
     }
     
     function trackDiff(data){
+        
         printDebug("QUESTION ARRAY:"+questionaryArray);
         questionaryArray.unshift([data,actualDiff]);
         difficultieLogic();
@@ -454,15 +454,19 @@ $(document).ready(function(){
 
     
     function difficultieLogic(){
-        console.log("Compare");
+        console.log("Compare 1");
         var countRight=0;
         var countWrong=0;
-        if((actualDiff-1)>rangosDiff.length){
+        
+        //Cantidad de Dificultades
+        var numDificuties=rangosDiff.length;
+
+        if((actualDiff-1)>numDificuties){
            actualDiff=rangosDiff.length;
            result="KEEP";
         }
+        
         console.log("Compare 2");
-        console.log(parseInt(actualDiff-1)+">"+parseInt(rangosDiff.length));
         for(var i=0;i<questionaryArray.length;i++){
             if(i>rangosDiff[actualDiff-1][1]){
                 break
@@ -486,6 +490,7 @@ $(document).ready(function(){
         }
         
         //COUNT RIGTH ANSWERS
+        console.log("CONTEO BUENAS:"+countRight+" DIFICULTAD:"+actualDiff+" RANGO BUENAS:"+rangosDiff[actualDiff-1][0])
         if(countRight>=rangosDiff[actualDiff-1][0]){
             if(actualDiff+1!=rangosDiff.length+1){
             controlDiff(1);
@@ -495,7 +500,7 @@ $(document).ready(function(){
         }
         
         //COUNT WRONG ANWERS
-            console.log("AD:"+(actualDiff)+" "+rangosDiff.length);
+        console.log("CONTEO MALAS:"+countWrong+" DIFICULTAD:"+actualDiff+" RANGO MALAS:"+rangosDiff[actualDiff-1][2])
             if(countWrong>=rangosDiff[actualDiff-1][2]){
                 if(actualDiff-1!=0){
                     controlDiff(-1);
@@ -504,10 +509,18 @@ $(document).ready(function(){
                 }
             }
         
+        
     }
     
     function controlDiff(data){
         actualDiff=parseInt(actualDiff)+parseInt(data);
+        //In change of difficultie delete the wrong answer so the adaptative difficultie don't jump because of the count wrong history
+        for(var i=0;i<questionaryArray.length;i++){
+            if(questionaryArray[i][0]==0){
+               questionaryArray.splice(i,1);
+                i--;
+               }
+        }
     }
     
     $("#back-home-btn").click(function(){
@@ -583,7 +596,7 @@ $(document).ready(function(){
     
     function checkBrowserDimensions( widthWindow, heightWindow, limiteRelacionAspecto)
     {
-        console.log("Aspect ratio: "+ widthWindow/heightWindow);
+        //console.log("Aspect ratio: "+ widthWindow/heightWindow);
         //$("#loadingText").hide();
         
         if(widthWindow/heightWindow > limiteRelacionAspecto)
