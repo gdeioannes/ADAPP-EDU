@@ -376,7 +376,8 @@ $(document).ready(function(){
                   //container = document.getElementById("main-Container");
                   //$("#main-Container").css("background","transparent");
                   printDebug(data);
-                  if(data.is_correct){
+                  if(data.is_correct)
+                  {
                     
                     $("#result-message #head").attr('src', 'img/cabezaedu.png');
                     // $("#canvasTrofeos").show();
@@ -408,6 +409,7 @@ $(document).ready(function(){
                    }
                    
                    else if(result=="WIN"){
+                        particles = [];
 
                         $("#canvas").show();
                         mostrarParticulas(500,5,false);

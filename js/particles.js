@@ -7,6 +7,8 @@ var width=mainContainer.width();
 var height=mainContainer.height();
 canvas.width = width;
 canvas.height = height;
+console.log("Width: "+ width);
+console.log("height: "+ height);
 
 //Opcion: parámetro que da la información para hacer display de las particulas
 //de los trofeos o de las estrellas, true para las estrellas, false para los trofeos
@@ -74,16 +76,11 @@ function mostrarParticulas(numeroParticulas, velocidadParticulas, opcion)
 		
 		for (var i = 0; i < numparticles; i++) 
 		{
-			try {
-				particles[i].update();
-				context.beginPath();
-				context.drawImage(img, particles[i].position.getX(), particles[i].position.getY(), particles[i].radius, particles[i].radius);
-				context.fill();
-			}
-			catch(err) {
-				
-			}
-		
+			
+			particles[i].update();
+			context.beginPath();
+			context.drawImage(img, particles[i].position.getX(), particles[i].position.getY(), particles[i].radius, particles[i].radius);
+			context.fill();
 		}
 
 		requestAnimationFrame(updateEstrellas);
