@@ -76,10 +76,16 @@ function mostrarParticulas(numeroParticulas, velocidadParticulas, opcion)
 		
 		for (var i = 0; i < numparticles; i++) 
 		{
-			particles[i].update();
-			context.beginPath();
-			context.drawImage(img, particles[i].position.getX(), particles[i].position.getY(), particles[i].radius, particles[i].radius);
-			context.fill();
+			try {
+				particles[i].update();
+				context.beginPath();
+				context.drawImage(img, particles[i].position.getX(), particles[i].position.getY(), particles[i].radius, particles[i].radius);
+				context.fill();
+			}
+			catch(err) {
+				
+			}
+		
 		}
 
 		requestAnimationFrame(updateEstrellas);

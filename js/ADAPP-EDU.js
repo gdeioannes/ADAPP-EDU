@@ -521,7 +521,7 @@ $(document).ready(function(){
         }
     }); 
     
-    //resizeContainer();
+    //resizeContainer(); 
     $(window).resize(function(){
         resizeContainer();
     });
