@@ -400,6 +400,8 @@ $(document).ready(function(){
                       $("#next-question").html("SIGUIENTE");
                       $("#next-question").click(function()
                       {
+                          
+                          repetir = false;
                           particles = [];
                           $("#canvas").hide();
                           $("#result-container").hide();
@@ -409,8 +411,8 @@ $(document).ready(function(){
                    }
                    
                    else if(result=="WIN"){
-                        particles = [];
-
+                       
+                        
                         $("#canvas").show();
                         mostrarParticulas(500,5,false);
                         $("#result-message #head").attr('src', 'img/cabezaedu.png'); 
@@ -418,6 +420,8 @@ $(document).ready(function(){
                         $("#next-question").html("MENU");
                         $("#next-question").click(function()
                         { 
+                            repetir = false;
+                            particles = [];
                             $("#canvas").hide();
                             putCourseList();
                             resetValues();

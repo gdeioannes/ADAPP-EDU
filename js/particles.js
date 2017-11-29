@@ -5,6 +5,7 @@ var mainContainer = $("#main-Container");
 var context=canvas.getContext("2d");
 var width=mainContainer.width();
 var height=mainContainer.height();
+var repetir;
 canvas.width = width;
 canvas.height = height;
 console.log("Width: "+ width);
@@ -15,6 +16,7 @@ console.log("height: "+ height);
 function mostrarParticulas(numeroParticulas, velocidadParticulas, opcion)
 {
 
+	repetir = true;
 	let numparticles=numeroParticulas;
 	let velocidad= velocidadParticulas;
 	var imagenSrc;
@@ -22,7 +24,6 @@ function mostrarParticulas(numeroParticulas, velocidadParticulas, opcion)
 
 	if(opcion)
 	{
-
 		imagenSrc='img/estrella.png';
 	}
 
@@ -41,18 +42,21 @@ function mostrarParticulas(numeroParticulas, velocidadParticulas, opcion)
 		//Explosion superior
 		for(i=0;i<numparticles/3;i++)
 		{
+			
 			particles.push(particleEstrella.create(width/2 - variacionWidth,height/4,velocidad,Math.random()*Math.PI*2,Math.floor(Math.random() * 101)+50));
 		}
 
 		// Explosion izquierda inferior
 		for(i=20;i<(2*numparticles)/3;i++)
 		{
+			
 			particles.push(particleEstrella.create(width/4 - variacionWidth,height/1.5,velocidad,Math.random()*Math.PI*2,Math.floor(Math.random() * 101)+50));
 		}
 
 		// Explosion derecha inferior
 		for(i=40;i<numparticles;i++)
 		{
+			
 			particles.push(particleEstrella.create(width - (variacionWidth*3),height/1.5,velocidad,Math.random()*Math.PI*2,Math.floor(Math.random() * 101)+50));
 			
 		}
@@ -74,9 +78,13 @@ function mostrarParticulas(numeroParticulas, velocidadParticulas, opcion)
 	{
 		context.clearRect(0,0,width,height);
 		
+		if(!repetir)
+		{
+			return;
+		}
+
 		for (var i = 0; i < numparticles; i++) 
 		{
-			
 			particles[i].update();
 			context.beginPath();
 			context.drawImage(img, particles[i].position.getX(), particles[i].position.getY(), particles[i].radius, particles[i].radius);
@@ -89,6 +97,11 @@ function mostrarParticulas(numeroParticulas, velocidadParticulas, opcion)
 	function updateTrofeos()
 	{
 		
+		if(!repetir)
+		{
+			return;
+		}
+
 		context.clearRect(0,0,width,height);
 		
 		for (var i = 0; i < numparticles; i++) 
