@@ -454,7 +454,6 @@ $(document).ready(function(){
 
     
     function difficultieLogic(){
-        console.log("Compare 1");
         var countRight=0;
         var countWrong=0;
         
@@ -466,7 +465,6 @@ $(document).ready(function(){
            result="KEEP";
         }
         
-        console.log("Compare 2");
         for(var i=0;i<questionaryArray.length;i++){
             if(i>rangosDiff[actualDiff-1][1]){
                 break
@@ -490,7 +488,6 @@ $(document).ready(function(){
         }
         
         //COUNT RIGTH ANSWERS
-        console.log("CONTEO BUENAS:"+countRight+" DIFICULTAD:"+actualDiff+" RANGO BUENAS:"+rangosDiff[actualDiff-1][0])
         if(countRight>=rangosDiff[actualDiff-1][0]){
             if(actualDiff+1!=rangosDiff.length+1){
             controlDiff(1);
@@ -500,7 +497,6 @@ $(document).ready(function(){
         }
         
         //COUNT WRONG ANWERS
-        console.log("CONTEO MALAS:"+countWrong+" DIFICULTAD:"+actualDiff+" RANGO MALAS:"+rangosDiff[actualDiff-1][2])
             if(countWrong>=rangosDiff[actualDiff-1][2]){
                 if(actualDiff-1!=0){
                     controlDiff(-1);
@@ -595,8 +591,6 @@ $(document).ready(function(){
     
     function checkBrowserDimensions( widthWindow, heightWindow, limiteRelacionAspecto)
     {
-        //console.log("Aspect ratio: "+ widthWindow/heightWindow);
-        //$("#loadingText").hide();
         
         if(widthWindow/heightWindow > limiteRelacionAspecto)
         {
