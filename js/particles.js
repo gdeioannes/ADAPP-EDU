@@ -7,8 +7,6 @@ var width=mainContainer.width();
 var height=mainContainer.height();
 canvas.width = width;
 canvas.height = height;
-console.log("Width: "+ width);
-console.log("height: "+ height);
 
 //Opcion: parámetro que da la información para hacer display de las particulas
 //de los trofeos o de las estrellas, true para las estrellas, false para los trofeos
