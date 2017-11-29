@@ -56,16 +56,19 @@ $(document).ready(function(){
     checkWebStorage();
     
     $("#back-course-menu-btn").click(function(){
+        repetir = false;
         particles = [];
         $("#canvas").hide();
         putCourseList();
     });
     $("#back-course-menu-btn2").click(function(){
+        repetir = false;
         particles = [];
         $("#canvas").hide();
         putCourseList();
     });
     $("#back-course-menu-btn3").click(function(){
+        repetir = false;
         particles = [];
         $("#canvas").hide();
         putCourseList();
