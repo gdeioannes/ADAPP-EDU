@@ -1,5 +1,7 @@
 
 $(document).ready(function(){
+    //Put the URL with were the backend service in runing
+    var URL="https://adappedu.lircaytech.com";
     
     var course=null;  
     var buttonFlag=true;
@@ -22,6 +24,7 @@ $(document).ready(function(){
     var rangosDiff=[[4,10,3,6],[3,5,2,5],[5,8,2,3]];
     var result="KEEP";
     var isUsingDesktop;
+    
     
     
     
@@ -99,7 +102,7 @@ $(document).ready(function(){
     });
     
       $("#create-user").click(function(){
-            var appeduAPI="https://adappedu.lircaytech.com/api/v1/profile/create/{username}/{email}/{password}/{name}/{lastname}/{gender}/{birthdate}";
+            var appeduAPI=URL+"/api/v1/profile/create/{username}/{email}/{password}/{name}/{lastname}/{gender}/{birthdate}";
             var name=$("#create-user-name").val();
             var email=$("#create-user-email").val();
             var password=$("#create-user-password").val();
@@ -130,7 +133,7 @@ $(document).ready(function(){
         });
     
     function logUser(){         
-        var appeduAPI="https://adappedu.lircaytech.com/api/v1/profile/login/{username}/{password}";
+        var appeduAPI=URL+"/api/v1/profile/login/{username}/{password}";
         var name=$("#login-name").val();
         var password=$("#login-password").val();
         appeduAPI=appeduAPI.replace("{username}",name);
@@ -164,7 +167,7 @@ $(document).ready(function(){
         $("#result-container").hide();
         $("#loader-container").hide();
         $("#particles-container").hide();
-        var appeduAPI="https://adappedu.lircaytech.com/api/v1/courses/get";
+        var appeduAPI=URL+"/api/v1/courses/get";
         $(".content-container").html("");
         $.ajax({
           type: "GET",
@@ -190,7 +193,7 @@ $(document).ready(function(){
     
     
     function getUnitFromCourseId(courseID,htmlNode){
-         var appeduAPI= "https://adappedu.lircaytech.com/api/v1/courses/{courseid}/get/units";
+         var appeduAPI= URL+"/api/v1/courses/{courseid}/get/units";
         appeduAPI=appeduAPI.replace("{courseid}",courseID);
         $.ajax({
           type: "GET",
@@ -211,7 +214,7 @@ $(document).ready(function(){
     }
     
     function getTopicsFromUnitId(unitID,htmlNode){
-         var appeduAPI= "https://adappedu.lircaytech.com/api/v1/courses/unit/{unitid}/get/topics";
+         var appeduAPI= URL+"/api/v1/courses/unit/{unitid}/get/topics";
         appeduAPI=appeduAPI.replace("{unitid}",unitID);
         $.ajax({
               type: "GET",
@@ -231,7 +234,7 @@ $(document).ready(function(){
     }
     
     function getQuestionnarieFromTopic(topicID,htmlNode){
-         var appeduAPI= "https://adappedu.lircaytech.com/api/v1/courses/unit/topic/{topicid}/questionnarie/get/all";
+         var appeduAPI= URL+"/api/v1/courses/unit/topic/{topicid}/questionnarie/get/all";
         appeduAPI=appeduAPI.replace("{topicid}",topicID);
         $.ajax({
               type: "GET",
@@ -260,7 +263,7 @@ $(document).ready(function(){
     
     function postEnrollQuestionnarie(questionnarieObj){
         $("#courses-container").hide();
-        var appeduAPI= "https://adappedu.lircaytech.com/api/v1/questionnarie/enroll/{questionnarieid}/user/{userid}";
+        var appeduAPI= URL+"/api/v1/questionnarie/enroll/{questionnarieid}/user/{userid}";
         appeduAPI=appeduAPI.replace("{userid}",$("#user-id").val());
         appeduAPI=appeduAPI.replace("{questionnarieid}",$(questionnarieObj).data("id"));
         $.ajax({
@@ -291,7 +294,7 @@ $(document).ready(function(){
     
     function getQuestions(questionaireObj){
                 $("#loader-container").show();  
-                var appeduAPI= "https://adappedu.lircaytech.com/api/v1/get/exercise/{questionnaireid}/range/{rangeid}}/user/{userid}";
+                var appeduAPI= URL+"/api/v1/get/exercise/{questionnaireid}/range/{rangeid}}/user/{userid}";
         appeduAPI=appeduAPI.replace("{userid}",$("#user-id").val());
         appeduAPI=appeduAPI.replace("{questionnaireid}",$(questionaireObj).data("id"));
         
@@ -365,7 +368,7 @@ $(document).ready(function(){
         $("#result-container").show();
         $("#question-container").hide();
         $("#result-message p").html("...");   
-        var appeduAPI= "https://adappedu.lircaytech.com/api/v1/answer/exercise/{exerciseid}/option/{optionid}/questionnaire/{questionnaireid}/user/{userid}/nk/{nk}";
+        var appeduAPI= URL+"/api/v1/answer/exercise/{exerciseid}/option/{optionid}/questionnaire/{questionnaireid}/user/{userid}/nk/{nk}";
         appeduAPI=appeduAPI.replace("{exerciseid}",$(answerObj).data("exerciseid"));
         appeduAPI=appeduAPI.replace("{optionid}",$(answerObj).data("optionid"));
         appeduAPI=appeduAPI.replace("{questionnaireid}",$(answerObj).data("questionnaireid"));
@@ -519,12 +522,8 @@ $(document).ready(function(){
     
     function controlDiff(data){
         actualDiff=parseInt(actualDiff)+parseInt(data);
-        //In change of difficultie delete the wrong answer so the adaptative difficultie don't jump because of the count wrong history
-        for(var i=0;i<questionaryArray.length;i++){
-            if(questionaryArray[i][0]==0){
-                 questionaryArray[i][0]=-1;
-               }
-        }
+        //In change of difficultie delete history
+        questionaryArray=[];
     }
     
     $("#back-home-btn").click(function(){
